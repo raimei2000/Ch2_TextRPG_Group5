@@ -1,28 +1,28 @@
 #include "Character.h"
 
-Player::Player(std::string Name, int HP, int Power, int exp) {
-	this->Name = Name;
-	this->HP = HP;
-	this->Power = Power;
-	this->Level = 1;
-	this->MaxLevel = 10;
-	this->Exp = 0;
-	this->MaxExp = 100;
+Player::Player(std::string name, int hp, int power, int exp) {
+    name_ = name;
+    hp_ = hp;
+    power_ = power;
+
+    level_ = 1;
+    max_level_ = 10;
+    exp_ = 0;
+    max_exp_ = 100;
 }
 
-int Player ::getHP() {
-	return HP;
+int Player::GetHP() {
+    return hp_;
 }
 
-void Player::setHP(int newHP) {
-	HP = newHP;
+void Player::SetHP(int new_hp) {
+    hp_ = new_hp;
 }
 
-void Player::setName(const std::string& newName) {
-	Name = newName;
+void Player::SetName(const std::string& new_name) {
+    name_ = new_name;
 }
 
-int Player::getPower() {
-	return Power;
+int Player::GetPower() {
+    return power_;
 }
-

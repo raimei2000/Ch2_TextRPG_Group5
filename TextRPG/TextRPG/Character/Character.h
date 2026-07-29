@@ -4,23 +4,19 @@
 
 class Player {
 protected:
-	std::string Name;
-	int Level;
-	int MaxLevel;
-	int HP;
-	int Power;
-	int Exp;
-	int MaxExp;
+    std::string name_;
+    int level_;
+    int max_level_;
+    int hp_;
+    int power_;
+    int exp_;
+    int max_exp_;
 
 public:
-	Player(std::string Name, int HP, int Power, int exp);
+    Player(std::string name, int hp, int power, int exp);
 
-	int getHP();
-	void setHP(int newHP);
-	void setName(const std::string& newName);
-	int getPower();
-	int gainExp(int amount);
-
-	virtual void attack(Monster* monster) = 0;
-	virtual ~Player() {};
+    int GetHP();
+    void SetHP(int new_hp);
+    void SetName(const std::string& new_name);
+    int GetPower();
 };
