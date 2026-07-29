@@ -129,7 +129,7 @@
     <ClCompile Include="health_potion.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="monster.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="random_number_generator.cpp" />
   </ItemGroup>
@@ -138,9 +138,10 @@
     <ClInclude Include="health_potion.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="Character\character.h" />
-    <ClInclude Include="Monster.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="game_manager.h" />
+    <ClInclude Include="monster.h" />
+    <ClInclude Include="random_number_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
