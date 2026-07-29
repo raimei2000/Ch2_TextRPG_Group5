@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <string>
 
@@ -8,15 +8,19 @@ protected:
     int level_;
     int max_level_;
     int hp_;
+    int max_hp_;
     int power_;
+    int defence_;
     int exp_;
     int max_exp_;
 
 public:
-    Player(std::string name, int hp, int power, int exp);
+    Player(std::string name, int hp, int power, int defence, int exp);
 
-    int GetHP();
-    void SetHP(int new_hp);
-    void SetName(const std::string& new_name);
-    int GetPower();
+    int get_hp() const;
+    void set_hp(int new_hp);
+    void set_name(const std::string& new_name);
+    int get_power() const;
+    int get_defence() const;
+    void gain_exp(int amount);
 };
