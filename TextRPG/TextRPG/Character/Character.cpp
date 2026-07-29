@@ -1,15 +1,16 @@
-﻿#include "Character.h"
+﻿#include "character.h"
 
-Player::Player(std::string name, int hp, int power, int defence, int exp) {
+Player::Player(const std::string& name) {
     name_ = name;
-    hp_ = hp;
-    max_hp_ = hp; //캐릭터 생성 시 캐릭터의 최대 체력
-    power_ = power;
-    defence_ = defence;
-
     level_ = 1;
     max_level_ = 10;
-    exp_ = exp;
+
+    hp_ = 100;
+    max_hp_ = 100;
+    power_ = 10;
+    defence_ = 5;
+
+    exp_ = 0;
     max_exp_ = 100;
 }
 
@@ -17,8 +18,17 @@ int Player::hp() const {
     return hp_;
 }
 
+//체력이 0보다 작거나 최대 체력보다 커지는 현상 방지
 void Player::set_hp(int new_hp) {
-    hp_ = new_hp;
+    if (new_hp < 0) {
+        hp_ = 0;
+    }
+    else if (new_hp > max_hp_) {
+        hp_ = max_hp_;
+    }
+    else {
+        hp_ = new_hp;
+    }
 }
 
 void Player::set_name(const std::string& new_name) {
@@ -32,6 +42,7 @@ int Player::power() const{
 int Player::defence() const{
     return defence_;
 }
+
 
 void Player::GainExp(int amount) {
     if (level_ >= max_level_) {
@@ -47,9 +58,10 @@ void Player::GainExp(int amount) {
         power_ += level_ * 5;
         defence_ += level_ * 5;
 
+        //레벨업 후 최대 체력까지 회복
         hp_ = max_hp_;
     }
-    //최대 레벨이 됐을 때 경험치 오르지 않도록 0으로 고정
+    //최대 레벨에서는 경험치를 더 이상 보유하지 않음
     if (level_ == max_level_) {
         exp_ = 0;
     }
