@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 
-class Player {
+class Monster;
+
+class Character {
 protected:
     std::string name_;
     int level_;
@@ -15,7 +17,11 @@ protected:
     int max_exp_;
 
 public:
+<<<<<<< Updated upstream
    explicit Player(const std::string& name);
+=======
+	Character(std::string Name, int HP, int Power, int exp);
+>>>>>>> Stashed changes
 
     int hp() const;
     void set_hp(int new_hp);
@@ -23,5 +29,10 @@ public:
     int power() const;
     int defence() const;
 
+<<<<<<< Updated upstream
     void GainExp(int amount);
+=======
+	virtual void attack(Monster* monster) = 0;
+	virtual ~Character() {};
+>>>>>>> Stashed changes
 };
