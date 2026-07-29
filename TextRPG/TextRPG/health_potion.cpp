@@ -1,4 +1,5 @@
 #include "health_potion.h"
+#include "Character/character.h"
 
 HealthPotion::HealthPotion() {
 	name_ = "HP포션";
