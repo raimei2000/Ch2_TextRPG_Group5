@@ -26,3 +26,5 @@ public:
 
     void GainExp(int amount);
 };
+
+std::string InPutname();

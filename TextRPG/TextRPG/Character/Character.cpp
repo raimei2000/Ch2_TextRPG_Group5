@@ -66,3 +66,13 @@ void Character::GainExp(int amount) {
         exp_ = 0;
     }
 }
+
+std::string InPutname() {
+    
+    std::string input_name;
+
+    std::cout << "캐릭터의 이름을 입력해 주십시오." << std::endl;
+    std::cout << "입력창 : ";
+    std::cin >> input_name;
+    return input_name;
+}

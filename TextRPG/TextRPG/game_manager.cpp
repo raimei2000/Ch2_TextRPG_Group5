@@ -4,17 +4,17 @@
 
 #include <iostream>
 
-// ÇÃ·¹ÀÌ¾î ·¹º§ ±â¹Ý ¸ó½ºÅÍ »ý¼º
+// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 Monster* GameManager::GenerateMonster(int player_level) {
 
 }
 
 void GameManager::Battle(Character* player) {
   system("cls");
-  // ¸ó½ºÅÍ »ý¼º
+  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
   //Monster* monster = GenerateMonster(player->level());
 
-  // ÇÃ·¹ÀÌ¾î Çàµ¿ ¼±ÅÃ [0: °ø°Ý, 1: ¾ÆÀÌÅÛ »ç¿ë]
+  // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½àµ¿ ï¿½ï¿½ï¿½ï¿½ [0: ï¿½ï¿½ï¿½ï¿½, 1: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½]
   int player_behavior = RandomNumberGenerator::RandomInteger(0, 1);
 
   switch (player_behavior) {
