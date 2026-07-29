@@ -5,6 +5,6 @@ class Character;
 
 class Item {
 public:
-	virtual std::string getName() = 0;
-	virtual void use(Character* character) = 0;
+	virtual std::string name() = 0;
+	virtual void Use(Character* character) = 0;
 };

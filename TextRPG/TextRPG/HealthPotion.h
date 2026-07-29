@@ -10,6 +10,6 @@ private:
 	int health_restore_;
 public:
 	HealthPotion();
-	std::string getName() { return name_; };
-	void use(Character* character);
+	std::string name() { return name_; };
+	void Use(Character* character);
 };
