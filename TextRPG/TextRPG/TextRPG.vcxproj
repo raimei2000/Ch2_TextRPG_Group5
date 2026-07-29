@@ -123,14 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+
     <ClCompile Include="character.cpp" />
-    <ClCompile Include="Character\character.cpp" />
     <ClCompile Include="game_manager.cpp" />
     <ClCompile Include="level_up.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="monster.cpp" />
     <ClCompile Include="random_number_generator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,9 +138,9 @@
     <ClInclude Include="HealthPotion.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Character\character.h" />
-    <ClInclude Include="Monster.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="game_manager.h" />
+    <ClInclude Include="monster.h" />
     <ClInclude Include="random_number_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

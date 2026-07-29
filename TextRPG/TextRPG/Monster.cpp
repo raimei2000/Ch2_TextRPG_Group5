@@ -1,30 +1,46 @@
-#include "Monster.h"
 #include <string>
+#include "monster.h"
+
 
 Monster::Monster(std::string name, int health, int attack)
 	:
-	name(name), health(health), attack(attack)
+	name_(name), health_(health), attack_(attack)
 {
 
 }
 
 //getter
-std::string Monster::Name()
+std::string Monster::name()
 {
-	return name;
+	return name_;
 }
-int Monster::Health()
+int Monster::health()
 {
-	return health;
+	return health_;
 }
-int Monster::Attack()
+int Monster::attack()
 {
-	return attack;
+	return attack_;
+}
+
+//setter
+void Monster::set_name(std::string name)
+{
+	this->name_ = name;
+}
+void Monster::set_health(int health)
+{
+	this->health_ = health;
+}
+void Monster::set_attack(int attack)
+{
+	this->attack_ = attack;
 }
 
 
-//ÇÔ¼ö
-void takeDamage(int damage)
+
+//í•¨ìˆ˜
+void Monster::TakeDamage(int damage)
 {
-	
+
 }
