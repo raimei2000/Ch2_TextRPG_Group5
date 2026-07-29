@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 
-class Player;
+class Character;
 
 class Item {
 public:
 	virtual std::string name() = 0;
-	virtual void use(Player* player) = 0;
+	virtual void use(Character* character) = 0;
 };

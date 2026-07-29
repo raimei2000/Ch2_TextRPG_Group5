@@ -2,7 +2,7 @@
 #include <string>
 #include "Item.h"
 
-class Player;
+class Character;
 
 class AttackBoost : public Item {
 private:
@@ -11,5 +11,5 @@ private:
 public:
 	AttackBoost();
 	std::string name() { return name_; };
-	void use(Player* player);
+	void use(Character* character);
 };
