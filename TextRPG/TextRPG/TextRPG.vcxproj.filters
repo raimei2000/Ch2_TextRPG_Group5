@@ -43,5 +43,13 @@
 		<ClInclude Include="Monster.h">
 			<Filter>Header Files</Filter>
 		</ClInclude>
-	</ItemGroup>
+	<ClCompile Include="logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
