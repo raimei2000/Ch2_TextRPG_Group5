@@ -3,26 +3,45 @@
 
 #include<iostream>
 #include<string>
+#include<map>
+
+struct MonsterLog
+{
+	int KillMonsterCounts = 0;
+	int DamageMonsterCounts = 0;
+};
+struct IteamLog
+{
+	int UseItemCounts = 0;
+	int GainItemCounts = 0;
+};
 
 class Logger
 {
+private:
+	std::map<std::string, MonsterLog>monsterLogs_;
+	std::map<std::string, IteamLog>ItemLogs_;
+	int totalGoldGained_ = 0;
+	int totalGoldUsed_ = 0;
+
 public:
 	Logger();
-	~Logger();
-	void RecordMonsterKill(std::string& monstername);
+	// ~Logger();
 
-	void RecordMonsterDamage(std::string& monstername, int damage);
-
-	void RecordItemUse(std::string& itemname, int itemCount);
-
-	void RecordItemGain(std::string& itemname, int itemCount);
-
-	void RecordGoldGain(int gold);
-
-	void RecordGoldUse(int gold);
-
-
-	//private:
+	//¸ó½ºÅÍ Å³ Ä«¿îÅÍ
+	void RecordMonsterKill(const std::string& monstername);
+	//¸ó½ºÅÍ ´©Àû µ¥¹ÌÁö
+	void RecordMonsterDamage(const std::string& monstername, int damage);
+	//ÃÑ È¹µæ ¾ÆÀÌÅÛ
+	void RecordItemUse(const std::string& itemname, int itemCount);	
+	//ÃÑ »ç¿ë ¾ÆÀÌÅÛ
+	void RecordItemGain(const std::string& itemname, int itemCount);
+	//ÃÑ È¹µæ °ñµå
+	void RecordGoldUse(const int gold);
+	//ÃÑ »ç¿ë °ñµå
+	void RecordGoldGain(const int gold);
+	//¸ðµç ·Î±× Ãâ·Â
+	void Log();
 
 };
-#endif	
+#endif
