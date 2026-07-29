@@ -17,10 +17,10 @@ protected:
 public:
     Player(std::string name, int hp, int power, int defence, int exp);
 
-    int get_hp() const;
+    int hp() const;
     void set_hp(int new_hp);
     void set_name(const std::string& new_name);
-    int get_power() const;
-    int get_defence() const;
-    void gain_exp(int amount);
+    int power() const;
+    int defence() const;
+    void GainExp(int amount);
 };

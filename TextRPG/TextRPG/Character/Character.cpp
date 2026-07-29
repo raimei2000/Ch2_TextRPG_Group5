@@ -13,7 +13,7 @@ Player::Player(std::string name, int hp, int power, int defence, int exp) {
     max_exp_ = 100;
 }
 
-int Player::get_hp() const {
+int Player::hp() const {
     return hp_;
 }
 
@@ -25,15 +25,15 @@ void Player::set_name(const std::string& new_name) {
     name_ = new_name;
 }
 
-int Player::get_power() const{
+int Player::power() const{
     return power_;
 }
 
-int Player::get_defence() const{
+int Player::defence() const{
     return defence_;
 }
 
-void Player::gain_exp(int amount) {
+void Player::GainExp(int amount) {
     if (level_ >= max_level_) {
         return;
     }
