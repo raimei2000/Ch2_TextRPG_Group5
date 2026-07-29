@@ -41,12 +41,12 @@ void Logger::Log()
 {
 	for (auto monsterLog : monsterLogs_)
 	{
-		std::cout << "ÀâÀº " << monsterLog.first << "ÀÇ ¸¶¸® ¼ö : " << monsterLog.second.KillMonsterCounts;
-		std::cout << "´©Àû µ¥¹ÌÁö : " << monsterLog.second.DamageMonsterCounts << std::endl;
+		std::cout << "ìž¡ì€ " << monsterLog.first << "ì˜ ë§ˆë¦¬ ìˆ˜ : " << monsterLog.second.KillMonsterCounts;
+		std::cout << "ëˆ„ì  ë°ë¯¸ì§€ : " << monsterLog.second.DamageMonsterCounts << std::endl;
 	}	
 	for (auto itemLog : ItemLogs_)
 	{
-		std::cout << "¾òÀº" << itemLog.first << "ÀÇ °³¼ö : " << itemLog.second.GainItemCounts;
-		std::cout << "»ç¿ëÇÑ ¾ÆÀÌÅÛÀÇ °³¼ö : " << itemLog.second.UseItemCounts << std::endl;
+		std::cout << "ì–»ì€" << itemLog.first << "ì˜ ê°œìˆ˜ : " << itemLog.second.GainItemCounts;
+		std::cout << "ì‚¬ìš©í•œ ì•„ì´í…œì˜ ê°œìˆ˜ : " << itemLog.second.UseItemCounts << std::endl;
 	}
 }

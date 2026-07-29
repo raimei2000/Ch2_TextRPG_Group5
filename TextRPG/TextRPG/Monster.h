@@ -12,7 +12,7 @@ private:
 
 
 public:
-	// ¼ø¼ö °¡»ó ÇÔ¼ö
+	// ìˆœìˆ˜ ê°€ìƒ í•¨ìˆ˜
 	Monster(std::string name, int health, int attack);
 
 	virtual void Attack() = 0;
@@ -27,7 +27,7 @@ public:
 	void set_health(int health);
 	void set_attack(int attack);
 
-	//ÇÔ¼ö
+	//í•¨ìˆ˜
 	void TakeDamage(int damage);
 };
 
