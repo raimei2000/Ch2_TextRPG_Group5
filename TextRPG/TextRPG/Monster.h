@@ -5,12 +5,15 @@
 class Monster
 {
 
-public:
+private:
 	std::string name_;
 	int health_;
 	int attack_;
+
+
+public:
 	// 순수 가상 함수
-	Monster(std::string name_, int health_, int attack_);
+	Monster(std::string name, int health, int attack);
 	
     virtual void Attack() = 0;
 
@@ -20,12 +23,12 @@ public:
 	int attack();
 
 	//setter
-	void set_name(std::string name_);
-	void set_health(int health_);
-	void set_attack(int attack_);
+	void set_name(std::string name);
+	void set_health(int health);
+	void set_attack(int attack);
 
 	//함수
-	void takeDamage(int damage);
+	void TakeDamage(int damage);
 };
 
     

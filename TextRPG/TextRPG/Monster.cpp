@@ -2,9 +2,9 @@
 #include "Monster.h"
 
 
-Monster::Monster(std::string name_, int health_, int attack_)
+Monster::Monster(std::string name, int health, int attack)
 	:
-	name_(name_), health_(health_), attack_(attack_)
+	name_(name), health_(health), attack_(attack)
 {
 
 }
@@ -24,23 +24,23 @@ int Monster::attack()
 }
 
 //setter
-void Monster::set_name(std::string name_)
+void Monster::set_name(std::string name)
 {
-	this->name_ = name_;
+	this->name_ = name;
 }
-void Monster::set_health(int health_)
+void Monster::set_health(int health)
 {
-	this->health_ = health_;
+	this->health_ = health;
 }
-void Monster::set_attack(int attack_)
+void Monster::set_attack(int attack)
 {
-	this->attack_ = attack_;
+	this->attack_ = attack;
 }
 
 
 
 //ÇÔ¼ö
-void Monster::takeDamage(int damage)
+void Monster::TakeDamage(int damage)
 {
 	
 }
