@@ -136,6 +136,7 @@
     <ClInclude Include="Character\Character.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="logger.h" />
+    <ClInclude Include="GameManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
