@@ -1,6 +1,5 @@
 ﻿#include "character.h"
 
-<<<<<<< Updated upstream
 Player::Player(const std::string& name) {
     name_ = name;
     level_ = 1;
@@ -38,32 +37,6 @@ void Player::set_name(const std::string& new_name) {
 
 int Player::power() const{
     return power_;
-=======
-Character::Character(std::string Name, int HP, int Power, int exp) {
-	this->Name = Name;
-	this->HP = HP;
-	this->Power = Power;
-	this->Level = 1;
-	this->MaxLevel = 10;
-	this->Exp = 0;
-	this->MaxExp = 100;
-}
-
-int Character::getHP() {
-	return HP;
-}
-
-void Character::setHP(int newHP) {
-	HP = newHP;
-}
-
-void Character::setName(const std::string& newName) {
-	Name = newName;
-}
-
-int Character::getPower() {
-	return Power;
->>>>>>> Stashed changes
 }
 
 int Player::defence() const{
