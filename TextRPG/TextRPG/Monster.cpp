@@ -39,7 +39,7 @@ void Monster::set_attack(int attack)
 
 
 
-//ÇÔ¼ö
+//í•¨ìˆ˜
 void Monster::TakeDamage(int damage)
 {
 
