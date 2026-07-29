@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 
-class Player {
+
+class Character {
 protected:
     std::string name_;
     int level_;
@@ -15,7 +16,7 @@ protected:
     int max_exp_;
 
 public:
-   explicit Player(const std::string& name);
+   explicit Character(const std::string& name);
 
     int hp() const;
     void set_hp(int new_hp);

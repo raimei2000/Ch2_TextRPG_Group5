@@ -1,6 +1,6 @@
 ﻿#include "character.h"
 
-Player::Player(const std::string& name) {
+Character::Character(const std::string& name) {
     name_ = name;
     level_ = 1;
     max_level_ = 10;
@@ -14,12 +14,12 @@ Player::Player(const std::string& name) {
     max_exp_ = 100;
 }
 
-int Player::hp() const {
+int Character::hp() const {
     return hp_;
 }
 
 //체력이 0보다 작거나 최대 체력보다 커지는 현상 방지
-void Player::set_hp(int new_hp) {
+void Character::set_hp(int new_hp) {
     if (new_hp < 0) {
         hp_ = 0;
     }
@@ -31,20 +31,20 @@ void Player::set_hp(int new_hp) {
     }
 }
 
-void Player::set_name(const std::string& new_name) {
+void Character::set_name(const std::string& new_name) {
     name_ = new_name;
 }
 
-int Player::power() const{
+int Character::power() const{
     return power_;
 }
 
-int Player::defence() const{
+int Character::defence() const{
     return defence_;
 }
 
 
-void Player::GainExp(int amount) {
+void Character::GainExp(int amount) {
     if (level_ >= max_level_) {
         return;
     }
