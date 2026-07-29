@@ -11,6 +11,6 @@ private:
 
 public:
 	AttackBoost();//»ı¼ºÀÚ
-	std::string name() { return name_; };//getter
+	std::string name();//getter
 	void Use(Character* character);
 };

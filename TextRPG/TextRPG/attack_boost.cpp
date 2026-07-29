@@ -5,6 +5,10 @@ AttackBoost::AttackBoost() {
 	attack_increase_ = 10;
 }
 
+std::string AttackBoost::name() {
+	return name_;
+}
+
 void AttackBoost::Use(Character* character) {
 	character->set_power(character->power()+attack_increase_);
 }

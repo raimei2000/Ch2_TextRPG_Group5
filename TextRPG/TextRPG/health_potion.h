@@ -8,8 +8,9 @@ class HealthPotion : public Item {
 private:
 	std::string name_;
 	int health_restore_;
+
 public:
 	HealthPotion();//»ý¼ºÀÚ
-	std::string name() { return name_; };//getter
+	std::string name();//getter
 	void Use(Character* character);
 };
