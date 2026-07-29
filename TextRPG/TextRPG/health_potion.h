@@ -4,12 +4,13 @@
 
 class Character;
 
-class AttackBoost : public Item {
+class HealthPotion : public Item {
 private:
 	std::string name_;
-	int attack_increase_;
+	int health_restore_;
+
 public:
-	AttackBoost();
-	std::string name() { return name_; };
+	HealthPotion();
+	std::string name();
 	void Use(Character* character);
 };
