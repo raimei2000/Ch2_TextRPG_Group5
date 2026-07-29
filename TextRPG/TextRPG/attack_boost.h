@@ -2,7 +2,7 @@
 #include <string>
 #include "Item.h"
 
-class Character;//穿号 識情
+class Character;
 
 class AttackBoost : public Item {
 private:
@@ -10,7 +10,7 @@ private:
 	int attack_increase_;
 
 public:
-	AttackBoost();//持失切
-	std::string name();//getter
+	AttackBoost();
+	std::string name();
 	void Use(Character* character);
 };
