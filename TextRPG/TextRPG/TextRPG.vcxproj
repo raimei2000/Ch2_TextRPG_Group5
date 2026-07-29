@@ -128,7 +128,6 @@
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monster.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="random_number_generator.cpp" />
   </ItemGroup>
   <ItemGroup>
