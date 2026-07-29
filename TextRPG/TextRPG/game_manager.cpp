@@ -36,3 +36,12 @@ void GameManager::Battle(Character* player) {
 void GameManager::DisplayInventory(Character* player) {
 
 }
+
+GameManager* GameManager::getInstance() {
+  if (instance == nullptr) {
+    instance = new GameManager();
+  }
+  return instance;
+}
+
+GameManager* GameManager::instance = nullptr;
