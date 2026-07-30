@@ -10,7 +10,7 @@
 // 플레이어 레벨에 비례한 랜덤 스탯으로 트롤 생성
 Troll::Troll(int player_level)
   : Monster(
-    "Troll",
+    "트롤",
     RandomNumberGenerator::RandomInteger(
       player_level * 50, player_level * 70),
     RandomNumberGenerator::RandomInteger(
@@ -19,6 +19,6 @@ Troll::Troll(int player_level)
 
 // 공격 문구
 void Troll::Attack(Character* character) {
-  std::cout << "Troll Attack!\n";
+  std::cout << "트롤 공격!\n";
   character->TakeDamage(attack_);
 }

@@ -35,6 +35,8 @@ public:
 	bool IsDead( ) const;
 	//몬스터 스텟창
 	void PrintMonsterStatus( ) const;
+	//몬스터 출현 문구
+	void PrintSpawnMessage( ) const ;
 
 };
 
