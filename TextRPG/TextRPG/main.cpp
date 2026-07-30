@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 #include "character.h"
 #include "monster.h"
@@ -8,6 +9,10 @@
 #include "logger.h"
 
 int main() {
+  // 인코딩 관련
+  SetConsoleCP(CP_UTF8);        // 입력용 
+  SetConsoleOutputCP(CP_UTF8);  // 출력용
+
   GameManager* game_manager = GameManager::GetInstance( );
   Logger* logger = Logger::GetInstance( );
 
