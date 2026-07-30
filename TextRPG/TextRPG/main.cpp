@@ -13,7 +13,7 @@ int main() {
   //player->PrintCreationLog(); // 캐릭터 Hero 생성 완료! 레벨: 1, 체력: 100, 공격력: 10
 
   // 전투
-  GameManager* game_manager = GameManager::getInstance();
+  GameManager* game_manager = GameManager::GetInstance();
   game_manager->Battle(player);
 
 
