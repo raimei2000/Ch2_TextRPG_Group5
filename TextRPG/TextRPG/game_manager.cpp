@@ -6,6 +6,8 @@
 
 #include "character.h"
 #include "monster.h"
+#include "health_potion.h"
+#include "attack_boost.h"
 #include "random_number_generator.h"
 
 // 몬스터 추가시 해당 몬스터의 헤더 포함
@@ -72,9 +74,26 @@ void GameManager::Battle(Character* player) {
   // 플레이어 승
   if (player->hp() > 0) {
     player->GainExp(50);
-    //player->GainGold(RandomNumberGenerator::RandomInteger(10, 20));
+    player->GainGold(RandomNumberGenerator::RandomInteger(10, 20));
     
     // 아이템 획득
+    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3 ) { // 30% 확률로 획득
+      std::cout << "아이템 획득!" << std::endl;
+      // [0: HP포션] [1: 공격력 부스트] 중에서 랜덤 획득
+      int item_idx = RandomNumberGenerator::RandomInteger(0, 1);
+      switch ( item_idx ) {
+        case 0: {
+          player->AddItem( std::move( std::make_unique<HealthPotion>( ) ) );
+
+          break;
+        }
+        case 1: {
+          player->AddItem( std::move( std::make_unique<AttackBoost>( ) ) );
+
+          break;
+        }
+      }
+    }
   }
   // 몬스터 승
   else if (monster->health() > 0) {
