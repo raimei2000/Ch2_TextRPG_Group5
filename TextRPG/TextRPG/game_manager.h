@@ -14,7 +14,7 @@ public:
   GameManager(const GameManager&) = delete;
   GameManager& operator=(const GameManager&) = delete;
   // static method. return unique GameManager instance. 
-  static GameManager* getInstance();
+  static GameManager* GetInstance();
   // For singleton.
 
 private:
