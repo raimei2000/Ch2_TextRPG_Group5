@@ -28,7 +28,7 @@ int main() {
   
   game_manager->Battle(player);
 
-  Menu( );
+  Menu(player);
 
   return 0;
 }
