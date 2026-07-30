@@ -5,7 +5,8 @@
 #include "random_number_generator.h"
 
 
-// ÇÃ·¹ÀÌ¾î ·¹º§¿¡ ºñ·ÊÇÑ ·£´ı ½ºÅÈÀ¸·Î °íºí¸° »ı¼º
+
+// í”Œë ˆì´ì–´ ë ˆë²¨ì— ë¹„ë¡€í•œ ëœë¤ ìŠ¤íƒ¯ìœ¼ë¡œ ê³ ë¸”ë¦° ìƒì„±
 Goblin::Goblin(int player_level)
   : Monster(
     "Goblin",
@@ -15,7 +16,7 @@ Goblin::Goblin(int player_level)
       player_level * 5, player_level * 10)) {
 }
 
-// °ø°İ ¹®±¸
-void Goblin::Attack() {
+// ê³µê²© ë¬¸êµ¬
+void Goblin::Attack(Character* character) {
   std::cout << "Goblin Attack!\n";
 }
