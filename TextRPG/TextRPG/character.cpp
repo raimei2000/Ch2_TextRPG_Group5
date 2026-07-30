@@ -9,7 +9,7 @@
 Character::~Character( ) = default;
 
 //생성자 Logger 연결
-Character::Character(const std::string& name, Logger& logger)
+Character::Character(const std::string& name, Logger* logger)
 : name_(name),
 level_(1),
 max_level_(10),
@@ -69,7 +69,9 @@ return;
 gold_ += amount;
 
 //총 획득골드 기록
-logger_.RecordGoldGain(amount);
+if ( logger_ != nullptr ) {
+logger_->RecordGoldGain(amount);
+}
 }
 
 
@@ -80,8 +82,10 @@ if ( amount <= 0 || amount > gold_ ) {
 gold_ -= amount;
 
 //총 사용골드 기록
-logger_.RecordGoldUse(amount);
-return true;
+if ( logger_ != nullptr ) {
+  logger_->RecordGoldUse(amount);
+}
+  return true;
 }
 
 void Character::set_hp(int new_hp) {
@@ -126,30 +130,38 @@ std::cout << "============================" << std::endl;
 
 //캐릭터가 데미지를 받을 경우
 void Character::TakeDamage(int damage) {
-  std::cout << "============================" << std::endl;
-  std::cout << "[" << name_ << "] 이(가) 데미지를 입었습니다." << std::endl;
-  std::cout << "HP : " << hp_ << " -> HP : " << hp_ - damage << std::endl;
-  std::cout << "============================" << std::endl;
+std::cout << "============================" << std::endl;
+std::cout << "[" << name_ << "] 이(가) 데미지를 입었습니다." << std::endl;
+std::cout << "HP : " << hp_ << " -> HP : " << hp_ - damage << std::endl;
+std::cout << "============================" << std::endl;
 
-  set_hp(hp_ - damage);
+set_hp(hp_ - damage);
 }
 
 //캐릭터가 공격을 할 경우
-void Character::Attack(Monster* damage) {
-  std::cout << "============================" << std::endl;
-  std::cout << "[" << name_ << "] 이(가)" << damage->name( ) << "에게 " << std::endl << power_ << "의 피해를 입혔습니다." << std::endl;
-  std::cout << "============================" << std::endl;
+void Character::Attack(Monster* monster) {
+std::cout << "============================" << std::endl;
+std::cout << "[" << name_ << "] 이(가)" << monster->name( ) << "에게 " << std::endl << power_ << "의 피해를 입혔습니다." << std::endl;
+std::cout << "============================" << std::endl;
 
-  damage->TakeDamage(power_);
+monster->TakeDamage(power_);
 }
 
 //아이템 추가
 void Character::AddItem(std::unique_ptr<Item> item) {
-if ( item == nullptr ) {
+if ( item == nullptr ) { //전달받은 아이템 없으면 종료
 return;
 }
+//uniqe_ptr 이동 전에 아이템 이름 저장
+const std::string item_name = item->name( );
 
+//logger 연결돼있으면 아이템 획득 기록
 inventory_.push_back(std::move(item));
+if ( logger_ != nullptr ) {
+logger_->RecordItemGain(item_name);
+}
+
+std::cout << item_name << " 아이템을 획득했습니다." << std::endl;
 }
 
 //인벤토리 크기 확인
@@ -176,7 +188,7 @@ std::cout << "인벤토리가 비어있습니다." << std::endl;
 }
 else {
 for ( int i = 0; i < inventory_size( ); i++ ) {
-  std::cout << i << ". " << inventory_[ i ]->name( ) << std::endl;
+std::cout << i << ". " << inventory_[ i ]->name( ) << std::endl;
 }
 }
 std::cout << "========================" << std::endl;

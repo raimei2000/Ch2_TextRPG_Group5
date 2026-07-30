@@ -7,7 +7,7 @@
 class Item;
 class Logger;
 
-class monster;
+class Monster;
 
 class Character {
 protected:
@@ -28,14 +28,14 @@ int gold_;
 std::vector<std::unique_ptr <Item> > inventory_;
 
 //Character가 Logger를 참조하도록 변수 추가
-Logger& logger_;
+Logger* logger_;
 
 
 void LevelUp();
 
 public:
 //Character 생성자에서 Logger 받기
-explicit Character(const std::string& name, Logger& logger);
+explicit Character(const std::string& name, Logger* logger);
 ~Character( );
 
 const std::string& name() const;
