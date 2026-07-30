@@ -1,20 +1,21 @@
 #include <iostream>
 #include <string>
 
-#include "Character/Character.h"
+#include "character.h"
 #include "game_manager.h"
 
 int main() {
-  // ÇÃ·¹ÀÌ¾î ÀÌ¸§ ÀÔ·Â & ÇÃ·¹ÀÌ¾î °´Ã¼ »ı¼º
+  // í”Œë ˆì´ì–´ ì´ë¦„ ì…ë ¥ & í”Œë ˆì´ì–´ ê°ì²´ ìƒì„±
   std::string player_name;
-  std::cout << "ÇÃ·¹ÀÌ¾î ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä: ";
+  std::cout << "í”Œë ˆì´ì–´ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”: ";
   std::cin >> player_name;
   Character* player = new Character(player_name);
-  //player->PrintCreationLog(); // Ä³¸¯ÅÍ Hero »ı¼º ¿Ï·á! ·¹º§: 1, Ã¼·Â: 100, °ø°İ·Â: 10
+  //player->PrintCreationLog(); // ìºë¦­í„° Hero ìƒì„± ì™„ë£Œ! ë ˆë²¨: 1, ì²´ë ¥: 100, ê³µê²©ë ¥: 10
 
-  // ÀüÅõ
+  // ì „íˆ¬
   GameManager* game_manager = GameManager::getInstance();
   game_manager->Battle(player);
+
 
   return 0;
 }

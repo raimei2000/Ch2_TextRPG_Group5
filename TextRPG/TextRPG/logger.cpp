@@ -19,12 +19,12 @@ void Logger::RecordMonsterDamage(const std::string& monstername, int damage)
 
 void Logger::RecordItemUse(const std::string& itemname, int itemCount)
 {
-	ItemLogs_[itemname].UseItemCounts += itemCount;
+	itemLogs_[itemname].UseItemCounts += itemCount;
 }
 
 void Logger::RecordItemGain(const std::string& itemname, int itemCount)
 {
-	ItemLogs_[itemname].GainItemCounts += itemCount;
+	itemLogs_[itemname].GainItemCounts += itemCount;
 }
 
 void Logger::RecordGoldGain(const int gold)
@@ -37,16 +37,21 @@ void Logger::RecordGoldUse(const int gold)
 	totalGoldUsed_ += gold;
 }
 
-void Logger::Log() 
+void Logger::Log( )
 {
-	for (auto monsterLog : monsterLogs_)
+	for ( auto monsterLog : monsterLogs_ )
 	{
-		std::cout << "ÀâÀº " << monsterLog.first << "ÀÇ ¸¶¸® ¼ö : " << monsterLog.second.KillMonsterCounts;
-		std::cout << "´©Àû µ¥¹ÌÁö : " << monsterLog.second.DamageMonsterCounts << std::endl;
-	}	
-	for (auto itemLog : ItemLogs_)
+		std::cout << "ìž¡ì€ " << monsterLog.first << "ì˜ ë§ˆë¦¬ ìˆ˜ : " << monsterLog.second.KillMonsterCounts;
+		std::cout << "/ ëˆ„ì  ë°ë¯¸ì§€ : " << monsterLog.second.DamageMonsterCounts << std::endl;
+	}
+	for ( auto itemLog : itemLogs_ )
 	{
-		std::cout << "¾òÀº" << itemLog.first << "ÀÇ °³¼ö : " << itemLog.second.GainItemCounts;
-		std::cout << "»ç¿ëÇÑ ¾ÆÀÌÅÛÀÇ °³¼ö : " << itemLog.second.UseItemCounts << std::endl;
+		std::cout << "ì–»ì€" << itemLog.first << "ì˜ ê°œìˆ˜ : " << itemLog.second.GainItemCounts;
+		std::cout << "/ ì‚¬ìš©í•œ ì•„ì´í…œì˜ ê°œìˆ˜ : " << itemLog.second.UseItemCounts << std::endl;
+	}
+	if ( totalGoldGained_ != 0 )
+	{
+		std::cout << "ì´ íšë“ ê³¨ë“œ : " << totalGoldGained_ << std::endl;
+		std::cout << "ì´ ì‚¬ìš© ê³¨ë“œ : " << totalGoldUsed_ << std::endl;
 	}
 }

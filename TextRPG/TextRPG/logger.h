@@ -20,27 +20,27 @@ class Logger
 {
 private:
 	std::map<std::string, MonsterLog>monsterLogs_;
-	std::map<std::string, IteamLog>ItemLogs_;
+	std::map<std::string, IteamLog>itemLogs_;
 	int totalGoldGained_ = 0;
 	int totalGoldUsed_ = 0;
 
 public:
-	Logger();
-	// ~Logger();
+	//Logger();
+	//~Logger();
 
-	//¸ó½ºÅÍ Å³ Ä«¿îÅÍ
+	//ëª¬ìŠ¤í„° í‚¬ ì¹´ìš´í„°
 	void RecordMonsterKill(const std::string& monstername);
-	//¸ó½ºÅÍ ´©Àû µ¥¹ÌÁö
+	//ëª¬ìŠ¤í„° ëˆ„ì  ë°ë¯¸ì§€
 	void RecordMonsterDamage(const std::string& monstername, int damage);
-	//ÃÑ È¹µæ ¾ÆÀÌÅÛ
+	//ì´ ì‚¬ìš© ì•„ì´í…œ
 	void RecordItemUse(const std::string& itemname, int itemCount);	
-	//ÃÑ »ç¿ë ¾ÆÀÌÅÛ
+	//ì´ íšë“ ì•„ì´í…œ
 	void RecordItemGain(const std::string& itemname, int itemCount);
-	//ÃÑ È¹µæ °ñµå
+	//ì´ ì‚¬ìš© ê³¨ë“œ
 	void RecordGoldUse(const int gold);
-	//ÃÑ »ç¿ë °ñµå
+	//ì´ íšë“ ê³¨ë“œ
 	void RecordGoldGain(const int gold);
-	//¸ğµç ·Î±× Ãâ·Â
+	//ëª¨ë“  ë¡œê·¸ ì¶œë ¥
 	void Log();
 
 };
