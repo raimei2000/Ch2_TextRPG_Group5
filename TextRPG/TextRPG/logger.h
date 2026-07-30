@@ -26,8 +26,8 @@ private:
 	int totalGoldUsed_ = 0;
 
 	Logger( );
-	Logger(const Logger&);
-	Logger& operator = (const Logger&);
+	Logger(const Logger&) = delete;
+	Logger& operator = (const Logger&) = delete;
 
 public:
 	//~Logger();

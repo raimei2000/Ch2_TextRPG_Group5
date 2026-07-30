@@ -58,7 +58,7 @@ void Logger::Log( )
 	for ( auto itemLog : itemLogs_ )
 	{
 		std::cout << "얻은 " << itemLog.first << "의 개수 : " << itemLog.second.GainItemCounts;
-		std::cout << " / 사용한 아이템의 개수 : " << itemLog.second.UseItemCounts << std::endl;
+		std::cout << " / 사용한 "<< itemLog.first <<" 개수 : " << itemLog.second.UseItemCounts << std::endl;
 	}
 	if ( totalGoldGained_ != 0 )
 	{
