@@ -33,9 +33,9 @@ public:
 	//몬스터 누적 데미지
 	void RecordMonsterDamage(const std::string& monstername, int damage);
 	//총 사용 아이템
-	void RecordItemUse(const std::string& itemname, int itemCount);	
+	void RecordItemUse(const std::string& itemname, int itemCount = 1);	
 	//총 획득 아이템
-	void RecordItemGain(const std::string& itemname, int itemCount);
+	void RecordItemGain(const std::string& itemname, int itemCount = 1);
 	//총 사용 골드
 	void RecordGoldUse(const int gold);
 	//총 획득 골드
