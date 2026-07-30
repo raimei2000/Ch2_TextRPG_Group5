@@ -1,4 +1,5 @@
-﻿#include "character.h"
+#include "character.h"
+#include <iostream>
 
 Character::Character(const std::string& name)
   : name_(name),
@@ -56,6 +57,28 @@ void Character::set_hp(int new_hp) {
   }
 }
 
+void Character::set_power(int new_power) {
+  if (new_power < 0){
+    power_ = 0;
+  }
+  else {
+    power_ = new_power;
+  }
+}
+
 void Character::set_name(const std::string& new_name) {
   name_ = new_name;
+}
+
+
+void Character::status() const {
+  //캐릭터 스테이터스 표시
+  std::cout << "===== Character Status =====" << std::endl;
+  std::cout << "Name    : " << name_ << std::endl;
+  std::cout << "Lovel   : " << level_ << "/" << max_level_ << std::endl;
+  std::cout << "HP      : " << hp_ << "/" << max_hp_ << std::endl;
+  std::cout << "Power   : " << power_ <<std::endl;
+  std::cout << "Defernce: " << defence_ <<std::endl;
+  std::cout << "Exp     : " << exp_ << "/" << max_exp_ << std::endl;
+  std::cout << "============================" << std::endl;
 }

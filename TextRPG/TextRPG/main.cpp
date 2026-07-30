@@ -16,5 +16,6 @@ int main() {
   GameManager* game_manager = GameManager::getInstance();
   game_manager->Battle(player);
 
+
   return 0;
 }
