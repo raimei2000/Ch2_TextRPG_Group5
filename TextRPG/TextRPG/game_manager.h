@@ -21,5 +21,5 @@ public:
 private:
   static GameManager* instance_; // static pointer to unique GameManager instance
 
-  GameManager();
+  GameManager() = default;
 };
