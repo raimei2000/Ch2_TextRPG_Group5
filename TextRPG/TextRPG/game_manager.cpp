@@ -34,6 +34,7 @@ std::unique_ptr<Monster> GameManager::RandomSpawnMonster(int player_level) {
   return registry[monster_idx](player_level);
 }
 
+// 전투 진입
 void GameManager::Battle(Character* player) {
   system("cls");
   // 몬스터 생성
