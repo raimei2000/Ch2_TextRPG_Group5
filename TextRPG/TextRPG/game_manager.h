@@ -1,11 +1,14 @@
 #pragma once
 
+#include <memory>
+
+#include "monster.h"
+
 class Character;
-class Monster;
 
 class GameManager {
 public:
-  Monster* GenerateMonster(int player_level);
+  std::unique_ptr<Monster> RandomSpawnMonster(int player_level);
   void Battle(Character* player);
   void DisplayInventory(Character* player);
   
@@ -18,7 +21,7 @@ public:
   // For singleton.
 
 private:
-  static GameManager* instance; // static pointer to unique GameManager instance
+  static GameManager* instance_; // static pointer to unique GameManager instance
 
   GameManager();
 };

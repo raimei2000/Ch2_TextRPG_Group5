@@ -7,6 +7,8 @@
 class Item;
 class Logger;
 
+class monster;
+
 class Character {
 protected:
 std::string name_;
@@ -53,6 +55,8 @@ void GainExp(int amount);
 
 void status( )const;
 
+void TakeDamage(int damage);
+void Attack(Monster* damage);
 //골드
 int gold( ) const;
 void GainGold(int amount);

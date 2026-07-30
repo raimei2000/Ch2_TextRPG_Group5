@@ -1,30 +1,41 @@
 #include "logger.h"
 
-//Logger::Logger()
-//{
-//}
+Logger::Logger( )
+{
+}
 //Logger::~Logger()
 //{
 //}
 
+Logger* Logger::instance = nullptr;
+
+Logger* Logger::GetInstance( )
+{
+	if ( instance == nullptr )
+	{
+		instance = new Logger( );
+	}
+	return instance;
+}
+
 void Logger::RecordMonsterKill(const std::string& monstername)
 {
-	monsterLogs_[monstername].KillMonsterCounts++;
+	monsterLogs_[ monstername ].KillMonsterCounts++;
 }
 
 void Logger::RecordMonsterDamage(const std::string& monstername, int damage)
 {
-	monsterLogs_[monstername].DamageMonsterCounts += damage;
+	monsterLogs_[ monstername ].DamageMonsterCounts += damage;
 }
 
 void Logger::RecordItemUse(const std::string& itemname, int itemCount)
 {
-	itemLogs_[itemname].UseItemCounts += itemCount;
+	itemLogs_[ itemname ].UseItemCounts += itemCount;
 }
 
 void Logger::RecordItemGain(const std::string& itemname, int itemCount)
 {
-	itemLogs_[itemname].GainItemCounts += itemCount;
+	itemLogs_[ itemname ].GainItemCounts += itemCount;
 }
 
 void Logger::RecordGoldGain(const int gold)
@@ -47,7 +58,7 @@ void Logger::Log( )
 	for ( auto itemLog : itemLogs_ )
 	{
 		std::cout << "얻은 " << itemLog.first << "의 개수 : " << itemLog.second.GainItemCounts;
-		std::cout << " / 사용한 아이템의 개수 : " << itemLog.second.UseItemCounts << std::endl;
+		std::cout << " / 사용한 "<< itemLog.first <<" 개수 : " << itemLog.second.UseItemCounts << std::endl;
 	}
 	if ( totalGoldGained_ != 0 )
 	{
