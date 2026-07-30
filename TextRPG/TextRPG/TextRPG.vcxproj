@@ -123,17 +123,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="attack_boost.cpp" />
     <ClCompile Include="Character\character.cpp" />
     <ClCompile Include="game_manager.cpp" />
+    <ClCompile Include="health_potion.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monster.cpp" />
     <ClCompile Include="random_number_generator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AttackBoost.h" />
-    <ClInclude Include="HealthPotion.h" />
-    <ClInclude Include="Item.h" />
+    <ClInclude Include="attack_boost.h" />
+    <ClInclude Include="health_potion.h" />
+    <ClInclude Include="item.h" />
     <ClInclude Include="Character\character.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="game_manager.h" />
