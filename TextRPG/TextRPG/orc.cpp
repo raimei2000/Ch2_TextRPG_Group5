@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "random_number_generator.h"
+#include "character.h"
 
 
 
@@ -18,5 +19,8 @@ Orc::Orc(int player_level)
 
 // 공격 문구
 void Orc::Attack(Character* character) {
+  int damage = attack( );
+
   std::cout << "Orc Attack!\n";
+  character->TakeDamage(damage);
 }
