@@ -7,7 +7,7 @@ class Character;
 
 class Monster {
 
-private:
+protected:
 	std::string name_;
 	int health_;
 	int attack_;

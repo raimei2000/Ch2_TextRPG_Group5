@@ -19,8 +19,6 @@ Goblin::Goblin(int player_level)
 
 // 공격 문구
 void Goblin::Attack(Character* character) {
-  int damage = attack( );
-
   std::cout << "Goblin Attack!\n";
-  character->TakeDamage(damage);
+  character->TakeDamage(attack( ));
 }

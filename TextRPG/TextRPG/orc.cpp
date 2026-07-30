@@ -19,8 +19,6 @@ Orc::Orc(int player_level)
 
 // 공격 문구
 void Orc::Attack(Character* character) {
-  int damage = attack( );
-
   std::cout << "Orc Attack!\n";
-  character->TakeDamage(damage);
+  character->TakeDamage(attack( ));
 }
