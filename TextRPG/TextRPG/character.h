@@ -5,6 +5,7 @@
 #include <vector>
 
 class Item;
+class Logger;
 
 class monster;
 
@@ -26,11 +27,15 @@ int max_exp_;
 int gold_;
 std::vector<std::unique_ptr <Item> > inventory_;
 
+//Character가 Logger를 참조하도록 변수 추가
+Logger& logger_;
+
 
 void LevelUp();
 
 public:
-explicit Character(const std::string& name);
+//Character 생성자에서 Logger 받기
+explicit Character(const std::string& name, Logger& logger);
 ~Character( );
 
 const std::string& name() const;
@@ -55,6 +60,7 @@ void Attack(Monster* damage);
 //골드
 int gold( ) const;
 void GainGold(int amount);
+bool UseGold(int amount);
 
 int inventory_size( ) const;
 void AddItem(std::unique_ptr<Item> item);
