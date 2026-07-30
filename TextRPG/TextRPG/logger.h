@@ -33,7 +33,7 @@ public:
 	//~Logger();
 
 	//Logger 객체 포인터 반환
-	static Logger* getInstance( );
+	static Logger* GetInstance( );
 
 	//몬스터 킬 카운터
 	void RecordMonsterKill(const std::string& monstername);

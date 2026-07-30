@@ -9,7 +9,7 @@ Logger::Logger( )
 
 Logger* Logger::instance = nullptr;
 
-Logger* Logger::getInstance( )
+Logger* Logger::GetInstance( )
 {
 	if ( instance == nullptr )
 	{
