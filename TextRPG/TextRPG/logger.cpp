@@ -1,30 +1,41 @@
 #include "logger.h"
 
-//Logger::Logger()
-//{
-//}
+Logger::Logger( )
+{
+}
 //Logger::~Logger()
 //{
 //}
 
+Logger* Logger::instance = nullptr;
+
+Logger* Logger::GetInstance( )
+{
+	if ( instance == nullptr )
+	{
+		instance = new Logger( );
+	}
+	return instance;
+}
+
 void Logger::RecordMonsterKill(const std::string& monstername)
 {
-	monsterLogs_[monstername].KillMonsterCounts++;
+	monsterLogs_[ monstername ].KillMonsterCounts++;
 }
 
 void Logger::RecordMonsterDamage(const std::string& monstername, int damage)
 {
-	monsterLogs_[monstername].DamageMonsterCounts += damage;
+	monsterLogs_[ monstername ].DamageMonsterCounts += damage;
 }
 
 void Logger::RecordItemUse(const std::string& itemname, int itemCount)
 {
-	itemLogs_[itemname].UseItemCounts += itemCount;
+	itemLogs_[ itemname ].UseItemCounts += itemCount;
 }
 
 void Logger::RecordItemGain(const std::string& itemname, int itemCount)
 {
-	itemLogs_[itemname].GainItemCounts += itemCount;
+	itemLogs_[ itemname ].GainItemCounts += itemCount;
 }
 
 void Logger::RecordGoldGain(const int gold)
