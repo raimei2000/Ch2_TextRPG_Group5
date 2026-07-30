@@ -19,9 +19,10 @@ struct IteamLog
 class Logger
 {
 private:
-	static Logger* instance;
+	static Logger* instance_;
 	std::map<std::string, MonsterLog>monsterLogs_;
 	std::map<std::string, IteamLog>itemLogs_;
+	int characterDamageCounts_ = 0;
 	int totalGoldGained_ = 0;
 	int totalGoldUsed_ = 0;
 
@@ -39,6 +40,8 @@ public:
 	void RecordMonsterKill(const std::string& monstername);
 	//몬스터 누적 데미지
 	void RecordMonsterDamage(const std::string& monstername, int damage);
+	//캐릭터 누적 데미지
+	void RecordCharacterDamage(int damage);
 	//총 사용 아이템
 	void RecordItemUse(const std::string& itemname, int itemCount = 1);
 	//총 획득 아이템
