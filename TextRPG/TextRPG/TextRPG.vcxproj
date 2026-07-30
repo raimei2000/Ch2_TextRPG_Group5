@@ -129,9 +129,11 @@
     <ClCompile Include="game_manager.cpp" />
     <ClCompile Include="goblin.cpp" />
     <ClCompile Include="health_potion.cpp" />
+    <ClCompile Include="input_utils.cpp" />
     <ClCompile Include="level_up.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="monster.cpp" />
     <ClCompile Include="orc.cpp" />
     <ClCompile Include="random_number_generator.cpp" />
@@ -142,9 +144,11 @@
     <ClInclude Include="attack_boost.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="health_potion.h" />
+    <ClInclude Include="input_utils.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="game_manager.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="monster.h" />
     <ClInclude Include="orc.h" />
     <ClInclude Include="random_number_generator.h" />

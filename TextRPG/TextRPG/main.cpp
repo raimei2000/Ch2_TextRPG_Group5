@@ -7,6 +7,7 @@
 #include "item.h"
 #include "game_manager.h"
 #include "logger.h"
+#include "menu.h"
 
 int main() {
   // 인코딩 관련
@@ -27,6 +28,7 @@ int main() {
   
   game_manager->Battle(player);
 
+  Menu( );
 
   return 0;
 }
