@@ -1,5 +1,6 @@
-#include <string>
 #include "monster.h"
+
+#include <string>
 
 
 Monster::Monster(std::string name, int health, int attack)

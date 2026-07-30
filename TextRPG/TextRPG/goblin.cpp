@@ -1,5 +1,7 @@
-#include <iostream>
 #include "goblin.h"
+
+#include <iostream>
+
 #include "random_number_generator.h"
 
 
