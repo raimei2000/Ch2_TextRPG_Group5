@@ -1,5 +1,5 @@
 #include "character.h"
-#include "Monster.h"
+#include "monster.h"
 #include "item.h"
 
 #include <iostream>
