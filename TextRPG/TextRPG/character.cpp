@@ -1,11 +1,14 @@
 #include "character.h"
 #include "item.h"
+#include "logger.h"
 
 #include <iostream>
+#include <utility>
 
 Character::~Character( ) = default;
 
-Character::Character(const std::string& name)
+//생성자 Logger 연결
+Character::Character(const std::string& name, Logger& logger)
 : name_(name),
 level_(1),
 max_level_(10),
@@ -15,7 +18,8 @@ power_(30),
 defence_(30),
 exp_(0),
 max_exp_(100),
-gold_(0){
+gold_(0),
+logger_(logger) {
 
 }
 
@@ -58,30 +62,45 @@ return gold_;
 
 void Character::GainGold(int amount) {
 if ( amount <= 0 ) {
-  return;
+return;
+}
+//현재 보유골드 갱신
+gold_ += amount;
+
+//총 획득골드 기록
+logger_.RecordGoldGain(amount);
 }
 
-gold_ += amount;
+
+bool Character::UseGold(int amount) {
+if ( amount <= 0 || amount > gold_ ) {
+  return false;
+}
+gold_ -= amount;
+
+//총 사용골드 기록
+logger_.RecordGoldUse(amount);
+return true;
 }
 
 void Character::set_hp(int new_hp) {
 if (new_hp < 0) {
-  hp_ = 0;
+hp_ = 0;
 }
 else if (new_hp > max_hp_) {
-  hp_ = max_hp_;
+hp_ = max_hp_;
 }
 else {
-  hp_ = new_hp;
+hp_ = new_hp;
 }
 }
 
 void Character::set_power(int new_power) {
 if (new_power < 0){
-  power_ = 0;
+power_ = 0;
 }
 else {
-  power_ = new_power;
+power_ = new_power;
 }
 }
 
@@ -99,6 +118,7 @@ std::cout << "HP      : " << hp_ << "/" << max_hp_ << std::endl;
 std::cout << "Power   : " << power_ <<std::endl;
 std::cout << "Defernce: " << defence_ <<std::endl;
 std::cout << "Exp     : " << exp_ << "/" << max_exp_ << std::endl;
+std::cout << "Gold    : " << gold_ << " G"<< std::endl;
 std::cout << "============================" << std::endl;
 }
 
@@ -113,30 +133,30 @@ inventory_.push_back(std::move(item));
 
 //인벤토리 크기 확인
 int Character::inventory_size( ) const {
-  return static_cast<int> (inventory_.size( ));
+return static_cast<int> (inventory_.size( ));
 }
 
 //아이템 사용
 void Character::UseItem(int index) {
-  if ( index < 0 || index >= inventory_size( ) ) {
-    return;
-  }
-  inventory_[ index ]->Use(this);
+if ( index < 0 || index >= inventory_size( ) ) {
+return;
+}
+inventory_[ index ]->Use(this);
 
-  //사용한 아이템 제거
-  inventory_.erase(inventory_.begin( ) + index);
+//사용한 아이템 제거
+inventory_.erase(inventory_.begin( ) + index);
 }
 
 //인벤토리 표시
 void Character::DisplayInventory( ) const {
-  std::cout << "========인벤토리========" << std::endl;
-  if ( inventory_.empty( ) ) {
-    std::cout << "인벤토리가 비어있습니다." << std::endl;
-  }
-  else {
-    for ( int i = 0; i < inventory_size( ); i++ ) {
-      std::cout << i << ". " << inventory_[ i ]->name( ) << std::endl;
-    }
-  }
-  std::cout << "========================" << std::endl;
+std::cout << "========인벤토리========" << std::endl;
+if ( inventory_.empty( ) ) {
+std::cout << "인벤토리가 비어있습니다." << std::endl;
+}
+else {
+for ( int i = 0; i < inventory_size( ); i++ ) {
+  std::cout << i << ". " << inventory_[ i ]->name( ) << std::endl;
+}
+}
+std::cout << "========================" << std::endl;
 }
