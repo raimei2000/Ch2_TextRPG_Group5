@@ -2,6 +2,8 @@
 
 #include <string>
 
+class monster;
+
 class Character {
 protected:
 std::string name_;
@@ -38,4 +40,7 @@ void set_name(const std::string& new_name);
 void GainExp(int amount);
 
 void status( )const;
+
+void takedamage(int damage);
+void attack(Monster* damage);
 };

@@ -1,4 +1,6 @@
 #include "character.h"
+#include "Monster.h"
+
 #include <iostream>
 
 Character::Character(const std::string& name)
@@ -82,3 +84,21 @@ void Character::status() const {
   std::cout << "Exp     : " << exp_ << "/" << max_exp_ << std::endl;
   std::cout << "============================" << std::endl;
 }
+
+void Character::takedamage(int damage) {
+  std::cout << "============================" << std::endl;
+  std::cout << "[" << name_ << "] 이(가) 데미지를 입었습니다." << std::endl;
+  std::cout << "HP : " << hp_ << " -> HP : " << hp_ - damage << std::endl;
+  std::cout << "============================" << std::endl;
+
+  set_hp(hp_ - damage);
+}
+
+void Character::attack(Monster* damage) {
+  std::cout << "============================" << std::endl;
+  std::cout << "[" << name_ << "] 이(가)" << damage->name( ) << "에게 " << std::endl << power_ << "의 피해를 입혔습니다." << std::endl;
+  std::cout << "============================" << std::endl;
+
+  damage->TakeDamage(power_);
+}
+
