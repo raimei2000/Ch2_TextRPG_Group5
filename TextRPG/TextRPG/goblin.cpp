@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "random_number_generator.h"
+#include "character.h"
 
 
 
@@ -19,4 +20,5 @@ Goblin::Goblin(int player_level)
 // 공격 문구
 void Goblin::Attack(Character* character) {
   std::cout << "Goblin Attack!\n";
+  character->TakeDamage(attack_);
 }
