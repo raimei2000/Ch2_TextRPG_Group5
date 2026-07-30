@@ -2,7 +2,7 @@
 
 #include <random>
 
-// ·£´ıÀ¸·Î [start, end] ¹üÀ§ÀÇ Á¤¼ö¸¦ ¹İÈ¯
+// ëœë¤ìœ¼ë¡œ [start, end] ë²”ìœ„ì˜ ì •ìˆ˜ë¥¼ ë°˜í™˜
 int RandomNumberGenerator::RandomInteger(int start, int end) {
   std::random_device rd;
   std::mt19937 gen(rd());

@@ -2,7 +2,7 @@
 
 class RandomNumberGenerator {
 public:
-  // ·£´ıÀ¸·Î [start, end] ¹üÀ§ÀÇ Á¤¼ö¸¦ ¹İÈ¯
-  // RandomNumberGenerator::RandomInteger(3, 5) => 3, 4, 5 Áß ÇÏ³ª¸¦ ·£´ıÀ¸·Î ¹İÈ¯
+  // ëœë¤ìœ¼ë¡œ [start, end] ë²”ìœ„ì˜ ì •ìˆ˜ë¥¼ ë°˜í™˜
+  // RandomNumberGenerator::RandomInteger(3, 5) => 3, 4, 5 ì¤‘ í•˜ë‚˜ë¥¼ ëœë¤ìœ¼ë¡œ ë°˜í™˜
   static int RandomInteger(int start, int end);
 };
