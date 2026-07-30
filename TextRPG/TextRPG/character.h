@@ -1,6 +1,10 @@
 #pragma once
 
 #include <string>
+#include <memory>
+#include <vector>
+
+class Item;
 
 class Character {
 protected:
@@ -17,10 +21,15 @@ int defence_;
 int exp_;
 int max_exp_;
 
+int gold_;
+std::vector<std::unique_ptr <Item> > inventory_;
+
+
 void LevelUp();
 
 public:
 explicit Character(const std::string& name);
+~Character( );
 
 const std::string& name() const;
 int level() const;
@@ -38,4 +47,13 @@ void set_name(const std::string& new_name);
 void GainExp(int amount);
 
 void status( )const;
+
+//골드
+int gold( ) const;
+void GainGold(int amount);
+
+int inventory_size( ) const;
+void AddItem(std::unique_ptr<Item> item);
+void UseItem(int index);
+void DisplayInventory( ) const;
 };
