@@ -69,10 +69,10 @@ void GameManager::DisplayInventory(Character* player) {
 }
 
 GameManager* GameManager::GetInstance() {
-  if (instance == nullptr) {
-    instance = new GameManager();
+  if (instance_ == nullptr) {
+    instance_ = new GameManager();
   }
-  return instance;
+  return instance_;
 }
 
-GameManager* GameManager::instance = nullptr;
+GameManager* GameManager::instance_ = nullptr;

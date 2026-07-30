@@ -18,7 +18,7 @@ public:
   // For singleton.
 
 private:
-  static GameManager* instance; // static pointer to unique GameManager instance
+  static GameManager* instance_; // static pointer to unique GameManager instance
 
   GameManager();
 };
