@@ -1,5 +1,5 @@
 #include "attack_boost.h"
-#include "Character/character.h"
+#include "character.h"
 
 AttackBoost::AttackBoost() {
 	name_ = "공격력 부스트";

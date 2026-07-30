@@ -1,6 +1,7 @@
 #pragma once
-#include <string>
 #include "item.h"
+
+#include <string>
 
 class Character;
 
