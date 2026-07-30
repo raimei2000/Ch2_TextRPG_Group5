@@ -34,7 +34,7 @@ void Monster::set_attack(int attack) {
 
 //몬스터의 체력 감소
 void Monster::TakeDamage(int damage) {
-	health_ - damage;
+	health_ -= damage;
 
 	if ( health_ < 0 ) {
 		health_ = 0;

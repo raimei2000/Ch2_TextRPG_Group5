@@ -132,7 +132,9 @@
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monster.cpp" />
+    <ClCompile Include="orc.cpp" />
     <ClCompile Include="random_number_generator.cpp" />
+    <ClCompile Include="troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="goblin.h" />
@@ -143,7 +145,9 @@
     <ClInclude Include="logger.h" />
     <ClInclude Include="game_manager.h" />
     <ClInclude Include="monster.h" />
+    <ClInclude Include="orc.h" />
     <ClInclude Include="random_number_generator.h" />
+    <ClInclude Include="troll.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
