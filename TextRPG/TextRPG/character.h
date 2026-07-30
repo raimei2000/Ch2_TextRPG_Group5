@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <string>
 
@@ -31,8 +31,11 @@ int defence() const;
 int exp() const;
 int max_exp() const;
 
+void set_power(int new_power);
 void set_hp(int new_hp);
 void set_name(const std::string& new_name);
 
 void GainExp(int amount);
+
+void status( )const;
 };

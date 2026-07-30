@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Character/Character.h"
+#include "character.h"
 #include "game_manager.h"
 
 int main() {
@@ -15,6 +15,7 @@ int main() {
   // 전투
   GameManager* game_manager = GameManager::getInstance();
   game_manager->Battle(player);
+
 
   return 0;
 }
