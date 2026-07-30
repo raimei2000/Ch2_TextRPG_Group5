@@ -6,6 +6,8 @@
 
 #include "character.h"
 #include "monster.h"
+#include "health_potion.h"
+#include "attack_boost.h"
 #include "random_number_generator.h"
 
 // 몬스터 추가시 해당 몬스터의 헤더 포함
@@ -34,6 +36,7 @@ std::unique_ptr<Monster> GameManager::RandomSpawnMonster(int player_level) {
   return registry[monster_idx](player_level);
 }
 
+// 전투 진입
 void GameManager::Battle(Character* player) {
   system("cls");
   // 몬스터 생성
@@ -70,24 +73,42 @@ void GameManager::Battle(Character* player) {
   // 전투 루프 종료. 승리 판정
   // 플레이어 승
   if (player->hp() > 0) {
+    std::cout << "플레이어 승리!" << std::endl;
     player->GainExp(50);
-    //player->GainGold(RandomNumberGenerator::RandomInteger(10, 20));
+    player->GainGold(RandomNumberGenerator::RandomInteger(10, 20));
     
     // 아이템 획득
+    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3 ) { // 30% 확률로 획득
+      std::cout << "아이템 획득!" << std::endl;
+      // [0: HP포션] [1: 공격력 부스트] 중에서 랜덤 획득
+      int item_idx = RandomNumberGenerator::RandomInteger(0, 1);
+      switch ( item_idx ) {
+        case 0: {
+          player->AddItem( std::move( std::make_unique<HealthPotion>( ) ) );
+
+          break;
+        }
+        case 1: {
+          player->AddItem( std::move( std::make_unique<AttackBoost>( ) ) );
+
+          break;
+        }
+        default: {
+          
+          break;
+        }
+      }
+    }
   }
   // 몬스터 승
   else if (monster->health() > 0) {
-
+    std::cout << "플레이어 패배.." << std::endl;
   }
   // 동시에 죽는 경우? 혹시 몰라서 
   else {
     std::cout << "비정상 동작. 플레이어와 몬스터 동시에 사망" << std::endl;
   }
   
-}
-
-void GameManager::DisplayInventory(Character* player) {
-
 }
 
 GameManager* GameManager::GetInstance() {
