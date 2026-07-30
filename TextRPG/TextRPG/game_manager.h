@@ -12,7 +12,6 @@ public:
   std::unique_ptr<Monster> RandomSpawnMonster(int player_level);
   // 전투 진입
   void Battle(Character* player);
-  void DisplayInventory(Character* player);
   
   // For singleton.
   // delete copy, assignment operator.
