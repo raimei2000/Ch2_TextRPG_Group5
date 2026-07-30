@@ -1,9 +1,11 @@
 #pragma once
+
 #include <string>
 
+//전방 선언
+class Character;
 
-class Monster
-{
+class Monster {
 
 private:
 	std::string name_;
@@ -12,10 +14,10 @@ private:
 
 
 public:
-	// 순수 가상 함수
+	//순수 가상 함수
 	Monster(std::string name, int health, int attack);
 
-	virtual void Attack() = 0;
+	virtual void Attack(Character* character) = 0;
 
 	//getter
 	std::string name();
@@ -27,8 +29,13 @@ public:
 	void set_health(int health);
 	void set_attack(int attack);
 
-	//함수
+	//몬스터의 체력 감소
 	void TakeDamage(int damage);
+	//몬스터 사망 여부 확인
+	bool IsDead( ) const;
+	//몬스터 스텟창
+	void PrintMonsterStatus( ) const;
+
 };
 
 
