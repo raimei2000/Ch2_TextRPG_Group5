@@ -15,13 +15,13 @@
 
 namespace {
 
-using MonsterFactory = std::function<std::unique_ptr<Monster>(int)>;
+using MonsterFactory = std::function<Monster*(int)>;
 
 const std::vector<MonsterFactory>& MonsterRegistry( ) {
   static const std::vector<MonsterFactory> registry = {
     // 몬스터 추가시 람다 추가. 예시)
-    // [](int lv) { return std::make_unique<Dragon>(lv); },
-    [](int lv) { return std::make_unique<Goblin>(lv); },
+    // [](int lv) -> Monster* { return new Dragon(lv); },
+    [](int lv) -> Monster* { return new Goblin(lv); },
   };
   return registry;
 }
@@ -29,7 +29,7 @@ const std::vector<MonsterFactory>& MonsterRegistry( ) {
 }
 
 // 플레이어 레벨 기반 랜덤한 종류의 몬스터 생성
-std::unique_ptr<Monster> GameManager::RandomSpawnMonster(int player_level) {
+Monster* GameManager::RandomSpawnMonster(int player_level) {
   const auto& registry = MonsterRegistry( );
   size_t monster_idx = RandomNumberGenerator::RandomInteger(0, registry.size( ) - 1);
 
@@ -40,7 +40,7 @@ std::unique_ptr<Monster> GameManager::RandomSpawnMonster(int player_level) {
 void GameManager::Battle(Character* player) {
   system("cls");
   // 몬스터 생성
-  auto monster = RandomSpawnMonster(player->level());
+  Monster* monster = RandomSpawnMonster(player->level());
 
   // 전투 루프
   while (player->hp() > 0 && monster->health() > 0) {
@@ -49,7 +49,7 @@ void GameManager::Battle(Character* player) {
     // 플레이어 행동
     switch (player_behavior) {
     case 0: {
-      //player->Attack(monster);
+      player->Attack(monster);
       std::cout << "Player Attack!" << std::endl;
       break;
     }
@@ -67,7 +67,7 @@ void GameManager::Battle(Character* player) {
     if (monster->health() <= 0) break;
 
     // 몬스터 행동
-    //monster->Attack(player);
+    monster->Attack(player);
   }
 
   // 전투 루프 종료. 승리 판정
