@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="Character\character.cpp" />
     <ClCompile Include="game_manager.cpp" />
+    <ClCompile Include="goblin.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monster.cpp" />
@@ -133,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttackBoost.h" />
+    <ClInclude Include="goblin.h" />
     <ClInclude Include="HealthPotion.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Character\character.h" />
