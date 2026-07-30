@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Character/Character.h"
+#include "character.h"
 #include "game_manager.h"
 
 int main() {
