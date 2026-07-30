@@ -17,6 +17,8 @@ using MonsterFactory = std::function<std::unique_ptr<Monster>(int)>;
 
 const std::vector<MonsterFactory>& MonsterRegistry( ) {
   static const std::vector<MonsterFactory> registry = {
+    // 몬스터 추가시 람다 추가. 예시)
+    // [](int lv) { return std::make_unique<Dragon>(lv); },
     [](int lv) { return std::make_unique<Goblin>(lv); },
   };
   return registry;
@@ -24,15 +26,18 @@ const std::vector<MonsterFactory>& MonsterRegistry( ) {
 
 }
 
-// 플레이어 레벨 기반 몬스터 생성
-Monster* GameManager::GenerateMonster(int player_level) {
+// 플레이어 레벨 기반 랜덤한 종류의 몬스터 생성
+std::unique_ptr<Monster> GameManager::RandomSpawnMonster(int player_level) {
+  const auto& registry = MonsterRegistry( );
+  size_t monster_idx = RandomNumberGenerator::RandomInteger(0, registry.size( ) - 1);
 
+  return registry[monster_idx](player_level);
 }
 
 void GameManager::Battle(Character* player) {
   system("cls");
   // 몬스터 생성
-  Monster* monster = GenerateMonster(player->level());
+  auto monster = RandomSpawnMonster(player->level());
 
   // 전투 루프
   while (player->hp() > 0 && monster->health() > 0) {
@@ -79,7 +84,6 @@ void GameManager::Battle(Character* player) {
     std::cout << "비정상 동작. 플레이어와 몬스터 동시에 사망" << std::endl;
   }
   
-  delete monster;
 }
 
 void GameManager::DisplayInventory(Character* player) {
