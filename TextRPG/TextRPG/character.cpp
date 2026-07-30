@@ -136,6 +136,10 @@ std::cout << "HP : " << hp_ << " -> HP : " << hp_ - damage << std::endl;
 std::cout << "============================" << std::endl;
 
 set_hp(hp_ - damage);
+if ( logger_ != nullptr )
+{
+  logger_->RecordCharacterDamage(damage);
+}
 }
 
 //캐릭터가 공격을 할 경우
@@ -145,6 +149,10 @@ std::cout << "[" << name_ << "] 이(가)" << monster->name( ) << "에게 " << st
 std::cout << "============================" << std::endl;
 
 monster->TakeDamage(power_);
+if ( logger_ != nullptr )
+{
+  logger_->RecordMonsterDamage(monster->name( ), power_);
+}
 }
 
 //아이템 추가
