@@ -1,4 +1,5 @@
 #include "character.h"
+#include "monster.h"
 #include "item.h"
 
 #include <iostream>
@@ -91,6 +92,7 @@ name_ = new_name;
 
 
 void Character::status() const {
+
 //캐릭터 스테이터스 표시
 std::cout << "===== Character Status =====" << std::endl;
 std::cout << "Name    : " << name_ << std::endl;
@@ -100,6 +102,25 @@ std::cout << "Power   : " << power_ <<std::endl;
 std::cout << "Defernce: " << defence_ <<std::endl;
 std::cout << "Exp     : " << exp_ << "/" << max_exp_ << std::endl;
 std::cout << "============================" << std::endl;
+}
+
+//캐릭터가 데미지를 받을 경우
+void Character::TakeDamage(int damage) {
+  std::cout << "============================" << std::endl;
+  std::cout << "[" << name_ << "] 이(가) 데미지를 입었습니다." << std::endl;
+  std::cout << "HP : " << hp_ << " -> HP : " << hp_ - damage << std::endl;
+  std::cout << "============================" << std::endl;
+
+  set_hp(hp_ - damage);
+}
+
+//캐릭터가 공격을 할 경우
+void Character::Attack(Monster* damage) {
+  std::cout << "============================" << std::endl;
+  std::cout << "[" << name_ << "] 이(가)" << damage->name( ) << "에게 " << std::endl << power_ << "의 피해를 입혔습니다." << std::endl;
+  std::cout << "============================" << std::endl;
+
+  damage->TakeDamage(power_);
 }
 
 //아이템 추가
