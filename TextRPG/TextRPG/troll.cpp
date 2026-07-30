@@ -20,5 +20,5 @@ Troll::Troll(int player_level)
 // 공격 문구
 void Troll::Attack(Character* character) {
   std::cout << "Troll Attack!\n";
-  character->TakeDamage(attack( ));
+  character->TakeDamage(attack_);
 }
