@@ -139,12 +139,12 @@ set_hp(hp_ - damage);
 }
 
 //캐릭터가 공격을 할 경우
-void Character::Attack(Monster* damage) {
+void Character::Attack(Monster* monster) {
 std::cout << "============================" << std::endl;
-std::cout << "[" << name_ << "] 이(가)" << damage->name( ) << "에게 " << std::endl << power_ << "의 피해를 입혔습니다." << std::endl;
+std::cout << "[" << name_ << "] 이(가)" << monster->name( ) << "에게 " << std::endl << power_ << "의 피해를 입혔습니다." << std::endl;
 std::cout << "============================" << std::endl;
 
-damage->TakeDamage(power_);
+monster->TakeDamage(power_);
 }
 
 //아이템 추가
