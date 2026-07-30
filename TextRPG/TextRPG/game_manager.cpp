@@ -1,10 +1,28 @@
 #include "game_manager.h"
 
 #include <iostream>
+#include <vector>
+#include <functional>
 
 #include "character.h"
 #include "monster.h"
 #include "random_number_generator.h"
+
+// 몬스터 추가시 해당 몬스터의 헤더 포함
+#include "goblin.h"
+
+namespace {
+
+using MonsterFactory = std::function<std::unique_ptr<Monster>(int)>;
+
+const std::vector<MonsterFactory>& MonsterRegistry( ) {
+  static const std::vector<MonsterFactory> registry = {
+    [](int lv) { return std::make_unique<Goblin>(lv); },
+  };
+  return registry;
+}
+
+}
 
 // 플레이어 레벨 기반 몬스터 생성
 Monster* GameManager::GenerateMonster(int player_level) {
