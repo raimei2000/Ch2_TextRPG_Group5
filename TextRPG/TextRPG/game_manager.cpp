@@ -73,6 +73,7 @@ void GameManager::Battle(Character* player) {
   // 전투 루프 종료. 승리 판정
   // 플레이어 승
   if (player->hp() > 0) {
+    std::cout << "플레이어 승리!" << std::endl;
     player->GainExp(50);
     player->GainGold(RandomNumberGenerator::RandomInteger(10, 20));
     
@@ -92,12 +93,16 @@ void GameManager::Battle(Character* player) {
 
           break;
         }
+        default: {
+          
+          break;
+        }
       }
     }
   }
   // 몬스터 승
   else if (monster->health() > 0) {
-
+    std::cout << "플레이어 패배.." << std::endl;
   }
   // 동시에 죽는 경우? 혹시 몰라서 
   else {
