@@ -43,32 +43,70 @@ Monster* GameManager::RandomSpawnMonster(int player_level) {
 
 // 전투 진입
 void GameManager::Battle(Character* player) {
-  system("cls");
+  //system("cls");
   // 몬스터 생성
   Monster* monster = RandomSpawnMonster(player->level());
 
   // 전투 루프
   while (player->hp() > 0 && monster->health() > 0) {
-    // 플레이어 행동 선택 [0: 공격, 1: 아이템 사용]
-    int player_behavior = RandomNumberGenerator::RandomInteger(0, 1);
-    // 플레이어 행동
-    switch (player_behavior) {
-    case 0: { // 공격
-      int monster_prev_hp = monster->health( );
-      player->Attack(monster);
-      std::cout << monster->name( ) << "의 HP: " << monster_prev_hp << " -> " << monster->health( ) << std::endl;
-      break;
-    }
-    case 1: {
-      //player->UseRandomItem();
-      std::cout << "Use Random Item" << std::endl;
-      break;
-    }
-    default: {
-      break;
-    }
-    }
+    bool player_turn_end = false;
+    while ( !player_turn_end ) {
+      // 플레이어 행동 선택 [0: 공격, 1: 아이템 사용]
+      //int player_behavior = RandomNumberGenerator::RandomInteger(0, 1); // 랜덤 행동 선택
+      int player_behavior;
+      std::cout << std::endl;
+      std::cout << player->name( ) << "은(는) 무엇을 할까?" << std::endl;
+      std::cout << "1. 공격     2. 인벤토리   3. 스탯 확인  4. 도망가기" << std::endl;
+      std::cin >> player_behavior;
 
+      // 플레이어 행동
+      switch ( player_behavior ) {
+      case 1: { // 공격
+        int monster_prev_hp = monster->health( );
+        player->Attack(monster);
+        std::cout << monster->name( ) << "의 HP: " << monster_prev_hp << " -> " << monster->health( ) << std::endl;
+
+        player_turn_end = true;
+        break;
+      }
+      case 2: { // 아이템 사용
+        player->DisplayInventory( );
+        if ( player->inventory_size( ) == 0 ) break;
+        bool item_used = false;
+        while ( !item_used ) {
+          int choice;
+          std::cout << "사용할 아이템 번호를 입력해주세요: ";
+          std::cin >> choice;
+          if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
+            player->UseItem(choice);
+            item_used = true;
+          }
+          else {
+            std::cout << "잘못된 입력입니다." << std::endl;
+          }
+        }
+
+        // 플레이어의 아이템 사용을 턴 사용으로 한다면 아래 주석 해제.
+        // 아이템 사용 후 공격 등의 행동을 다시 할 수 있다면 그대로.
+        //player_turn_end = true;
+        break;
+      }
+      case 3: { // 스탯 확인
+        player->status( ); // 추후 함수 이름 Status()로 변경
+
+        break;
+      }
+      case 4: {
+        std::cout << "도망가지마! 맞서싸워!!" << std::endl;
+
+        break;
+      }
+      default: {
+        break;
+      }
+      }
+    }
+    
     // 플레이어 행동 종료 후 몬스터 사망시 전투 루프 탈출
     if (monster->health() <= 0) break;
 
