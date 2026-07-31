@@ -45,7 +45,7 @@ Monster* GameManager::RandomSpawnMonster(int player_level) {
 
 // 전투 진입
 void GameManager::Battle(Character* player) {
-  //system("cls");
+  system("cls");
   // 몬스터 생성
   Monster* monster = RandomSpawnMonster(player->level());
   monster->SpawnMessage( );
@@ -199,20 +199,30 @@ void GameManager::Battle(Character* player) {
       }
       }
     }
-  }
-  // 플레이어 패배 (몬스터 승리)
-  else if (monster->health() > 0 && !escape) {
-    std::cout << player->name() << "이(가) 사망했습니다.." << std::endl;
-  }
-  else if ( escape ) {
-    // 도망 성공시 출력 로그 작성
+
+    // 안전지대 자동 이동
     std::cout << std::endl;
     std::cout << "안전지대로 돌아가자.." << std::endl;
     for ( int i = 3; i > 0; i-- ) {
       std::cout << "\r" << i << "초 후 안전지대로 이동" << std::flush;
       std::this_thread::sleep_for(std::chrono::seconds(1));
     }
-    std::cout << std::endl << std::endl;
+    system("cls");
+  }
+  // 플레이어 패배 (몬스터 승리)
+  else if (monster->health() > 0 && !escape) {
+    std::cout << player->name() << "이(가) 사망했습니다.." << std::endl;
+  }
+  // 도망 성공
+  else if ( escape ) {
+    // 안전지대 자동 이동
+    std::cout << std::endl;
+    std::cout << "안전지대로 돌아가자.." << std::endl;
+    for ( int i = 3; i > 0; i-- ) {
+      std::cout << "\r" << i << "초 후 안전지대로 이동" << std::flush;
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+    system("cls");
   }
   // 동시에 죽는 경우? 혹시 몰라서 
   else {
