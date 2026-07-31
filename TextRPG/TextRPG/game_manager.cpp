@@ -58,6 +58,7 @@ void GameManager::Battle(Character* player) {
       std::cout << std::endl;
       std::cout << player->name( ) << "은(는) 무엇을 할까?" << std::endl;
       std::cout << "1. 공격     2. 인벤토리   3. 스탯 확인  4. 도망가기" << std::endl;
+      std::cout << ">> ";
       std::cin >> player_behavior;
 
       // 플레이어 행동
@@ -65,7 +66,6 @@ void GameManager::Battle(Character* player) {
       case 1: { // 공격
         int monster_prev_hp = monster->health( );
         player->Attack(monster);
-        std::cout << monster->name( ) << "의 HP: " << monster_prev_hp << " -> " << monster->health( ) << std::endl;
 
         player_turn_end = true;
         break;
@@ -114,7 +114,6 @@ void GameManager::Battle(Character* player) {
     // 몬스터 공격
     int player_prev_hp = player->hp( );
     monster->Attack(player);
-    std::cout << player->name( ) << "의 HP: " << player_prev_hp << " -> " << player->hp( ) << std::endl;
   }
 
   // 전투 루프 종료. 승리 판정
