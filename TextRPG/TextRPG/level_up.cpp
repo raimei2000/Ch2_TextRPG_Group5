@@ -17,10 +17,10 @@ void Character::GainExp(int amount) {
 
 void Character::LevelUp() {
   //레벨업 전 수치 저장
-  const int old_level = level_;
-  const int old_max_hp = max_hp_;
-  const int old_power = power_;
-  const int old_defence = defence_;
+  const int prev_level = level_;
+  const int prev_max_hp = max_hp_;
+  const int prev_power = power_;
+  const int prev_defence = defence_;
 
   //레벨상승
   ++level_;
@@ -42,10 +42,10 @@ void Character::LevelUp() {
   }
   //레벨업 결과 출력
   std::cout << std::endl << "===== ★★★★★ 레벨 업! ★★★★★ =====" << std::endl;
-  std::cout << "현재 레벨: " << level_ << std::endl;
-  std::cout << "최대 체력: " << max_hp_ << std::endl;
-  std::cout << "공격력: " << power_ << std::endl;
-  std::cout << "방어력: " << defence_ << std::endl;
+  std::cout << "레벨: " << prev_level << " -> " << level_ << std::endl;
+  std::cout << "최대 체력: " << prev_max_hp << " -> " << max_hp_ << std::endl;
+  std::cout << "공격력: " << prev_power << " -> " << power_ << std::endl;
+  std::cout << "방어력: " << prev_defence << " -> " << defence_ << std::endl;
   std::cout << "체력이 최대치까지 회복되었습니다." << std::endl;
   std::cout << std::endl << "================================" << std::endl;
 }
