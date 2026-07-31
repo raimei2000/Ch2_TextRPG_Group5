@@ -58,14 +58,16 @@ void GameManager::Battle(Character* player) {
       std::cout << std::endl;
       std::cout << player->name( ) << "은(는) 무엇을 할까?" << std::endl;
       std::cout << "1. 공격     2. 인벤토리   3. 스탯 확인  4. 도망가기" << std::endl;
+      std::cout << ">> ";
       std::cin >> player_behavior;
+
+      system("cls");
 
       // 플레이어 행동
       switch ( player_behavior ) {
       case 1: { // 공격
         int monster_prev_hp = monster->health( );
         player->Attack(monster);
-        std::cout << monster->name( ) << "의 HP: " << monster_prev_hp << " -> " << monster->health( ) << std::endl;
 
         player_turn_end = true;
         break;
@@ -114,7 +116,17 @@ void GameManager::Battle(Character* player) {
     // 몬스터 공격
     int player_prev_hp = player->hp( );
     monster->Attack(player);
-    std::cout << player->name( ) << "의 HP: " << player_prev_hp << " -> " << player->hp( ) << std::endl;
+  }
+
+  //공격력 부스트 사용 전 공격력 저장
+  const int boosted_power = player->power( );
+
+  //전투 종료시 효과 제거
+  player->ClearTemporaryPowerBonus( );
+
+  //공격력이 변경된 경우에만 출력
+  if ( boosted_power != player->power( ) ) {
+    std::cout << "전투가 종료되어 공격력이 원래대로 돌아왔습니다... (" << boosted_power << "->" << player->power( ) << ")" << std::endl;
   }
 
   // 전투 루프 종료. 승리 판정
@@ -136,7 +148,7 @@ void GameManager::Battle(Character* player) {
     if ( logger != nullptr ) logger->RecordMonsterKill(monster->name( ));
 
     // 아이템 획득
-    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3 ) { // 30% 확률로 획득
+    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3) { // 30% 확률로 획득
       std::cout << "아이템 획득!" << std::endl;
       // [0: HP포션] [1: 공격력 부스트] 중에서 랜덤 획득
       int item_idx = RandomNumberGenerator::RandomInteger(0, 1);
@@ -166,7 +178,7 @@ void GameManager::Battle(Character* player) {
   else {
     std::cout << "비정상 동작. 플레이어와 몬스터 동시에 사망" << std::endl;
   }
-  
+
   delete monster;
 }
 

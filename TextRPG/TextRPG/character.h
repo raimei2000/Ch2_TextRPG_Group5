@@ -10,6 +10,8 @@ class Logger;
 class Monster;
 
 class Character {
+private:
+  int temporary_power_bonus_;
 protected:
 std::string name_;
 
@@ -50,6 +52,10 @@ int max_exp() const;
 void set_power(int new_power);
 void set_hp(int new_hp);
 void set_name(const std::string& new_name);
+
+//공격력 up 포션을 사용했을 때 해당 전투에서만 공격력 업
+void AddTemporaryPowerBonus(int amount);
+void ClearTemporaryPowerBonus( );
 
 void GainExp(int amount);
 
