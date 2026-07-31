@@ -10,13 +10,6 @@ HealthPotion::HealthPotion( ) {
 	price_ = 30;
 }
 
-std::string HealthPotion::name( ) {
-	return name_;
-}
-int HealthPotion::price() {
-	return price_;
-}
-
 void HealthPotion::Use(Character* character) {
 	int prev_hp = character->hp( );
 	character->set_hp(character->hp() + health_restore_);

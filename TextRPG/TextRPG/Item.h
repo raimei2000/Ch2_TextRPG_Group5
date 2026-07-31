@@ -4,9 +4,12 @@
 class Character;
 
 class Item {
+protected:
+	std::string name_;
+	int price_;
 public:
-	virtual std::string name() = 0;
-	virtual int price() = 0;
+	std::string name( ) { return name_; }
+	int price( ) { return price_; }
 	virtual void Use(Character* character) = 0;
 	virtual ~Item() = default;
 };
