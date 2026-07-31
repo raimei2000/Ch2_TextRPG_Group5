@@ -118,7 +118,7 @@ void GameManager::Battle(Character* player) {
   }
 
   // 전투 루프 종료. 승리 판정
-  // 플레이어 승
+  // 플레이어 승리
   if (player->hp() > 0) {
     monster->DeathMessage( );
     std::cout << "플레이어 승리!" << std::endl;
@@ -160,7 +160,7 @@ void GameManager::Battle(Character* player) {
       }
     }
   }
-  // 몬스터 승
+  // 플레이어 패배 (몬스터 승리)
   else if (monster->health() > 0) {
     std::cout << player->name() << "이(가) 사망했습니다.." << std::endl;
   }
