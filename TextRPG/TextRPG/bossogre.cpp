@@ -26,6 +26,7 @@ void BossOgre::Attack(Character* character) {
     std::cout << "============================\n";
     std::cout << "꼰대 오우거의\n";
     std::cout << "🔥 『정신교육』 !\n";
+    std::cout << "(" << damage_ << "의 피해)\n";
     std::cout << "거봐, 내 말 맞잖아!\n";
   }
   //기본 상태
@@ -33,15 +34,16 @@ void BossOgre::Attack(Character* character) {
     std::cout << "============================\n";
     std::cout << "꼰대 오우거의\n";
     std::cout << "📢 『잔소리 폭격』 !\n";
+    std::cout << "(" << damage_ << "의 피해)\n";
     std::cout << "\"내가 젊었을 때는 말이야!!!\"\n";
   }
   character->TakeDamage(damage_);
-  //일정 확률로 한번 더 때리기
+  //30% 확률로 한번 더 때리기
   int random_ = RandomNumberGenerator::RandomInteger(1, 10);
-  if ( random_ < 3 ) { // 30% 확률
-    std::cout << "============================\n";
+  if ( random_ <= 3 ) { // 확률
     std::cout << "꼰대 오우거의\n";
     std::cout << "📢 『보너스 어택』 !\n";
+    std::cout << "(" << damage_ << "의 피해)\n";
     std::cout << "아직 말 안 끝났어! 어디가!\n";
     character->TakeDamage(damage_);
   }

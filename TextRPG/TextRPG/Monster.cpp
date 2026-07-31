@@ -40,10 +40,9 @@ void Monster::TakeDamage(int damage) {
 	if ( health_ < 0 ) {
 		health_ = 0;
 	}
-	std::cout << "[" << name_ << "] 이(가) \n"
-		<< damage << "의 피해를 입었습니다.\n";
-	std::cout << "HP : " << previous_health
-		<< " -> " << health_ << '\n';
+	std::cout << "[" << name_ << "] 이(가) \n" << damage << "의 피해를 입었습니다.\n";
+	std::cout << "(" << damage << "의 피해)\n";
+	std::cout << "HP : " << previous_health << " -> " << health_ << '\n';
 }
 //몬스터 사망 여부 확인
 bool Monster::IsDead( ) const {
