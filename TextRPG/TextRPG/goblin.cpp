@@ -17,6 +17,8 @@ Goblin::Goblin(int player_level)
 
 //공격 문구
 void Goblin::Attack(Character* character) {
+  std::cout << "============================\n";
+  std::cout << "🤢 악취 고블린의 공격!\n";
   std::cout << "악취 고블린의 입냄새 공격!\n";
   character->TakeDamage(attack_);
 }

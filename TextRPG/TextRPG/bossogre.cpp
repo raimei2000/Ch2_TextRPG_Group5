@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "character.h"
+#include "random_number_generator.h"
 
 //임시 스텟
 BossOgre::BossOgre( )
@@ -35,6 +36,15 @@ void BossOgre::Attack(Character* character) {
     std::cout << "\"내가 젊었을 때는 말이야!!!\"\n";
   }
   character->TakeDamage(damage_);
+  //일정 확률로 한번 더 때리기
+  int random_ = RandomNumberGenerator::RandomInteger(1, 10);
+  if ( random_ < 3 ) { // 30% 확률
+    std::cout << "============================\n";
+    std::cout << "꼰대 오우거의\n";
+    std::cout << "📢 『보너스 어택』 !\n";
+    std::cout << "아직 말 안 끝났어! 어디가!\n";
+    character->TakeDamage(damage_);
+  }
 }
 //몬스터 출현 문구
 void BossOgre::SpawnMessage( ) const {
