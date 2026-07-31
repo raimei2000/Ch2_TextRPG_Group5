@@ -84,6 +84,9 @@
     <ClCompile Include="shop.cpp">
       <Filter>Source Files\system</Filter>
     </ClCompile>
+    <ClCompile Include="prologue.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="attack_boost.h">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="monster.h">
       <Filter>Header Files\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="prologue.h">
+      <Filter>Header Files\system</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

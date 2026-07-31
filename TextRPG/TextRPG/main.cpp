@@ -8,6 +8,7 @@
 #include "game_manager.h"
 #include "logger.h"
 #include "menu.h"
+#include "prologue.h"
 
 int main() {
   // 인코딩 관련
@@ -21,8 +22,11 @@ int main() {
   std::string player_name;
   std::cout << "플레이어 이름을 입력해주세요: ";
   std::cin >> player_name;
+  std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
   Character* player = new Character(player_name, logger);
   //player->PrintCreationLog(); // 캐릭터 Hero 생성 완료! 레벨: 1, 체력: 100, 공격력: 10
+
+  PrintPrologue(player_name);
 
   // 전투
   
