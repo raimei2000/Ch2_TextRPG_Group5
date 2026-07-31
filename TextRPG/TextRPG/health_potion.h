@@ -14,5 +14,6 @@ private:
 public:
 	HealthPotion();
 	std::string name();
+	int price();
 	void Use(Character* character);
 };

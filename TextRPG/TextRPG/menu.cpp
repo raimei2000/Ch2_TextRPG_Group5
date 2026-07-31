@@ -47,7 +47,7 @@ void Menu(Character* player) {
 		}
 		case 4: {
 			//상점 호출
-			Shop( );
+			Shop(player);
 			break;
 		}
 		case 5: {
