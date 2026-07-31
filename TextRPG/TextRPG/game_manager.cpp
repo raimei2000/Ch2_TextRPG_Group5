@@ -61,6 +61,8 @@ void GameManager::Battle(Character* player) {
       std::cout << ">> ";
       std::cin >> player_behavior;
 
+      system("cls");
+
       // 플레이어 행동
       switch ( player_behavior ) {
       case 1: { // 공격
