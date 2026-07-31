@@ -130,12 +130,10 @@ void GameManager::Battle(Character* player) {
     // 경험치, 골드 획득 로그
     std::cout << player->name( ) << "이(가) " << earned_exp << " EXP와 " << earned_gold << " 골드를 획득했습니다.\n";
     std::cout << "현재 EXP: " << player->exp( ) << "/" << player->max_exp( ) << ", 골드: " << player->gold( ) << std::endl;
-    //로그 기록
+    
+    // 로그 기록
     Logger* logger = Logger::GetInstance( );
-    if ( logger != nullptr )
-    {
-      logger->RecordMonsterKill(monster->name( ));
-    }
+    if ( logger != nullptr ) logger->RecordMonsterKill(monster->name( ));
 
     // 아이템 획득
     if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3 ) { // 30% 확률로 획득
