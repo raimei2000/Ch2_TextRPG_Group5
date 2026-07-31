@@ -19,6 +19,9 @@
 #include "orc.h"
 #include "troll.h"
 
+// 보스 몬스터
+#include "bossogre.h"
+
 namespace {
 
 using MonsterFactory = std::function<Monster*(int)>;
@@ -47,8 +50,15 @@ Monster* GameManager::RandomSpawnMonster(int player_level) {
 // 전투 진입
 void GameManager::Battle(Character* player) {
   system("cls");
+
+  // 보스전 관련
+  bool is_boss_battle = false;
+  if ( player->level( ) >= 10 ) is_boss_battle = true;
+
   // 몬스터 생성
-  Monster* monster = RandomSpawnMonster(player->level());
+  Monster* monster = nullptr;
+  if ( is_boss_battle ) monster = new BossOgre( );      // 보스전이면 보스몹 생성
+  else monster = RandomSpawnMonster(player->level( ));  // 아니면 잡몹 생성
   monster->SpawnMessage( );
 
   bool escape = false;
@@ -106,8 +116,12 @@ void GameManager::Battle(Character* player) {
         break;
       }
       case 4: {
-        int runaway_prob = RandomNumberGenerator::RandomInteger(1, 100);
-        if ( runaway_prob <= 85 ) { // 85% 확률. 도망 실패
+        // 보스전이라면 도망가지 못함.
+        if ( is_boss_battle ) {
+          std::cout << "물러서지마! 맞서 싸워!!" << std::endl;
+          break;
+        }
+        if ( RandomNumberGenerator::RandomInteger(1, 100) <= 85 ) { // 85% 확률. 도망 실패
           std::cout << "도망가자!!" << std::endl;
           std::cout << "도망..";
           for ( int i = 0; i < 3; i++ ) {
