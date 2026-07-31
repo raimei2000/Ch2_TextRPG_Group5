@@ -91,10 +91,10 @@ bool Character::UseGold(int amount) {
 }
 
 void Character::set_hp(int new_hp) {
-  if ( new_hp < 0 ) {
+  if (new_hp <= 0) {
     hp_ = 0;
   }
-  else if ( new_hp > max_hp_ ) {
+  else if (new_hp > max_hp_) {
     hp_ = max_hp_;
   }
   else {
@@ -143,15 +143,28 @@ void Character::Status( ) const {
 
 //캐릭터가 데미지를 받을 경우
 void Character::TakeDamage(int damage) {
+  if ( damage <= 0 || hp_<=0 ) {
+
+  }
+
+  //현재 체력을 초과하지 않는 실제 피해량
+  const int actual_damage = std::min(damage, hp_);
+
+  //피해를 받기 전 체력 저장
+  const int old_hp_ = hp_;
+
+  //실제 피해
+  set_hp(hp_ - actual_damage);
+
   std::cout << "============================" << std::endl;
   std::cout << "[" << name_ << "] 이(가) 데미지를 입었습니다." << std::endl;
-  std::cout << "HP : " << hp_ << " -> HP : " << hp_ - damage << std::endl;
+  std::cout << "HP : " << old_hp_ << " -> HP : " << hp_ << std::endl;
   std::cout << "============================" << std::endl;
 
-set_hp(hp_ - damage);
+
 if ( logger_ != nullptr )
 {
-  logger_->RecordCharacterDamage(damage);
+  logger_->RecordCharacterDamage(actual_damage);
 }
 }
 

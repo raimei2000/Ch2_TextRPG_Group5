@@ -1,15 +1,31 @@
 #include "prologue.h"
 
 #include <iostream>
+#include<string>
 #include <cstdlib>
 
 namespace {
-  void EnterToNextPage( ) {
-    std::cout << std::endl;
-    std::cout << "[Enter키를 눌러 계속]" << std::endl;
-    std::cin.get( );
+  bool EnterToNextPage( ) {
+    while ( true ) {
+      std::cout << std::endl;
+      std::cout << "[Enter: 계속 / 0: 프롤로그 스킵] ";
 
-    std::system("cls");
+      std::string input;
+      std::getline(std::cin, input);
+
+      if ( input.empty( ) ) {
+        std::system("cls");
+        return false;
+      }
+
+      if ( input == "0" ) {
+        std::system("cls");
+        return true;
+      }
+
+      std::cout << "Enter 또는 0을 입력해주세요."
+        << std::endl;
+    }
   }
 }
 
@@ -25,7 +41,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "당신은 의뢰 게시판에서" << std::endl;
   std::cout << "눈에 띄는 게시판을 보게 됩니다." << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
 
   std::cout << "✨♚♚제13 던전 초보자 환영 파티♚♚✨" << std::endl;
   std::cout << "가입즉시$$신규모험가☜☜낡은검100%증정※" << std::endl;
@@ -46,7 +64,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "강제로 배정되었습니다." << std::endl;
   std::cout << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
   
   std::cout << "\"✨♚♚제13 던전 초보자 환영 파티♚♚✨\"라는 설명과 달리" << std::endl;
   std::cout << "당신을 기다리고 있던 것은 음산한 던전과" << std::endl;
@@ -67,7 +87,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "아무도 남아 있지 않았습니다." << std::endl;
   std::cout << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
 
   std::cout << "전투의 흔적이 가득한 방 한가운데에서는" << std::endl;
   std::cout << "술 취한 오크 한 마리가 동료의 투구에" << std::endl;
@@ -78,7 +100,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "술잔으로는 쓸 만하군!\"" << std::endl;
   std::cout << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
 
   std::cout << "방구석에는 거대한 트롤이 웅크리고 앉아" << std::endl;
   std::cout << "무언가를 정신없이 씹고 있었습니다." << std::endl;
@@ -91,7 +115,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "\"단백질...... 더 필요해......\"" << std::endl;
   std::cout << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
 
   std::cout << "그 옆에서는 악취 고블린들이" << std::endl;
   std::cout << "쓰러진 동료들의 가방을 뒤지고 있었습니다." << std::endl;
@@ -111,7 +137,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "눈에서는 계속 눈물이 흘렀습니다." << std::endl;
   std::cout << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
 
   std::cout << "그 순간," << std::endl;
   std::cout << "던전 전체에 상황과 전혀 어울리지 않는" << std::endl;
@@ -130,7 +158,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "\"축하합니다, " << player_name << " 님!\"" << std::endl;
   std::cout << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
 
   std::cout << "축하할 상황은 전혀 아니었습니다." << std::endl;
   std::cout << std::endl;
@@ -148,7 +178,9 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "어느새 흔적도 없이 사라져 있었습니다." << std::endl;
   std::cout << std::endl;
 
-  EnterToNextPage( );
+  if ( EnterToNextPage( ) ) {
+    return;
+  }
 
   std::cout << "[던전 관리 시스템]" << std::endl;
   std::cout << std::endl;
@@ -176,7 +208,8 @@ void PrintPrologue(const std::string& player_name) {
   std::cout << "========================================" << std::endl;
 
   std::cout << "Enter 키를 눌러 게임을 진행합니다..";
-  std::cin.get( );
+  std::string input;
+  std::getline(std::cin, input);
 
   std::cout << std::endl;
   std::cout << std::endl;
