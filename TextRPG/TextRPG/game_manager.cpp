@@ -107,7 +107,7 @@ void GameManager::Battle(Character* player) {
       }
       case 4: {
         int runaway_prob = RandomNumberGenerator::RandomInteger(1, 100);
-        if ( runaway_prob <= 98 ) { // 98% 확률. 도망 실패
+        if ( runaway_prob <= 85 ) { // 85% 확률. 도망 실패
           std::cout << "도망가자!!" << std::endl;
           std::cout << "도망..";
           for ( int i = 0; i < 3; i++ ) {
@@ -120,7 +120,7 @@ void GameManager::Battle(Character* player) {
 
           player_turn_end = true;
         }
-        else { // 2% 확률. 도망 성공
+        else { // 15% 확률. 도망 성공
           std::cout << "도망가자!!" << std::endl;
           std::cout << "도망..";
           for ( int i = 0; i < 3; i++ ) {
