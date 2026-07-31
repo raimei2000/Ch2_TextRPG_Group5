@@ -5,8 +5,9 @@
 #include "character.h"
 
 AttackBoost::AttackBoost() {
-	name_ = "공격력 부스트";
+	name_ = "공격력 부스터";
 	attack_increase_ = 10;
+	price_ = 40;
 }
 
 std::string AttackBoost::name() {
@@ -14,9 +15,9 @@ std::string AttackBoost::name() {
 }
 
 void AttackBoost::Use(Character* character) {
-	int prev_power_ = character->power( );
+	int prev_power = character->power( );
 	character->AddTemporaryPowerBonus(attack_increase_);
 	std::cout << name_ << "를 사용했습니다." << std::endl;
-	std::cout << "공격력: " << prev_power_ << " -> " << character->power( )<< std::endl;
-	std::cout << "============================" << std::endl;
+	std::cout << "공격력: " << prev_power << " -> " << character->power( )<< std::endl;
+	std::cout << "────────────────────────────" << std::endl;
 }
