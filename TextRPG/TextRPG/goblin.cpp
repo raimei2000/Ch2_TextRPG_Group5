@@ -19,7 +19,6 @@ Goblin::Goblin(int player_level)
 void Goblin::Attack(Character* character) {
   std::cout << "============================\n";
   std::cout << "🤢 악취 고블린의 공격!\n";
-  std::cout << "(" << attack_ << "의 피해)\n";
   std::cout << "악취 고블린의"<< attack_<<"년산 냄새 공격!\n";
   character->TakeDamage(attack_);
 }

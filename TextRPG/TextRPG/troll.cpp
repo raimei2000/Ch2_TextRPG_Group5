@@ -19,7 +19,6 @@ Troll::Troll(int player_level)
 void Troll::Attack(Character* character) {
   std::cout << "============================\n";
   std::cout << "💪 헬창 트롤의 공격!\n";
-  std::cout << "(" << attack_ << "의 피해)\n";
   std::cout << "헬창 트롤의" << attack_ << "KG 덤벨 던지기!\n";
   character->TakeDamage(attack_);
 }
