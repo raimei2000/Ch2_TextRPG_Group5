@@ -10,6 +10,6 @@
 
 void Buy(Character* player);
 
-void sell(Character* player);
+void Sell(Character* player);
 
 void Shop(Character* player);

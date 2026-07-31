@@ -38,7 +38,7 @@ void Buy(Character* player)
 			}
 			else
 			{
-				std::cout << "gold가 부족함니다\n";
+				std::cout << "gold가 부족합니다\n";
 			}
 			break;
 		}
@@ -63,18 +63,18 @@ void Buy(Character* player)
 	}
 }
 
-void sell(Character* player)
+void Sell(Character* player)
 {
-	int choice_;
-	bool isExitShop_ = true;
-	while ( isExitShop_ )
+	int choice;
+	bool isExitShop = true;
+	while ( isExitShop )
 	{
 		player->DisplayInventory( );
 		std::cout << "0.나가기\n";
-		choice_ = InputValidator(0, player->inventory_size( ) + 1);
-		if ( choice_ == 0 )
+		choice = InputValidator(0, player->inventory_size( ) + 1);
+		if ( choice == 0 )
 		{
-			isExitShop_ = false;
+			isExitShop = false;
 			break;
 		}
 		player->GainGold((30 / 3) * 2);
@@ -85,19 +85,19 @@ void sell(Character* player)
 
 void Shop(Character* player)
 {
-	int choice_;
+	int choice;
 	std::cout << "1. 구매\n";
 	std::cout << "2. 판매\n";
 	std::cout << "0. 나가기\n";
-	choice_ = InputValidator(0, 2);
-	switch ( choice_ )
+	choice = InputValidator(0, 2);
+	switch ( choice )
 	{
 	case 1: {
 		Buy(player);
 		break;
 	}
 	case 2: {
-		sell(player);
+		Sell(player);
 		break;
 	}
 	case 0: {
