@@ -75,15 +75,17 @@ void GameManager::Battle(Character* player) {
       case 2: { // 아이템 사용
         player->DisplayInventory( );
         if ( player->inventory_size( ) == 0 ) break;
-        bool item_used = false;
-        while ( !item_used ) {
+        bool inventory_close = false;
+        while ( !inventory_close ) {
           int choice;
-          std::cout << "사용할 아이템 번호를 입력해주세요: ";
+          std::cout << "사용할 아이템 번호(돌아가기: 0)" << std::endl;
+          std::cout << ">> ";
           std::cin >> choice;
           if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
             player->UseItem(choice - 1);
-            item_used = true;
+            inventory_close = true;
           }
+          else if ( choice == 0 ) inventory_close = true; // 뒤로 돌아가기
           else {
             std::cout << "잘못된 입력입니다." << std::endl;
           }
