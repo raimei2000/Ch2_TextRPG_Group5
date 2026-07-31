@@ -6,12 +6,12 @@ void Menu(Character* player) {
 	int choice_ = 0;
 	bool isEndGame_ = false;
 	while ( !isEndGame_ ) {
-		std::cout << "============================\n";
-		std::cout << "      *** 메인 메뉴 ***\n";
-		std::cout << "============================\n";
-		std::cout << "1. 전투 2. 인벤토리 3. 스탯\n";
-		std::cout << "4. 상점 5. 통계 0. 게임 종료\n";
-		std::cout << "============================\n";
+		std::cout << "============================" << std::endl;
+		std::cout << "      *** 메인 메뉴 ***" << std::endl;
+		std::cout << "============================" << std::endl;
+		std::cout << "1. 전투 2. 인벤토리 3. 스탯" << std::endl;
+		std::cout << "4. 상점 5. 통계 0. 게임 종료" << std::endl;
+		std::cout << "============================" << std::endl;
 		choice_ = InputValidator(0, 5);
 		switch ( choice_ ) {
 		case 1: {
