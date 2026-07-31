@@ -1,17 +1,107 @@
 #include "shop.h"
 
-#include <iostream>
+//void Shop( ) {
+//	std::cout << R"(
+// /\ /\ /\ /\ /\ /\ /\
+//+---------------------+
+//|   *** 공 사 중 ***  |
+//|    (╯°□°)╯︵ ┻━┻    |
+//+---------------------+
+//|#####|####|####|#####|
+//   ||             ||
+//===++=============++===
+//
+//)";
+//}
 
-void Shop( ) {
-	std::cout << R"(
- /\ /\ /\ /\ /\ /\ /\
-+---------------------+
-|   *** 공 사 중 ***  |
-|    (╯°□°)╯︵ ┻━┻    |
-+---------------------+
-|#####|####|####|#####|
-   ||             ||
-===++=============++===
+void Buy(Character* player)
+{
+	int choice_;
+	bool isExitShop_ = true;
+	while ( isExitShop_ )
+	{
+		//아이템 가치를 넣어놓은 변수가 있나요? (임의로 모두 30으로)
+		std::cout << "상점 목록\n";
+		std::cout << "1. 체력 포션\n";
+		std::cout << "2. 체력 부스터\n";
+		std::cout << "0. 나가기\n";
+		std::cout << "보유 골드 : " << player->gold( ) << std::endl;
+		choice_ = InputValidator(0, 2);
+		switch ( choice_ )
+		{
+		case 1: {
+			if ( 30 < player->gold( ) )
+			{
+				player->UseGold(30);
+				player->AddItem(std::move(std::make_unique<HealthPotion>( )));
 
-)";
+			}
+			else
+			{
+				std::cout << "gold가 부족함니다\n";
+			}
+			break;
+		}
+		case 2: {
+			if ( 30 < player->gold( ) )
+			{
+				player->UseGold(30);
+				player->AddItem(std::move(std::make_unique<AttackBoost>( )));
+			}
+			else
+			{
+				std::cout << "gold가 부족합니다\n";
+			}
+			break;
+		}
+		case 0: {
+			isExitShop_ = false;
+			std::cout << "상점을 나갑니다.\n";
+			break;
+		}
+		}
+	}
+}
+
+void sell(Character* player)
+{
+	int choice_;
+	bool isExitShop_ = true;
+	while ( isExitShop_ )
+	{
+		player->DisplayInventory( );
+		std::cout << "0.나가기\n";
+		choice_ = InputValidator(0, player->inventory_size( ) + 1);
+		if ( choice_ == 0 )
+		{
+			isExitShop_ = false;
+			break;
+		}
+		player->GainGold((30 / 3) * 2);
+		//플레이어 아이템 삭제 함수 있나요?
+		break;
+	}
+}
+
+void Shop(Character* player)
+{
+	int choice_;
+	std::cout << "1. 구매\n";
+	std::cout << "2. 판매\n";
+	std::cout << "0. 나가기\n";
+	choice_ = InputValidator(0, 2);
+	switch ( choice_ )
+	{
+	case 1: {
+		Buy(player);
+		break;
+	}
+	case 2: {
+		sell(player);
+		break;
+	}
+	case 0: {
+		return;
+	}
+	}
 }
