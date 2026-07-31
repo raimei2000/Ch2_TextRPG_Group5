@@ -2,18 +2,32 @@
 #include "input_utils.h"
 #include "shop.h"
 
+#include <Windows.h>
+
 void Menu(Character* player) {
-	int choice_ = 0;
-	bool isEndGame_ = false;
-	while ( !isEndGame_ ) {
-		std::cout << "==============================================" << std::endl;
-		std::cout << "               *** 안전지대 ***" << std::endl;
-		std::cout << "==============================================" << std::endl;
-		std::cout << "1. 다음 구역으로 이동 2. 인벤토리 3. 스탯" << std::endl;
-		std::cout << "4. 무인 상점          5. 기록     0. 게임 종료" << std::endl;
-		std::cout << "==============================================" << std::endl;
-		choice_ = InputValidator(0, 5);
-		switch ( choice_ ) {
+	int choice = 0;
+	bool isEndGame = false;
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	while ( !isEndGame ) {
+		std::cout << std::endl << "┌──────────────────────────────────────────┐" << std::endl;
+		std::cout << "│           ";
+		SetConsoleTextAttribute(hConsole, 3);
+		std::cout << "🎊​🎊​ 안전지대 🎊​🎊​";
+		SetConsoleTextAttribute(hConsole, 7);
+		std::cout << "             │" << std::endl; 
+		std::cout << "├──────────────────────────────────────────┤" << std::endl;
+		std::cout << "│▶ 1. 다음 구역으로 이동 ▶ 2. 인벤토리     │" << std::endl;
+		std::cout << "│▶ 3. 스탯               ▶ 4. 무인 상점    │" << std::endl;
+		std::cout << "│▶ 5. 기록               ";
+		SetConsoleTextAttribute(hConsole, 8);
+		std::cout << "▶ 0. 게임 종료";
+		SetConsoleTextAttribute(hConsole, 7);
+		std::cout << "    │" << std::endl;
+		std::cout << "└──────────────────────────────────────────┘" << std::endl;
+		std::cout << player->name( ) << "은(는) 무엇을 할까?" << std::endl;
+		choice = InputValidator(0, 5);
+		switch ( choice ) {
 		case 1: {
 			//battle 호출
 			GameManager* game_manager = GameManager::GetInstance( );
@@ -32,7 +46,7 @@ void Menu(Character* player) {
 		}
 		case 4: {
 			//상점 호출
-			Shop( );
+			Shop(player);
 			break;
 		}
 		case 5: {
@@ -43,7 +57,7 @@ void Menu(Character* player) {
 		}
 		case 0: {
 			//게임 종료
-			isEndGame_ = true;
+			isEndGame = true;
 			break;
 		}
 		}
