@@ -62,13 +62,13 @@ void Logger::Log( )
 	std::cout << "========================================\n\n";
 
 	std::cout << "[ 몬스터 관련 ]\n";
-	std::cout << "받은 데미지 : " << characterDamageCounts_ << std::endl << std::endl;
+	std::cout << "플레이어가 받은 데미지 : " << characterDamageCounts_ << std::endl << std::endl;
 	num = 1;
 	for ( auto monsterLog : monsterLogs_ )
 	{
 		std::cout << num << ". " << monsterLog.first << std::endl;
 		std::cout << "  └ 처치 : " << monsterLog.second.KillMonsterCounts << std::endl;
-		std::cout << "  └ 누적 데미지 : " << monsterLog.second.DamageMonsterCounts << std::endl << std::endl;
+		std::cout << "  └ 몬스터에게 가한 총 데미지 : " << monsterLog.second.DamageMonsterCounts << std::endl << std::endl;
 		num++;
 	}
 	std::cout << "_______________________________________\n\n";

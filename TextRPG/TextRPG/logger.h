@@ -36,11 +36,11 @@ public:
 	//Logger 객체 포인터 반환
 	static Logger* GetInstance( );
 
-	//몬스터 킬 카운터
+	//몬스터 처치 카운터
 	void RecordMonsterKill(const std::string& monstername);
-	//몬스터 누적 데미지
+	//몬스터한테 가한 총 데미지
 	void RecordMonsterDamage(const std::string& monstername, int damage);
-	//캐릭터 누적 데미지
+	//캐릭터가 받은 총 데미지
 	void RecordCharacterDamage(int damage);
 	//총 사용 아이템
 	void RecordItemUse(const std::string& itemname, int itemCount = 1);
