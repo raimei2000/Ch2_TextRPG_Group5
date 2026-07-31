@@ -12,6 +12,7 @@
 #include "attack_boost.h"
 #include "random_number_generator.h"
 #include "logger.h"
+#include "game_utility.h"
 
 // 몬스터 추가시 해당 몬스터의 헤더 포함
 #include "goblin.h"
@@ -110,10 +111,10 @@ void GameManager::Battle(Character* player) {
           std::cout << "도망가자!!" << std::endl;
           std::cout << "도망..";
           for ( int i = 0; i < 3; i++ ) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+            game_utility::Delay(1);
             std::cout << ".";
           }
-          std::this_thread::sleep_for(std::chrono::seconds(2));
+          game_utility::Delay(2);
           std::cout << "실패!!" << std::endl;
           std::cout << std::endl;
 
@@ -123,10 +124,10 @@ void GameManager::Battle(Character* player) {
           std::cout << "도망가자!!" << std::endl;
           std::cout << "도망..";
           for ( int i = 0; i < 3; i++ ) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+            game_utility::Delay(1);
             std::cout << ".";
           }
-          std::this_thread::sleep_for(std::chrono::seconds(2));
+          game_utility::Delay(2);
           std::cout << "성공!!" << std::endl;
 
           escape = true;
@@ -216,13 +217,7 @@ void GameManager::Battle(Character* player) {
   // 도망 성공
   else if ( escape ) {
     // 안전지대 자동 이동
-    std::cout << std::endl;
-    std::cout << "안전지대로 돌아가자.." << std::endl;
-    for ( int i = 3; i > 0; i-- ) {
-      std::cout << "\r" << i << "초 후 안전지대로 이동" << std::flush;
-      std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-    system("cls");
+    game_utility::AutoReturnToSafeZone(3);
   }
   // 동시에 죽는 경우? 혹시 몰라서 
   else {
