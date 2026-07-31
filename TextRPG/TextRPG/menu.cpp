@@ -10,7 +10,7 @@ void Menu(Character* player) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	while ( !isEndGame ) {
-		std::cout << "┌──────────────────────────────────────────┐" << std::endl;
+		std::cout << std::endl << "┌──────────────────────────────────────────┐" << std::endl;
 
 		std::cout << "│           ";
 		SetConsoleTextAttribute(hConsole, 3);
