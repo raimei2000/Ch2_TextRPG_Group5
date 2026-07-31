@@ -58,9 +58,21 @@ void GameManager::Battle(Character* player) {
       std::cout << monster->name( ) << "의 HP: " << monster_prev_hp << " -> " << monster->health( ) << std::endl;
       break;
     }
-    case 1: {
-      //player->UseRandomItem();
-      std::cout << "Use Random Item" << std::endl;
+    case 1: { // 아이템 사용
+      player->DisplayInventory( );
+      bool item_used = false;
+      while (!item_used) {
+        int choice;
+        std::cout << "사용할 아이템 번호를 입력해주세요: ";
+        std::cin >> choice;
+        if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
+          player->UseItem(choice);
+          item_used = true;
+        }
+        else {
+          std::cout << "잘못된 입력입니다." << std::endl;
+        }
+      }
       break;
     }
     default: {
