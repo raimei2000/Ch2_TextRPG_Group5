@@ -11,7 +11,6 @@ void Menu(Character* player) {
 
 	while ( !isEndGame ) {
 		std::cout << std::endl << "┌──────────────────────────────────────────┐" << std::endl;
-
 		std::cout << "│           ";
 		SetConsoleTextAttribute(hConsole, 3);
 		std::cout << "🎊​🎊​ 안전지대 🎊​🎊​";
