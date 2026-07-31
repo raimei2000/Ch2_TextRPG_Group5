@@ -13,78 +13,114 @@
       <UniqueIdentifier>{67DA6AB6-F800-4C08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\character">
+      <UniqueIdentifier>{b1b61dab-3824-4ac1-a7a2-45e797deb85a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\character">
+      <UniqueIdentifier>{4f24027a-4888-4299-8e67-070e6e87e3ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\system">
+      <UniqueIdentifier>{a757d1fd-9c9c-42c5-aeef-b297e1605d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\monster">
+      <UniqueIdentifier>{7fd61c43-e567-4825-8bca-e8fd54dac4c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\item">
+      <UniqueIdentifier>{5976cb56-8672-4217-8957-06950a32d161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\system">
+      <UniqueIdentifier>{e3b4ca63-4bdf-4844-85ee-c07c2bccb432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\monster">
+      <UniqueIdentifier>{115c39c8-a66e-4691-89a7-09764f53aa20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\item">
+      <UniqueIdentifier>{4a15725f-236d-4c47-8e60-645fd0a39304}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game_manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="level_up.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="random_number_generator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="goblin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="attack_boost.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\item</Filter>
     </ClCompile>
     <ClCompile Include="health_potion.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\item</Filter>
+    </ClCompile>
+    <ClCompile Include="goblin.cpp">
+      <Filter>Source Files\monster</Filter>
+    </ClCompile>
+    <ClCompile Include="monster.cpp">
+      <Filter>Source Files\monster</Filter>
     </ClCompile>
     <ClCompile Include="orc.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\monster</Filter>
+    </ClCompile>
+    <ClCompile Include="troll.cpp">
+      <Filter>Source Files\monster</Filter>
+    </ClCompile>
+    <ClCompile Include="character.cpp">
+      <Filter>Source Files\character</Filter>
+    </ClCompile>
+    <ClCompile Include="level_up.cpp">
+      <Filter>Source Files\character</Filter>
+    </ClCompile>
+    <ClCompile Include="game_manager.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="input_utils.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="random_number_generator.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="shop.cpp">
+      <Filter>Source Files\system</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Monster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClCompile Include="logger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game_manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="random_number_generator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="attack_boost.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\item</Filter>
     </ClInclude>
     <ClInclude Include="health_potion.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\item</Filter>
     </ClInclude>
-    <ClInclude Include="orc.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="item.h">
+      <Filter>Header Files\item</Filter>
+    </ClInclude>
+    <ClInclude Include="goblin.h">
+      <Filter>Header Files\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="game_manager.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="input_utils.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="random_number_generator.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="shop.h">
+      <Filter>Header Files\system</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClInclude Include="AttackBoost.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HealthPotion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -97,13 +133,19 @@
     <ClInclude Include="monster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="goblin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="logger.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="monster.h">
+      <Filter>Header Files\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="orc.h">
+      <Filter>Header Files\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="troll.h">
+      <Filter>Header Files\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="character.h">
+      <Filter>Header Files\character</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
