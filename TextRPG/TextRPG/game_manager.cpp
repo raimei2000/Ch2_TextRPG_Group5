@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include <functional>
+#include <thread>
+#include <chrono>
 
 #include "character.h"
 #include "monster.h"
@@ -48,10 +50,11 @@ void GameManager::Battle(Character* player) {
   Monster* monster = RandomSpawnMonster(player->level());
   monster->SpawnMessage( );
 
+  bool escape = false;
   // 전투 루프
-  while (player->hp() > 0 && monster->health() > 0) {
+  while (player->hp() > 0 && monster->health() > 0 && !escape) {
     bool player_turn_end = false;
-    while ( !player_turn_end ) {
+    while ( !player_turn_end && !escape ) {
       // 플레이어 행동 선택 [0: 공격, 1: 아이템 사용]
       //int player_behavior = RandomNumberGenerator::RandomInteger(0, 1); // 랜덤 행동 선택
       int player_behavior;
@@ -102,7 +105,32 @@ void GameManager::Battle(Character* player) {
         break;
       }
       case 4: {
-        std::cout << "도망가지마! 맞서싸워!!" << std::endl;
+        int runaway_prob = RandomNumberGenerator::RandomInteger(1, 100);
+        if ( runaway_prob <= 98 ) { // 98% 확률. 도망 실패
+          std::cout << "도망가자!!" << std::endl;
+          std::cout << "도망..";
+          for ( int i = 0; i < 3; i++ ) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::cout << ".";
+          }
+          std::this_thread::sleep_for(std::chrono::seconds(2));
+          std::cout << "실패!!" << std::endl;
+          std::cout << std::endl;
+
+          player_turn_end = true;
+        }
+        else { // 2% 확률. 도망 성공
+          std::cout << "도망가자!!" << std::endl;
+          std::cout << "도망..";
+          for ( int i = 0; i < 3; i++ ) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::cout << ".";
+          }
+          std::this_thread::sleep_for(std::chrono::seconds(2));
+          std::cout << "성공!!" << std::endl;
+
+          escape = true;
+        }
 
         break;
       }
@@ -112,8 +140,8 @@ void GameManager::Battle(Character* player) {
       }
     }
     
-    // 플레이어 행동 종료 후 몬스터 사망시 전투 루프 탈출
-    if (monster->health() <= 0) break;
+    // 플레이어 행동 종료 후 [몬스터 사망] or [도망 성공시] 전투 루프 탈출
+    if (monster->health() <= 0 || escape) break;
 
     // 몬스터 공격
     int player_prev_hp = player->hp( );
@@ -133,7 +161,7 @@ void GameManager::Battle(Character* player) {
 
   // 전투 루프 종료. 승리 판정
   // 플레이어 승리
-  if (player->hp() > 0) {
+  if (player->hp() > 0 && !escape) {
     monster->DeathMessage( );
     std::cout << "플레이어 승리!" << std::endl;
     int earned_exp = 50; // 추후 각 몬스터가 갖는 경험치로 대체.
@@ -173,8 +201,18 @@ void GameManager::Battle(Character* player) {
     }
   }
   // 플레이어 패배 (몬스터 승리)
-  else if (monster->health() > 0) {
+  else if (monster->health() > 0 && !escape) {
     std::cout << player->name() << "이(가) 사망했습니다.." << std::endl;
+  }
+  else if ( escape ) {
+    // 도망 성공시 출력 로그 작성
+    std::cout << std::endl;
+    std::cout << "안전지대로 돌아가자.." << std::endl;
+    for ( int i = 3; i > 0; i-- ) {
+      std::cout << "\r" << i << "초 후 안전지대로 이동" << std::flush;
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+    std::cout << std::endl << std::endl;
   }
   // 동시에 죽는 경우? 혹시 몰라서 
   else {
