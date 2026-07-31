@@ -18,8 +18,8 @@ void Buy(Character* player)
 	bool isExitShop = true;
 	while ( isExitShop )
 	{
-		auto pHealthPotion = std::move(std::make_unique<HealthPotion>( ));
-		auto pAttackBoost = std::move(std::make_unique<AttackBoost>( ));
+		auto pHealthPotion = std::make_unique<HealthPotion>( );
+		auto pAttackBoost = std::make_unique<AttackBoost>( );
 		std::cout << "상점 목록\n";
 		std::cout << "1. 체력 포션 (" << pHealthPotion->price( ) << "G)\n";
 		std::cout << "2. 공격력 부스트 (" << pAttackBoost->price( ) << "G)\n";
