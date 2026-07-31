@@ -11,5 +11,5 @@ std::string AttackBoost::name() {
 }
 
 void AttackBoost::Use(Character* character) {
-	character->set_power(character->power()+attack_increase_);
+	character->AddTemporaryPowerBonus(attack_increase_);
 }

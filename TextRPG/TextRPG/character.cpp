@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <utility>
+#include <algorithm>
 
 Character::~Character( ) = default;
 
@@ -16,6 +17,7 @@ Character::Character(const std::string& name, Logger* logger)
   hp_(200),
   max_hp_(200),
   power_(30),
+  temporary_power_bonus_(0),
   defence_(30),
   exp_(0),
   max_exp_(100),
@@ -41,7 +43,7 @@ int Character::max_hp( ) const {
 }
 
 int Character::power( ) const {
-  return power_;
+  return power_ + temporary_power_bonus_;
 }
 
 int Character::defence( ) const {
@@ -109,6 +111,17 @@ void Character::set_power(int new_power) {
   }
 }
 
+//임시 공격력 보너스 함수
+void Character::AddTemporaryPowerBonus(int amount) {
+  if ( amount > 0 ) {
+    temporary_power_bonus_ += amount;
+  }
+}
+
+void Character::ClearTemporaryPowerBonus( ) {
+  temporary_power_bonus_ = 0;
+}
+
 void Character::set_name(const std::string& new_name) {
   name_ = new_name;
 }
@@ -121,7 +134,7 @@ void Character::Status( ) const {
   std::cout << "이름    : " << name_ << std::endl;
   std::cout << "레벨    : " << level_ << "/" << max_level_ << std::endl;
   std::cout << "HP      : " << hp_ << "/" << max_hp_ << std::endl;
-  std::cout << "공격력  : " << power_ << std::endl;
+  std::cout << "공격력  : " << power() << std::endl;
   std::cout << "방어력  : " << defence_ << std::endl;
   std::cout << "Exp     : " << exp_ << "/" << max_exp_ << std::endl;
   std::cout << "Gold    : " << gold_ << " G" << std::endl;
@@ -144,14 +157,21 @@ if ( logger_ != nullptr )
 
 //캐릭터가 공격을 할 경우
 void Character::Attack(Monster* monster) {
+  //남은 체력을 넘지 않은 실제 피해량 계산
+  const int actual_damage = std::min(power(), monster->health());
+
   std::cout << "============================" << std::endl;
-  std::cout << "[" << name_ << "] 이(가)" << monster->name( ) << "에게 " << std::endl << power_ << "의 피해를 입혔습니다." << std::endl;
+  std::cout << "[" << name_ << "] 이(가)" << monster->name( ) << "에게 " << std::endl << actual_damage << "의 피해를 입혔습니다." << std::endl;
   std::cout << "============================" << std::endl;
 
-monster->TakeDamage(power_);
+
+  //실제 피해만 적용
+monster->TakeDamage(actual_damage);
+
+//실제 피해만 Logger에 연동
 if ( logger_ != nullptr )
 {
-  logger_->RecordMonsterDamage(monster->name( ), power_);
+  logger_->RecordMonsterDamage(monster->name( ), actual_damage);
 }
 }
 
@@ -194,26 +214,25 @@ void Character::UseItem(int index) {
   //사용 아이템 출력
   std::cout << item_name << " 을 사용했습니다." << std::endl;
 
-
-  //Logger에 아이템 사용기록 연동
-  if ( logger_ != nullptr ) {
-    logger_->RecordItemUse(item_name);
-  }
-
-  //사용한 아이템 제거
-  inventory_.erase(inventory_.begin( ) + index);
-}
-
-//인벤토리 표시
-void Character::DisplayInventory( ) const {
-  std::cout << "========인벤토리========" << std::endl;
-  if ( inventory_.empty( ) ) {
-    std::cout << "인벤토리가 비어있습니다." << std::endl;
-  }
-  else {
-    for ( int i = 0; i < inventory_size( ); i++ ) {
-      std::cout << i+1 << ". " << inventory_[ i ]->name( ) << std::endl;
+    //Logger에 아이템 사용기록 연동
+    if ( logger_ != nullptr ) {
+      logger_->RecordItemUse(item_name);
     }
+
+    //사용한 아이템 제거
+    inventory_.erase(inventory_.begin( ) + index);
   }
-  std::cout << "========================" << std::endl;
-}
+
+  //인벤토리 표시
+  void Character::DisplayInventory( ) const {
+    std::cout << "========인벤토리========" << std::endl;
+    if ( inventory_.empty( ) ) {
+      std::cout << "인벤토리가 비어있습니다." << std::endl;
+    }
+    else {
+      for ( int i = 0; i < inventory_size( ); i++ ) {
+        std::cout << i + 1 << ". " << inventory_[ i ]->name( ) << std::endl;
+      }
+    }
+    std::cout << "========================" << std::endl;
+  }
