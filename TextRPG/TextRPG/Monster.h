@@ -23,7 +23,7 @@ public:
 	//몬스터 출현 문구
 	virtual void SpawnMessage( ) const = 0;
 	//몬스터 사망 문구
-	virtual void DesthMessage( )const = 0;
+	virtual void DeathMessage( )const = 0;
 
 	//getter
 	std::string name();

@@ -46,6 +46,7 @@ void GameManager::Battle(Character* player) {
   //system("cls");
   // 몬스터 생성
   Monster* monster = RandomSpawnMonster(player->level());
+  monster->SpawnMessage( );
 
   // 전투 루프
   while (player->hp() > 0 && monster->health() > 0) {
@@ -78,7 +79,7 @@ void GameManager::Battle(Character* player) {
           std::cout << "사용할 아이템 번호를 입력해주세요: ";
           std::cin >> choice;
           if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
-            player->UseItem(choice);
+            player->UseItem(choice - 1);
             item_used = true;
           }
           else {
@@ -92,7 +93,7 @@ void GameManager::Battle(Character* player) {
         break;
       }
       case 3: { // 스탯 확인
-        player->status( ); // 추후 함수 이름 Status()로 변경
+        player->Status( );
 
         break;
       }
@@ -117,8 +118,9 @@ void GameManager::Battle(Character* player) {
   }
 
   // 전투 루프 종료. 승리 판정
-  // 플레이어 승
+  // 플레이어 승리
   if (player->hp() > 0) {
+    monster->DeathMessage( );
     std::cout << "플레이어 승리!" << std::endl;
     int earned_exp = 50; // 추후 각 몬스터가 갖는 경험치로 대체.
     int earned_gold = RandomNumberGenerator::RandomInteger(10, 20);
@@ -128,12 +130,10 @@ void GameManager::Battle(Character* player) {
     // 경험치, 골드 획득 로그
     std::cout << player->name( ) << "이(가) " << earned_exp << " EXP와 " << earned_gold << " 골드를 획득했습니다.\n";
     std::cout << "현재 EXP: " << player->exp( ) << "/" << player->max_exp( ) << ", 골드: " << player->gold( ) << std::endl;
-    //로그 기록
+    
+    // 로그 기록
     Logger* logger = Logger::GetInstance( );
-    if ( logger != nullptr )
-    {
-      logger->RecordMonsterKill(monster->name( ));
-    }
+    if ( logger != nullptr ) logger->RecordMonsterKill(monster->name( ));
 
     // 아이템 획득
     if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3 ) { // 30% 확률로 획득
@@ -158,7 +158,7 @@ void GameManager::Battle(Character* player) {
       }
     }
   }
-  // 몬스터 승
+  // 플레이어 패배 (몬스터 승리)
   else if (monster->health() > 0) {
     std::cout << player->name() << "이(가) 사망했습니다.." << std::endl;
   }

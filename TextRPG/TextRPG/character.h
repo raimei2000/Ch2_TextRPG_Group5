@@ -53,7 +53,7 @@ void set_name(const std::string& new_name);
 
 void GainExp(int amount);
 
-void status( )const;
+void Status( )const;
 
 void TakeDamage(int damage);
 void Attack(Monster* damage);

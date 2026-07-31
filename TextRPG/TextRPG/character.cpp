@@ -114,15 +114,15 @@ void Character::set_name(const std::string& new_name) {
 }
 
 
-void Character::status( ) const {
+void Character::Status( ) const {
 
   //캐릭터 스테이터스 표시
-  std::cout << "===== Character Status =====" << std::endl;
-  std::cout << "Name    : " << name_ << std::endl;
-  std::cout << "Lovel   : " << level_ << "/" << max_level_ << std::endl;
+  std::cout << "======= 캐릭터 스텟창 =======" << std::endl;
+  std::cout << "이름    : " << name_ << std::endl;
+  std::cout << "레벨    : " << level_ << "/" << max_level_ << std::endl;
   std::cout << "HP      : " << hp_ << "/" << max_hp_ << std::endl;
-  std::cout << "Power   : " << power_ << std::endl;
-  std::cout << "Defernce: " << defence_ << std::endl;
+  std::cout << "공격력  : " << power_ << std::endl;
+  std::cout << "방어력  : " << defence_ << std::endl;
   std::cout << "Exp     : " << exp_ << "/" << max_exp_ << std::endl;
   std::cout << "Gold    : " << gold_ << " G" << std::endl;
   std::cout << "============================" << std::endl;
@@ -154,6 +154,8 @@ if ( logger_ != nullptr )
   logger_->RecordMonsterDamage(monster->name( ), power_);
 }
 }
+
+
 
 //아이템 추가
 void Character::AddItem(std::unique_ptr<Item> item) {
