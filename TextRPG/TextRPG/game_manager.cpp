@@ -203,12 +203,7 @@ void GameManager::Battle(Character* player) {
     }
 
     // 안전지대 자동 이동
-    std::cout << std::endl;
-    std::cout << "안전지대로 돌아가자.." << std::endl;
-    for ( int i = 3; i > 0; i-- ) {
-      std::cout << "\r" << i << "초 후 안전지대로 이동" << std::flush;
-      std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
+    game_utility::AutoReturnToSafeZone(5);
     system("cls");
   }
   // 플레이어 패배 (몬스터 승리)
