@@ -17,7 +17,9 @@ Orc::Orc(int player_level)
 
 //공격 문구
 void Orc::Attack(Character* character) {
-  std::cout << "술취한 오크의 취권!\n";
+  std::cout << "============================\n";
+  std::cout << "🍺 술취한 오크의 공격!\n";
+  std::cout << "술취한 오크의" << attack_ << "Kg 술통 던지기!\n";
   character->TakeDamage(attack_);
 }
 //몬스터 출현 문구

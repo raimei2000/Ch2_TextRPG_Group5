@@ -17,7 +17,9 @@ Troll::Troll(int player_level)
 
 //공격 문구
 void Troll::Attack(Character* character) {
-  std::cout << "헬창 트롤의 덤벨 던지기!\n";
+  std::cout << "============================\n";
+  std::cout << "💪 헬창 트롤의 공격!\n";
+  std::cout << "헬창 트롤의" << attack_ << "KG 덤벨 던지기!\n";
   character->TakeDamage(attack_);
 }
 //몬스터 출현 문구
