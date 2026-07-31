@@ -91,7 +91,7 @@ void GameManager::Battle(Character* player) {
         break;
       }
       case 3: { // 스탯 확인
-        player->status( ); // 추후 함수 이름 Status()로 변경
+        player->Status( ); // 추후 함수 이름 Status()로 변경
 
         break;
       }
