@@ -46,6 +46,7 @@ void GameManager::Battle(Character* player) {
   //system("cls");
   // 몬스터 생성
   Monster* monster = RandomSpawnMonster(player->level());
+  monster->SpawnMessage( );
 
   // 전투 루프
   while (player->hp() > 0 && monster->health() > 0) {
@@ -119,6 +120,7 @@ void GameManager::Battle(Character* player) {
   // 전투 루프 종료. 승리 판정
   // 플레이어 승
   if (player->hp() > 0) {
+    monster->DeathMessage( );
     std::cout << "플레이어 승리!" << std::endl;
     int earned_exp = 50; // 추후 각 몬스터가 갖는 경험치로 대체.
     int earned_gold = RandomNumberGenerator::RandomInteger(10, 20);
