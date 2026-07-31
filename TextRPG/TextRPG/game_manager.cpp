@@ -42,7 +42,7 @@ Monster* GameManager::RandomSpawnMonster(int player_level) {
 
 // 전투 진입
 void GameManager::Battle(Character* player) {
-  system("cls");
+  //system("cls");
   // 몬스터 생성
   Monster* monster = RandomSpawnMonster(player->level());
 
