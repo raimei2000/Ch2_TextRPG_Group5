@@ -41,13 +41,13 @@ void Monster::TakeDamage(int damage) {
 }
 //몬스터 사망 여부 확인
 bool Monster::IsDead( ) const {
-	return health_ <= 0;;
+	return health_ <= 0;
 }
 //몬스터 스텟창 확인
 void Monster::PrintMonsterStatus( ) const {
-	std::cout << "===== Monster Status =====" << '\n';
-	std::cout << "Name   : " << name_ << '\n';
-	std::cout << "Health : " << health_ << '\n';
-	std::cout << "Attack : " << attack_ << '\n';
+	std::cout << "===== 몬스터 스텟창 =====" << '\n';
+	std::cout << " 이름  : " << name_ << '\n';
+	std::cout << "  HP   : " << health_ << '\n';
+	std::cout << "공격력 : " << attack_ << '\n';
 	std::cout << "============================" << '\n';
 }
