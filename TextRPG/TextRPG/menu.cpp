@@ -32,7 +32,7 @@ void Menu(Character* player) {
 		}
 		case 4: {
 			//상점 호출
-			Shop(player);
+			Shop();
 			break;
 		}
 		case 5: {
