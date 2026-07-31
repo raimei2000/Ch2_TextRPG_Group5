@@ -211,8 +211,6 @@ void Character::UseItem(int index) {
   //아이템 효과 적용
   inventory_[ index ]->Use(this);
 
-  //사용 아이템 출력
-  std::cout << item_name << " 을 사용했습니다." << std::endl;
 
     //Logger에 아이템 사용기록 연동
     if ( logger_ != nullptr ) {
