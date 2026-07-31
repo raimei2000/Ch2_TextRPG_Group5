@@ -17,7 +17,13 @@ public:
 	//순수 가상 함수
 	Monster(std::string name, int health, int attack);
 
+	virtual ~Monster( ) = default;
+	
 	virtual void Attack(Character* character) = 0;
+	//몬스터 출현 문구
+	virtual void SpawnMessage( ) const = 0;
+	//몬스터 사망 문구
+	virtual void DesthMessage( )const = 0;
 
 	//getter
 	std::string name();
@@ -35,9 +41,6 @@ public:
 	bool IsDead( ) const;
 	//몬스터 스텟창
 	void PrintMonsterStatus( ) const;
-	//몬스터 출현 문구
-	void PrintSpawnMessage( ) const ;
-
 };
 
 
