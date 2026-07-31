@@ -20,10 +20,9 @@ void Buy(Character* player)
 	{
 		auto pHealthPotion = std::move(std::make_unique<HealthPotion>( ));
 		auto pAttackBoost = std::move(std::make_unique<AttackBoost>( ));
-		//아이템 가치를 넣어놓은 변수가 있나요? (임의로 모두 30으로)
 		std::cout << "상점 목록\n";
-		std::cout << "1. 체력 포션 (" << pHealthPotion->price( ) << "G)";
-		std::cout << "2. 공격력 부스트 (" << pAttackBoost->price( ) << "G)";
+		std::cout << "1. 체력 포션 (" << pHealthPotion->price( ) << "G)\n";
+		std::cout << "2. 공격력 부스트 (" << pAttackBoost->price( ) << "G)\n";
 		std::cout << "0. 나가기\n";
 		std::cout << "보유 골드 : " << player->gold( ) << std::endl;
 		choice_ = InputValidator(0, 2);
