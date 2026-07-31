@@ -10,14 +10,6 @@ AttackBoost::AttackBoost() {
 	price_ = 40;
 }
 
-std::string AttackBoost::name() {
-	return name_;
-}
-
-int AttackBoost::price() {
-	return price_;
-}
-
 void AttackBoost::Use(Character* character) {
 	int prev_power = character->power( );
 	character->AddTemporaryPowerBonus(attack_increase_);
