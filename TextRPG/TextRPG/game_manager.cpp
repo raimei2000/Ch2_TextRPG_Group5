@@ -79,7 +79,7 @@ void GameManager::Battle(Character* player) {
           std::cout << "사용할 아이템 번호를 입력해주세요: ";
           std::cin >> choice;
           if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
-            player->UseItem(choice);
+            player->UseItem(choice - 1);
             item_used = true;
           }
           else {
