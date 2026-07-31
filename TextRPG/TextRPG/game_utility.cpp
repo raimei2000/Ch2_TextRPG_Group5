@@ -18,7 +18,7 @@ void game_utility::AutoReturnToSafeZone(unsigned int time) {
   system("cls");
 }
 
-void game_utility::EnterToNextPage(const std::string& message) {
+void game_utility::EnterToClear(const std::string& message) {
   std::cout << std::endl;
   std::cout << message << std::endl;
   std::cin.get( );

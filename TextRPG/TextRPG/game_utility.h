@@ -10,5 +10,5 @@ namespace game_utility {
   void AutoReturnToSafeZone(unsigned int time);
 
   // message를 출력하고 Enter입력 받으면 화면 초기화
-  void EnterToNextPage(const std::string& message);
+  void EnterToClear(const std::string& message);
 }
