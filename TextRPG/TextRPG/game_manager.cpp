@@ -202,9 +202,8 @@ void GameManager::Battle(Character* player) {
       }
     }
 
-    // 안전지대 자동 이동
-    game_utility::AutoReturnToSafeZone(5);
-    system("cls");
+    // 안전지대로 이동
+    game_utility::EnterToClear("[Enter를 눌러 안전지대로 이동]");
   }
   // 플레이어 패배 (몬스터 승리)
   else if (monster->health() > 0 && !escape) {
