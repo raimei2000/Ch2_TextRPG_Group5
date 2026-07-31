@@ -78,7 +78,7 @@ void GameManager::Battle(Character* player) {
           std::cout << "사용할 아이템 번호를 입력해주세요: ";
           std::cin >> choice;
           if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
-            player->UseItem(choice);
+            player->UseItem(choice - 1);
             item_used = true;
           }
           else {
@@ -116,6 +116,17 @@ void GameManager::Battle(Character* player) {
     std::cout << player->name( ) << "의 HP: " << player_prev_hp << " -> " << player->hp( ) << std::endl;
   }
 
+  //공격력 부스트 사용 전 공격력 저장
+  const int boosted_power = player->power( );
+
+  //전투 종료시 효과 제거
+  player->ClearTemporaryPowerBonus( );
+
+  //공격력이 변경된 경우에만 출력
+  if ( boosted_power != player->power( ) ) {
+    std::cout << "전투가 종료되어 공격력이 원래대로 돌아왔습니다... (" << boosted_power << "->" << player->power( ) << ")" << std::endl;
+  }
+
   // 전투 루프 종료. 승리 판정
   // 플레이어 승
   if (player->hp() > 0) {
@@ -136,7 +147,7 @@ void GameManager::Battle(Character* player) {
     }
 
     // 아이템 획득
-    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3 ) { // 30% 확률로 획득
+    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 10) { // 30% 확률로 획득
       std::cout << "아이템 획득!" << std::endl;
       // [0: HP포션] [1: 공격력 부스트] 중에서 랜덤 획득
       int item_idx = RandomNumberGenerator::RandomInteger(0, 1);
@@ -166,7 +177,7 @@ void GameManager::Battle(Character* player) {
   else {
     std::cout << "비정상 동작. 플레이어와 몬스터 동시에 사망" << std::endl;
   }
-  
+
   delete monster;
 }
 
