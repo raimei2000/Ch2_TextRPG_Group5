@@ -147,7 +147,7 @@ void GameManager::Battle(Character* player) {
     }
 
     // 아이템 획득
-    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 10) { // 30% 확률로 획득
+    if ( RandomNumberGenerator::RandomInteger(1, 10) <= 3) { // 30% 확률로 획득
       std::cout << "아이템 획득!" << std::endl;
       // [0: HP포션] [1: 공격력 부스트] 중에서 랜덤 획득
       int item_idx = RandomNumberGenerator::RandomInteger(0, 1);
