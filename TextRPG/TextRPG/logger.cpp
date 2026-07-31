@@ -55,23 +55,35 @@ void Logger::RecordGoldUse(const int gold)
 
 void Logger::Log( )
 {
-	std::cout << "몬스터 관련\n";
-	std::cout << "총 받은 데미지 : " << characterDamageCounts_ << std::endl;
+	int num = 0;
+	std::cout << std::endl;
+	std::cout << "========================================\n";
+	std::cout << "=============| 게임 통계 |==============\n";
+	std::cout << "========================================\n\n";
+
+	std::cout << "[ 몬스터 관련 ]\n";
+	std::cout << "받은 데미지 : " << characterDamageCounts_ << std::endl << std::endl;
+	num = 1;
 	for ( auto monsterLog : monsterLogs_ )
 	{
-		std::cout << "잡은 " << monsterLog.first << "의 마리 수 : " << monsterLog.second.KillMonsterCounts;
-		std::cout << "가한 누적 데미지 : " << monsterLog.second.DamageMonsterCounts << std::endl;
+		std::cout << num << ". " << monsterLog.first << std::endl;
+		std::cout << "  └ 처치 : " << monsterLog.second.KillMonsterCounts << std::endl;
+		std::cout << "  └ 누적 데미지 : " << monsterLog.second.DamageMonsterCounts << std::endl << std::endl;
+		num++;
 	}
-	std::cout << "아이템 관련\n";
+	std::cout << "_______________________________________\n\n";
+
+	std::cout << "\n[ 아이템 관련 ]\n\n";
+	num = 1;
 	for ( auto itemLog : itemLogs_ )
 	{
-		std::cout << "얻은 " << itemLog.first << "의 개수 : " << itemLog.second.GainItemCounts;
-		std::cout << " / 사용한 "<< itemLog.first <<" 개수 : " << itemLog.second.UseItemCounts << std::endl;
+		std::cout << num << ". " << itemLog.first << std::endl;
+		std::cout << "  └ 획득 갯수 : " << itemLog.second.GainItemCounts << std::endl;
+		std::cout << "  └ 사용 갯수 : " << itemLog.second.UseItemCounts << std::endl << std::endl;
+		num++;
 	}
-	std::cout << "골드 관련\n";
-	if ( totalGoldGained_ != 0 )
-	{
-		std::cout << "총 획득한 골드 : " << totalGoldGained_ << std::endl;
-		std::cout << "총 사용한 골드 : " << totalGoldUsed_ << std::endl;
-	}
+	std::cout << "_______________________________________\n\n";
+	std::cout << "골드 관련\n\n";
+	std::cout << "총 획득한 골드 : " << totalGoldGained_ << std::endl;
+	std::cout << "총 사용한 골드 : " << totalGoldUsed_ << std::endl;
 }
