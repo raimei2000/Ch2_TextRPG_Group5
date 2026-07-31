@@ -55,7 +55,7 @@ void GameManager::Battle(Character* player) {
   // 전투 루프
   while (player->hp() > 0 && monster->health() > 0 && !escape) {
     bool player_turn_end = false;
-    while ( !player_turn_end && !escape ) {
+    while ( !player_turn_end ) {
       // 플레이어 행동 선택 [0: 공격, 1: 아이템 사용]
       //int player_behavior = RandomNumberGenerator::RandomInteger(0, 1); // 랜덤 행동 선택
       int player_behavior;
@@ -130,6 +130,7 @@ void GameManager::Battle(Character* player) {
           game_utility::Delay(2);
           std::cout << "성공!!" << std::endl;
 
+          player_turn_end = true;
           escape = true;
         }
 
