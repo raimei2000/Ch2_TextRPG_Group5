@@ -121,8 +121,7 @@ void GameManager::Battle(Character* player) {
           std::cout << "물러서지마! 맞서 싸워!!" << std::endl;
           break;
         }
-        int runaway_prob = RandomNumberGenerator::RandomInteger(1, 100);
-        if ( runaway_prob <= 85 ) { // 85% 확률. 도망 실패
+        if ( RandomNumberGenerator::RandomInteger(1, 100) <= 85 ) { // 85% 확률. 도망 실패
           std::cout << "도망가자!!" << std::endl;
           std::cout << "도망..";
           for ( int i = 0; i < 3; i++ ) {
