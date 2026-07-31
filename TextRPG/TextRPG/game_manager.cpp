@@ -51,11 +51,16 @@ void GameManager::Battle(Character* player) {
     bool player_turn_end = false;
     while ( !player_turn_end ) {
       // 플레이어 행동 선택 [0: 공격, 1: 아이템 사용]
-      int player_behavior = RandomNumberGenerator::RandomInteger(0, 1);
+      //int player_behavior = RandomNumberGenerator::RandomInteger(0, 1); // 랜덤 행동 선택
+      int player_behavior;
+      std::cout << std::endl;
+      std::cout << player->name( ) << "은(는) 무엇을 할까?" << std::endl;
+      std::cout << "1. 공격     2. 인벤토리   3. 스탯 확인  4. 도망가기" << std::endl;
+      std::cin >> player_behavior;
 
       // 플레이어 행동
       switch ( player_behavior ) {
-      case 0: { // 공격
+      case 1: { // 공격
         int monster_prev_hp = monster->health( );
         player->Attack(monster);
         std::cout << monster->name( ) << "의 HP: " << monster_prev_hp << " -> " << monster->health( ) << std::endl;
@@ -63,7 +68,7 @@ void GameManager::Battle(Character* player) {
         player_turn_end = true;
         break;
       }
-      case 1: { // 아이템 사용
+      case 2: { // 아이템 사용
         player->DisplayInventory( );
         if ( player->inventory_size( ) == 0 ) break;
         bool item_used = false;
@@ -83,6 +88,16 @@ void GameManager::Battle(Character* player) {
         // 플레이어의 아이템 사용을 턴 사용으로 한다면 아래 주석 해제.
         // 아이템 사용 후 공격 등의 행동을 다시 할 수 있다면 그대로.
         //player_turn_end = true;
+        break;
+      }
+      case 3: { // 스탯 확인
+        player->status( ); // 추후 함수 이름 Status()로 변경
+
+        break;
+      }
+      case 4: {
+        std::cout << "도망가지마! 맞서싸워!!" << std::endl;
+
         break;
       }
       default: {
