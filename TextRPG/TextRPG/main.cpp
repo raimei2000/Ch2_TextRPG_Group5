@@ -30,7 +30,7 @@ int main() {
 
   // 전투
   
-  game_manager->Battle(player);
+  game_manager->Battle();
 
   Menu(player);
 
