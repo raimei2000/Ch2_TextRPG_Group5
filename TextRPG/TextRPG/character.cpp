@@ -155,6 +155,20 @@ if ( logger_ != nullptr )
 }
 }
 
+void Character::Status( ) const {
+
+  //캐릭터 스테이터스 표시
+  std::cout << "======= 캐릭터 스텟창 =======" << std::endl;
+  std::cout << "이름    : " << name_ << std::endl;
+  std::cout << "레벨    : " << level_ << "/" << max_level_ << std::endl;
+  std::cout << "HP      : " << hp_ << "/" << max_hp_ << std::endl;
+  std::cout << "공격력  : " << power_ << std::endl;
+  std::cout << "방어력  : " << defence_ << std::endl;
+  std::cout << "Exp     : " << exp_ << "/" << max_exp_ << std::endl;
+  std::cout << "Gold    : " << gold_ << " G" << std::endl;
+  std::cout << "============================" << std::endl;
+}
+
 //아이템 추가
 void Character::AddItem(std::unique_ptr<Item> item) {
   if ( item == nullptr ) { //전달받은 아이템 없으면 종료
