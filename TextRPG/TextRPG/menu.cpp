@@ -27,7 +27,7 @@ void Menu(Character* player) {
 		}
 		case 3: {
 			//스탯 호출
-			player->status( );
+			player->Status( );
 			break;
 		}
 		case 4: {
