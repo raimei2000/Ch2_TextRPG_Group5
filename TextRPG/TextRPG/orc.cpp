@@ -22,13 +22,14 @@ void Orc::Attack(Character* character) {
 }
 //몬스터 출현 문구
 void Orc::SpawnMessage( ) const {
-  std::cout << "============================\n";
+  std::cout << "====================================\n";
   std::cout << "🍺 술취한 오크가 비틀거리며 나타났다!\n";
+  std::cout << "HP : " << health_ << "  공격력 : " << attack_ << '\n';
   std::cout << "< 술 냄새가 진동한다... >\n";
-  std::cout << "============================\n";
+  std::cout << "====================================\n";
 }
 //몬스터 사망 문구
-void Orc::DesthMessage( ) const {
+void Orc::DeathMessage( ) const {
   std::cout << "============================\n";
   std::cout << "🍺 술취한 오크를 처치했다!\n";
   std::cout << "< ...술은 적당히... >\n";

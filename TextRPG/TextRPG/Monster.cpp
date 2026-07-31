@@ -49,5 +49,5 @@ void Monster::PrintMonsterStatus( ) const {
 	std::cout << " 이름  : " << name_ << '\n';
 	std::cout << "  HP   : " << health_ << '\n';
 	std::cout << "공격력 : " << attack_ << '\n';
-	std::cout << "============================" << '\n';
+	std::cout << "============================\n";
 }

@@ -22,13 +22,14 @@ void Troll::Attack(Character* character) {
 }
 //몬스터 출현 문구
 void Troll::SpawnMessage( ) const {
-  std::cout << "============================\n";
+  std::cout << "====================================\n";
   std::cout << "💪 헬창 트롤이 등장했다!\n";
+  std::cout << "HP : " << health_ << "  공격력 : " << attack_ << '\n';
   std::cout << "< 오늘도 단백질 300g 먹었다...헤헤>\n";
-  std::cout << "============================\n";
+  std::cout << "====================================\n";
 }
 //몬스터 사망 문구
-void Troll::DesthMessage( ) const {
+void Troll::DeathMessage( ) const {
   std::cout << "============================\n";
   std::cout << "💪 헬창 트롤을 처치했다!\n";
   std::cout << "< 근... 손실만은...>\n";

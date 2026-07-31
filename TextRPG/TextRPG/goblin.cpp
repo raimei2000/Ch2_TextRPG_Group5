@@ -22,13 +22,14 @@ void Goblin::Attack(Character* character) {
 }
 //몬스터 출현 문구
 void Goblin::SpawnMessage( ) const {
-std::cout << "============================\n";
+std::cout << "====================================\n";
 std::cout << "🤢 야생에서 악취 고블린이 나타났다!\n";
+std::cout << "HP : " << health_ << "  공격력 : " << attack_ << '\n';
 std::cout << "< 강력한 악취가 주변을 뒤덮는다... >\n";
-std::cout << "============================\n";
+std::cout << "====================================\n";
 }
 //몬스터 사망 문구
-void Goblin::DesthMessage( ) const {
+void Goblin::DeathMessage( ) const {
   std::cout << "============================\n";
   std::cout << "🤢 악취 고블린을 처치했다!\n";
   std::cout << "< 양치... 할걸...>\n";
