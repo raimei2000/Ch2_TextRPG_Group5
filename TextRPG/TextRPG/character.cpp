@@ -243,7 +243,18 @@ void Character::UseItem(int index) {
     else {
       for ( int i = 0; i < inventory_size( ); i++ ) {
         std::cout << i + 1 << ". " << inventory_[ i ]->name( ) << std::endl;
+        
       }
     }
     std::cout << "========================" << std::endl;
+  }
+
+
+
+  int Character::InventoryPrice(int i) const {
+    return inventory_[ i ]->price( );
+  }  
+  
+  void Character::RemoveItem(int i) {
+    inventory_.erase(inventory_.begin( ) + i);
   }

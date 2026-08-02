@@ -76,8 +76,8 @@ void Sell(Character* player)
 			isExitShop = false;
 			break;
 		}
-		player->GainGold((30 / 3) * 2);
-		//플레이어 아이템 삭제 함수 있나요?
+		player->GainGold((player->InventoryPrice(choice - 1) / 3) * 2);
+		player->RemoveItem(choice - 1);
 		break;
 	}
 }

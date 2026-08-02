@@ -72,4 +72,10 @@ int inventory_size( ) const;
 void AddItem(std::unique_ptr<Item> item);
 void UseItem(int index);
 void DisplayInventory( ) const;
+
+//아이템 가격 확인
+int InventoryPrice(int i) const;
+
+//아이템 제거
+void RemoveItem(int i);
 };
