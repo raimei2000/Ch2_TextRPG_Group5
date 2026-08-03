@@ -6,10 +6,10 @@
 
 void Menu(Character* player) {
 	int choice = 0;
-	bool isEndGame = false;
+	bool isEndMenu = false;
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	while ( !isEndGame ) {
+	while ( !isEndMenu ) {
 		std::cout << std::endl << "┌──────────────────────────────────────────┐" << std::endl;
 		std::cout << "│           ";
 		SetConsoleTextAttribute(hConsole, 3);
@@ -32,6 +32,7 @@ void Menu(Character* player) {
 			//battle 호출
 			GameManager* game_manager = GameManager::GetInstance( );
 			game_manager->Battle(player);
+			if ( player->hp() <= 0 ) isEndMenu = true;
 			break;
 		}
 		case 2: {
@@ -57,7 +58,7 @@ void Menu(Character* player) {
 		}
 		case 0: {
 			//게임 종료
-			isEndGame = true;
+			isEndMenu = true;
 			break;
 		}
 		}
