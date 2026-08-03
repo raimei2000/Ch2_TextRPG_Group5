@@ -21,17 +21,17 @@ void Buy(Character* player)
 		auto pHealthPotion = std::make_unique<HealthPotion>( );
 		auto pAttackBoost = std::make_unique<AttackBoost>( );
 		std::cout << "상점 목록\n";
-		std::cout << "1. 체력 포션 (" << pHealthPotion->price( ) << "G)\n";
-		std::cout << "2. 공격력 부스트 (" << pAttackBoost->price( ) << "G)\n";
+		std::cout << "1. 체력 포션 (" << pHealthPotion->price( ) * 3 << "G)\n";
+		std::cout << "2. 공격력 부스트 (" << pAttackBoost->price( ) * 3 << "G)\n";
 		std::cout << "0. 나가기\n";
 		std::cout << "보유 골드 : " << player->gold( ) << std::endl;
 		choice_ = InputValidator(0, 2);
 		switch ( choice_ )
 		{
 		case 1: {
-			if ( pHealthPotion->price( ) <= player->gold( ) )
+			if ( pHealthPotion->price( ) * 3 <= player->gold( ) )
 			{
-				player->UseGold(30);
+				player->UseGold(pHealthPotion->price( ) * 3);
 				player->AddItem(std::move(pHealthPotion));
 
 			}
@@ -42,9 +42,9 @@ void Buy(Character* player)
 			break;
 		}
 		case 2: {
-			if ( pAttackBoost->price( ) <= player->gold( ) )
+			if ( pAttackBoost->price( ) * 3 <= player->gold( ) )
 			{
-				player->UseGold(30);
+				player->UseGold(pAttackBoost->price( ) * 3);
 				player->AddItem(std::move(pAttackBoost));
 			}
 			else
@@ -76,9 +76,8 @@ void Sell(Character* player)
 			isExitShop = false;
 			break;
 		}
-		player->GainGold((player->ItemPrice(choice - 1) / 3) * 2);
+		player->GainGold(player->ItemPrice(choice - 1));
 		player->RemoveItem(choice - 1);
-		break;
 	}
 }
 
