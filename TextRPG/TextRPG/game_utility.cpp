@@ -22,7 +22,7 @@ void game_utility::AutoReturnToSafeZone(unsigned int time) {
 void game_utility::EnterToClear(const std::string& message) {
   std::cout << std::endl;
   std::cin.ignore(std::numeric_limits<std::streamsize>::max( ), '\n');  // 남은 입력 비우기
-  std::cout << message << std::endl;
+  std::cout << message;
   std::cin.get();
 
   std::system("cls");
