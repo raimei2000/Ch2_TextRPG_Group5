@@ -268,7 +268,7 @@ void Character::UseItem(int index) {
     return inventory_[ index ]->price( );
   }
   
-  //아이템 제ㅔ거
+  //아이템 제거
   void Character::RemoveItem(int index) {
     if ( index < 0 || index >= inventory_size( ) ) {
       return;
