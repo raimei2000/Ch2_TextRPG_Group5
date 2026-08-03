@@ -76,7 +76,7 @@ void Sell(Character* player)
 			isExitShop = false;
 			break;
 		}
-		player->GainGold((player->InventoryPrice(choice - 1) / 3) * 2);
+		player->GainGold((player->ItemPrice(choice - 1) / 3) * 2);
 		player->RemoveItem(choice - 1);
 		break;
 	}

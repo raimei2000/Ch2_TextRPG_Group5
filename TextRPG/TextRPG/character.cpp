@@ -251,7 +251,7 @@ void Character::UseItem(int index) {
 
 
 
-  int Character::InventoryPrice(int i) const {
+  int Character::ItemPrice(int i) const {
     return inventory_[ i ]->price( );
   }  
   

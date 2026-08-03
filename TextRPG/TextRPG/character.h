@@ -74,7 +74,7 @@ void UseItem(int index);
 void DisplayInventory( ) const;
 
 //아이템 가격 확인
-int InventoryPrice(int i) const;
+int ItemPrice(int i) const;
 
 //아이템 제거
 void RemoveItem(int i);
