@@ -25,6 +25,12 @@ int main() {
   std::cin >> player_name;
   std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
   Character* player = new Character(player_name, logger);
+  if ( player_name == "손지협" ) {
+    player->Status( );
+
+    std::cout << "손지협 모드 적용 완료! Enter키를 눌러 프롤로그를 시작하세요.";
+    std::cin.get( );
+  }
   
   system("cls");
   PrintPrologue(player_name);
