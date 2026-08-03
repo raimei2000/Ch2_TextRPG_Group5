@@ -21,7 +21,7 @@ void Menu(Character* player) {
 		std::cout << "             │" << std::endl; 
 		std::cout << "├──────────────────────────────────────────┤" << std::endl;
 		std::cout << "│▶ 1. 다음 구역으로 이동 ▶ 2. 인벤토리     │" << std::endl;
-		std::cout << "│▶ 3. 스탯               ▶ 4. 무인 상점    │" << std::endl;
+		std::cout << "│▶ 3. 스탯               ▶ 4. 탕비실(상점) │" << std::endl;
 		std::cout << "│▶ 5. 기록               ";
 		SetConsoleTextAttribute(hConsole, 8);
 		std::cout << "▶ 0. 게임 종료";
