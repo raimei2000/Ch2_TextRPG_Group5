@@ -94,7 +94,7 @@ void Sell(Character* player)
 
 			//아이템 제거 전 정보 저장
 			const std::string item_name = player->ItemName(item_index);
-			const int sell_price = player->ItemPrice(choice -1);
+			const int sell_price = player->ItemPrice(item_index);
 
 			//판매 골드 지급 후 아이템 제거
 			player->GainGold(sell_price);
