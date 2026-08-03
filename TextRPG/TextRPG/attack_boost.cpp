@@ -4,7 +4,7 @@
 
 #include "character.h"
 
-AttackBoost::AttackBoost( ) : Item("공격력 부스트", 40), attack_increase_(10) {}
+AttackBoost::AttackBoost( ) : Item("공격력 부스트"), attack_increase_(10) {}
 
 void AttackBoost::Use(Character* character) {
 	int prev_power = character->power( );
@@ -13,3 +13,5 @@ void AttackBoost::Use(Character* character) {
 	std::cout << "공격력: " << prev_power << " -> " << character->power( ) << std::endl;
 	std::cout << "============================" << std::endl;
 }
+
+int AttackBoost::price( ) const { return kPrice; }

@@ -4,7 +4,7 @@
 
 #include "character.h"
 
-HealthPotion::HealthPotion( ) : Item("HP포션", 30), health_restore_(50) {}
+HealthPotion::HealthPotion( ) : Item("HP포션"), health_restore_(50) {}
 
 void HealthPotion::Use(Character* character) {
 	int prev_hp = character->hp( );
@@ -13,3 +13,5 @@ void HealthPotion::Use(Character* character) {
 	std::cout << "HP: " << prev_hp << "->" << character->hp( ) << std::endl;
 	std::cout << "============================" << std::endl;
 }
+
+int HealthPotion::price( ) const { return kPrice; }
