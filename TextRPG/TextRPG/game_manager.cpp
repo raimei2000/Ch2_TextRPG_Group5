@@ -48,7 +48,10 @@ Monster* GameManager::RandomSpawnMonster(int player_level) {
 }
 
 // 전투 진입
-void GameManager::Battle(Character* player) {
+bool GameManager::Battle(Character* player)
+{
+  bool boss_cleared = false;
+
   system("cls");
 
   // 보스전 관련
@@ -177,13 +180,17 @@ void GameManager::Battle(Character* player) {
 
   // 전투 루프 종료. 승리 판정
   // 플레이어 승리
-  if (player->hp() > 0 && !escape) {
+  if ( player->hp( ) > 0 && !escape ) {
     monster->DeathMessage( );
     std::cout << "플레이어 승리!" << std::endl;
     int earned_exp = 50; // 추후 각 몬스터가 갖는 경험치로 대체.
     int earned_gold = RandomNumberGenerator::RandomInteger(10, 20);
     player->GainExp(earned_exp);
     player->GainGold(earned_gold);
+
+    if ( is_boss_battle ) {
+      boss_cleared = true;
+    }
 
     // 경험치, 골드 획득 로그
     std::cout << player->name( ) << "이(가) " << earned_exp << " EXP와 " << earned_gold << " 골드를 획득했습니다.\n";
@@ -234,6 +241,8 @@ void GameManager::Battle(Character* player) {
   }
 
   delete monster;
+  return boss_cleared;
+
 }
 
 GameManager* GameManager::GetInstance() {

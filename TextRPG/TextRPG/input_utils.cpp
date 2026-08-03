@@ -5,15 +5,16 @@
 int InputValidator(int min, int max) {
 	int value_;
 	while ( true ) {
+		std::cout << ">> ";
 		std::cin >> value_;
 		if ( std::cin.fail( ) ) {
 			std::cin.clear( );
 			std::cin.ignore(1000, '\n');
-			std::cout << "다시 입력해주세요: ";
+			std::cout << "다시 입력해주세요\n";
 			continue;
 		}
 		else if ( value_ > max || value_ < min ) {
-			std::cout << "다시 입력해주세요: ";
+			std::cout << "다시 입력해주세요\n";
 			continue;
 		}
 		return value_;
