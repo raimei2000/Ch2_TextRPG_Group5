@@ -25,8 +25,8 @@ int main() {
   std::cin >> player_name;
   std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
   Character* player = new Character(player_name, logger);
-  //player->PrintCreationLog(); // 캐릭터 Hero 생성 완료! 레벨: 1, 체력: 100, 공격력: 10
-
+  
+  system("cls");
   PrintPrologue(player_name);
 
   // 첫 전투

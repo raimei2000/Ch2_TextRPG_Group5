@@ -274,7 +274,14 @@ void Character::UseItem(int index) {
       return;
     }
 
+    //Logger에 아이템 사용기록 연동
+    if ( logger_ != nullptr )
+    {
+      logger_->RecordItemUse(inventory_[ index ]->name( ));
+    };
+
     inventory_.erase(
       inventory_.begin( ) + index
     );
+
   }
