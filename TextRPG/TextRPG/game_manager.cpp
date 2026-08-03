@@ -13,6 +13,7 @@
 #include "random_number_generator.h"
 #include "logger.h"
 #include "game_utility.h"
+#include "input_utils.h"
 
 // 몬스터 추가시 해당 몬스터의 헤더 포함
 #include "goblin.h"
@@ -69,14 +70,13 @@ bool GameManager::Battle(Character* player)
   while (player->hp() > 0 && monster->health() > 0 && !escape) {
     bool player_turn_end = false;
     while ( !player_turn_end ) {
-      // 플레이어 행동 선택 [0: 공격, 1: 아이템 사용]
+      // 플레이어 행동 선택 [1: 공격, 2: 인벤토리, 3: 스탯창, 4: 도망가기]
       //int player_behavior = RandomNumberGenerator::RandomInteger(0, 1); // 랜덤 행동 선택
       int player_behavior;
       std::cout << std::endl;
       std::cout << player->name( ) << "은(는) 무엇을 할까?" << std::endl;
       std::cout << "1. 공격     2. 인벤토리   3. 스탯 확인  4. 도망가기" << std::endl;
-      std::cout << ">> ";
-      std::cin >> player_behavior;
+      player_behavior = BattleInputValidator(1, 4);
 
       system("cls");
 
@@ -96,8 +96,7 @@ bool GameManager::Battle(Character* player)
         while ( !inventory_close ) {
           int choice;
           std::cout << "사용할 아이템 번호(돌아가기: 0)" << std::endl;
-          std::cout << ">> ";
-          std::cin >> choice;
+          choice = InputValidator(0, player->inventory_size( ));
           system("cls");
           if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
             player->UseItem(choice - 1);
