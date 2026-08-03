@@ -41,6 +41,8 @@ void Menu(Character* player) {
 			}
 			else if ( boss_cleared ) {
 				ShowEpilogue(player->name( ));
+				Logger* logger = Logger::GetInstance( );
+				logger->Log( );
 				isEndMenu = true;
 			}
 			break;
