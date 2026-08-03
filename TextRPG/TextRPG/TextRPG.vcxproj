@@ -140,6 +140,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="monster.cpp" />
     <ClCompile Include="orc.cpp" />
+    <ClCompile Include="page_utils.cpp" />
     <ClCompile Include="prologue.cpp" />
     <ClCompile Include="random_number_generator.cpp" />
     <ClCompile Include="shop.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="monster.h" />
     <ClInclude Include="bossogre.h" />
     <ClInclude Include="orc.h" />
+    <ClInclude Include="page_utils.h" />
     <ClInclude Include="prologue.h" />
     <ClInclude Include="random_number_generator.h" />
     <ClInclude Include="shop.h" />

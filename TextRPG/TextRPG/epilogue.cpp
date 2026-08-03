@@ -1,33 +1,9 @@
 #include "epilogue.h"
+#include "page_utils.h"
 
 #include <iostream>
-#include <cstdlib>
 #include <string>
-
-namespace {
-  bool EnterToNextPage( ) {
-    while ( true ) {
-      std::cout << std::endl;
-      std::cout << "[Enter: 계속 / 0: 에필로그 스킵] ";
-
-      std::string input;
-      std::getline(std::cin, input);
-
-      if ( input.empty( ) ) {
-        std::system("cls");
-        return false;
-      }
-
-      if ( input == "0" ) {
-        std::system("cls");
-        return true;
-      }
-
-      std::cout << "Enter 또는 0을 입력해주세요."
-        << std::endl;
-    }
-  }
-}
+#include <cstdlib>
 
 void ShowEpilogue(const std::string& player_name) {
   std::cout << "========================================" << std::endl;
@@ -37,6 +13,10 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "마침내 꼰대 오우거의 거대한 몸을" << std::endl;
   std::cout << "간신히 쓰러뜨렸습니다." << std::endl;
   std::cout << std::endl;
+
+  if ( EnterToNextPage("에필로그") ) {
+    return;
+  }
 
   std::cout << "쿵──!" << std::endl << std::endl;
 
@@ -55,7 +35,7 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "그 말을 끝으로 꼰대 오우거는 눈을 감았습니다." << std::endl;
   std::cout << "마지막 순간까지도 잔소리를 멈추지 않았습니다." << std::endl;
 
-  if ( EnterToNextPage( ) ) {
+  if ( EnterToNextPage("에필로그") ) {
     return;
   }
 
@@ -79,7 +59,7 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "굳게 닫혀 있던 던전의 문이 천천히 열리고," << std::endl;
   std::cout << "오랜만에 보는 햇빛이 던전 안으로 들어왔습니다." << std::endl;
 
-  if ( EnterToNextPage( ) ) {
+  if ( EnterToNextPage("에필로그") ) {
     return;
   }
 
@@ -94,7 +74,7 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "던전 관리 시스템이 마지막 안내를 시작했습니다." << std::endl;
   std::cout << std::endl;
 
-  if ( EnterToNextPage( ) ) {
+  if ( EnterToNextPage("에필로그") ) {
     return;
   }
 
@@ -112,7 +92,7 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "\"정상적으로 결제되었습니다.\"" << std::endl;
   std::cout << "\"다음 방문을 기대하겠습니다.\"" << std::endl;
 
-  if ( EnterToNextPage( ) ) {
+  if ( EnterToNextPage("에필로그") ) {
     return;
   }
 
@@ -124,7 +104,7 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "새로운 모집 공고가 붙어 있었습니다." << std::endl;
   std::cout << std::endl;
 
-  if ( EnterToNextPage( ) ) {
+  if ( EnterToNextPage("에필로그") ) {
     return;
   }
 
@@ -138,7 +118,7 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "========================================" << std::endl;
   std::cout << std::endl;
 
-  if ( EnterToNextPage( ) ) {
+  if ( EnterToNextPage("에필로그") ) {
     return;
   }
 
