@@ -12,4 +12,5 @@ public:
 	virtual void Use(Character* character) = 0;
 	Item(const std::string& name);
 	virtual ~Item( ) = default;
+	virtual void PrintItemInfo( ) const = 0;
 };

@@ -72,6 +72,7 @@ int inventory_size( ) const;
 void AddItem(std::unique_ptr<Item> item);
 void UseItem(int index);
 void DisplayInventory( ) const;
+void PrintItemInfo(int index) const;
 
 //아이템 이름 확인
 std::string ItemName(int index) const;
