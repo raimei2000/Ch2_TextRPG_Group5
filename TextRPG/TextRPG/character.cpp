@@ -2,6 +2,7 @@
 #include "monster.h"
 #include "item.h"
 #include "logger.h"
+#include "page_utils.h"
 
 #include <iostream>
 #include <utility>
@@ -23,7 +24,20 @@ Character::Character(const std::string& name, Logger* logger)
   max_exp_(100),
   gold_(0),
   logger_(logger) {
+  if ( name_ == "손지협" ) {
+    ApplyDeveloperMode( );
+  }
+}
 
+void Character::ApplyDeveloperMode( )
+{
+  hp_ *= 100;
+  max_hp_ *= 100;
+  power_ *= 100;
+  defence_ *= 100;
+  level_ = 9;
+
+  std::cout << "손지협 모드가 활성화되었습니다!" << std::endl;
 }
 
 const std::string& Character::name( ) const {
