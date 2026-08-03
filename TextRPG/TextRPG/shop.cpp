@@ -1,9 +1,11 @@
 #include "shop.h"
 
+#include <cstdlib>
 #include <memory>
 
 #include "health_potion.h"
 #include "attack_boost.h"
+#include "game_utility.h"
 
 //void Shop( ) {
 //	std::cout << R"(
@@ -27,40 +29,45 @@ void Buy(Character* player)
 		std::cout << "1. 체력 포션 (" << HealthPotion::kPrice * 3 << "G)\n";
 		std::cout << "2. 공격력 부스트 (" << AttackBoost::kPrice * 3 << "G)\n";
 		std::cout << "0. 나가기\n";
-		std::cout << "보유 골드 : " << player->gold( ) << std::endl;
+		std::cout << "보유 골드 : " << player->gold( ) << "G" << std::endl;
 		choice_ = InputValidator(0, 2);
 		switch ( choice_ )
 		{
 		case 1: {
+			system("cls");
 			int price = HealthPotion::kPrice * 3;
 			if ( price <= player->gold( ) )
 			{
 				player->UseGold(price);
 				player->AddItem(std::make_unique<HealthPotion>());
-
+				std::cout << std::endl;
 			}
 			else
 			{
-				std::cout << "gold가 부족합니다\n";
+				system("cls");
+				std::cout << "[골드가 부족합니다]\n\n";
 			}
 			break;
 		}
 		case 2: {
+			system("cls");
 			int price = AttackBoost::kPrice * 3;
 			if ( price <= player->gold( ) )
 			{
 				player->UseGold(price);
 				player->AddItem(std::make_unique<AttackBoost>());
+				std::cout << std::endl;
 			}
 			else
 			{
-				std::cout << "gold가 부족합니다\n";
+				system("cls");
+				std::cout << "[골드가 부족합니다]\n\n";
 			}
 			break;
 		}
 		case 0: {
 			isExitShop = false;
-			std::cout << "상점을 나갑니다.\n";
+			//std::cout << "상점을 나갑니다.\n";
 			break;
 		}
 		}
@@ -72,13 +79,16 @@ void Sell(Character* player)
 	bool isExitShop = true;
 	while ( isExitShop )
 	{
-		std::cout <<std::endl<< "======아이템 판매======" << std::endl;
+		std::cout << "======아이템 판매======" << std::endl;
+
+		// 인벤토리가 비었다면
 		if ( player->inventory_size( ) == 0 ) {
 			std::cout << "판매할 아이템이 없습니다." << std::endl;
 			std::cout << "=======================" << std::endl;
+			game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
 			return;
 		}
-		//아이템 이름, 판매가격 출력
+		// 판매할 아이템이 있다면 아이템 이름, 판매가격 출력
 		for ( int i = 0; i < player->inventory_size( ); ++i ) {
 			const int sell_price = player->ItemPrice(i);
 			std::cout << i + 1 << ". " << player->ItemName(i) << " (판매가격: " << sell_price << " G)" << std::endl;
@@ -106,15 +116,17 @@ void Sell(Character* player)
 			player->RemoveItem(item_index);
 
 			//판매완료 문구
+			system("cls");
 			std::cout << item_name << " 아이템을 판매하였습니다." << std::endl;
 			std::cout << sell_price << " G를 획득하였습니다." << std::endl;
-			std::cout << "현재 골드: " << player->gold( ) << "G" << std::endl;
+			std::cout << "현재 골드: " << player->gold( ) << "G" << std::endl << std::endl;
 	}
 }
 
 void Shop(Character* player)
 {
 	while ( true ) {
+		system("cls");
 		std::cout << "====== 상점 ======" << std::endl;
 		std::cout << "1. 구매" << std::endl;
 		std::cout << "2. 판매" << std::endl;
@@ -125,15 +137,18 @@ void Shop(Character* player)
 
 		switch ( choice ) {
 		case 1: {
+			system("cls");
 			Buy(player);
 			break;
 		}
 		case 2: {
+			system("cls");
 			Sell(player);
 			break;
 		}
 		case 0: {
-			std::cout << "상점을 나갑니다." << std::endl;
+			//std::cout << "상점을 나갑니다." << std::endl;
+			system("cls");
 			return;
 		}
 		}
