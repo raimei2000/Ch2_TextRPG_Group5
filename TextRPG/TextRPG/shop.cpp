@@ -70,7 +70,7 @@ void Sell(Character* player)
 	{
 		player->DisplayInventory( );
 		std::cout << "0.나가기\n";
-		choice = InputValidator(0, player->inventory_size( ) + 1);
+		choice = InputValidator(0, player->inventory_size( ));
 		if ( choice == 0 )
 		{
 			isExitShop = false;
