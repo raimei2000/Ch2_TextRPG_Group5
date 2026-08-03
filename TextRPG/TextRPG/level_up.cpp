@@ -28,7 +28,7 @@ void Character::LevelUp() {
   //상승한 레벨을 기준으로 능력치 상승
   max_hp_ += level_ * 20;
   power_ += level_ * 5;
-  defence_ += level_ * 5;
+  defence_ += level_ * 3;
 
   //레벨업 후 최대체력까지 회복
   hp_ = max_hp_;

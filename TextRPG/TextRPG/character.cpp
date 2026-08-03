@@ -18,7 +18,7 @@ Character::Character(const std::string& name, Logger* logger)
   max_hp_(200),
   power_(30),
   temporary_power_bonus_(0),
-  defence_(30),
+  defence_(8),
   exp_(0),
   max_exp_(100),
   gold_(0),
