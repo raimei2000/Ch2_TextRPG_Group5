@@ -154,6 +154,19 @@ bool GameManager::Battle(Character* player)
 
         break;
       }
+      case 999111: {
+        std::cout << "체력 치트." << std::endl;
+        player->set_hp(player->max_hp( ));
+
+        break;
+      }
+      case 999222: {
+        std::cout << "공격력 치트." << std::endl;
+        AttackBoost temp;
+        temp.Use(player);
+
+        break;
+      }
       default: {
         break;
       }
