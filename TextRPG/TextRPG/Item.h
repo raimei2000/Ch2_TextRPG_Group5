@@ -6,11 +6,10 @@ class Character;
 class Item {
 protected:
 	const std::string name_;
-	const int price_;
 public:
 	std::string name( ) const { return name_; }
-	int price( ) const { return price_; }
+	virtual int price( ) const = 0;
 	virtual void Use(Character* character) = 0;
-	Item(const std::string& name, int price);
+	Item(const std::string& name);
 	virtual ~Item( ) = default;
 };
