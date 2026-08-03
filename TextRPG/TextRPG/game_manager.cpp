@@ -98,6 +98,7 @@ bool GameManager::Battle(Character* player)
           std::cout << "사용할 아이템 번호(돌아가기: 0)" << std::endl;
           std::cout << ">> ";
           std::cin >> choice;
+          system("cls");
           if ( 1 <= choice && choice <= player->inventory_size( ) ) { // 유효한 인덱스 입력시
             player->UseItem(choice - 1);
             inventory_close = true;
