@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "input_utils.h"
 #include "shop.h"
+#include "epilogue.h"
 
 #include <Windows.h>
 
@@ -31,8 +32,15 @@ void Menu(Character* player) {
 		case 1: {
 			//battle 호출
 			GameManager* game_manager = GameManager::GetInstance( );
-			game_manager->Battle(player);
-			if ( player->hp() <= 0 ) isEndMenu = true;
+			const bool boss_cleared = game_manager->Battle(player);
+
+			if ( player->hp( ) <= 0 ) {
+				isEndMenu = true;
+			}
+			else if ( boss_cleared ) {
+				ShowEpilogue(player->name( ));
+				isEndMenu = true;
+			}
 			break;
 		}
 		case 2: {
