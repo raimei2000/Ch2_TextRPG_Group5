@@ -73,7 +73,7 @@ void Sell(Character* player)
 			std::cout << "=======================" << std::endl;
 			return;
 		}
-		//아이템 이름, 판매가겨그출력
+		//아이템 이름, 판매가격 출력
 		for ( int i = 0; i < player->inventory_size( ); ++i ) {
 			const int sell_price = player->ItemPrice(i);
 			std::cout << i + 1 << ". " << player->ItemName(i) << " (판매가격: " << sell_price << " G)" << std::endl;
