@@ -250,11 +250,31 @@ void Character::UseItem(int index) {
   }
 
 
+  //범위검사 추가
+  std::string Character::ItemName(int index) const {
+    if ( index < 0 || index >= inventory_size( ) ) {
+      return "알 수 없는 아이템";
+    }
 
-  int Character::ItemPrice(int i) const {
-    return inventory_[ i ]->price( );
-  }  
+    return inventory_[ index ]->name( );
+  }
+
+  //아이템 가격확인
+  int Character::ItemPrice(int index) const {
+    if ( index < 0 || index >= inventory_size( ) ) {
+      return 0;
+    }
+
+    return inventory_[ index ]->price( );
+  }
   
-  void Character::RemoveItem(int i) {
-    inventory_.erase(inventory_.begin( ) + i);
+  //아이템 제거
+  void Character::RemoveItem(int index) {
+    if ( index < 0 || index >= inventory_size( ) ) {
+      return;
+    }
+
+    inventory_.erase(
+      inventory_.begin( ) + index
+    );
   }

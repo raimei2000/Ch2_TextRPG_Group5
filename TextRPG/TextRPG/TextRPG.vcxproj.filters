@@ -93,6 +93,9 @@
     <ClCompile Include="game_utility.cpp">
       <Filter>Source Files\system</Filter>
     </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>Source Files\item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="attack_boost.h">
