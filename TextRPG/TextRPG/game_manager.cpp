@@ -200,12 +200,12 @@ void GameManager::Battle(Character* player) {
       int item_idx = RandomNumberGenerator::RandomInteger(0, 1);
       switch ( item_idx ) {
       case 0: {
-        player->AddItem( std::move( std::make_unique<HealthPotion>( ) ) );
+        player->AddItem( std::make_unique<HealthPotion>( ) );
 
         break;
       }
       case 1: {
-        player->AddItem( std::move( std::make_unique<AttackBoost>( ) ) );
+        player->AddItem( std::make_unique<AttackBoost>( ) );
 
         break;
       }
