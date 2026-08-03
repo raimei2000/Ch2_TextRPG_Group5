@@ -41,16 +41,9 @@ int main() {
   // 메인루프
   Menu(player);
 
-  // 게임종료
   // 플레이어 사망으로 게임 종료
   if ( player->hp( ) <= 0 ) {
     std::cout << "Game Over.." << std::endl;
-  }
-  // 보스 클리어로 게임종료
-  //else if (boss_clear) { }
-  // 메인메뉴 0번으로 게임종료
-  else {
-    std::cout << "잠이 쏟아진다.. 한숨 자야겠다..." << std::endl;
   }
 
   delete player;

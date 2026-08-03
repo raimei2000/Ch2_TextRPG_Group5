@@ -95,6 +95,7 @@ void Menu(Character* player) {
 		}
 		case 0: {
 			//게임 종료
+			std::cout << "잠이 쏟아진다.. 한숨 자야겠다..." << std::endl;
 			isEndMenu = true;
 			break;
 		}
