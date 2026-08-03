@@ -15,3 +15,9 @@ void AttackBoost::Use(Character* character) {
 }
 
 int AttackBoost::price( ) const { return kPrice; }
+
+void AttackBoost::PrintItemInfo( ) const {
+	std::cout << "이름 : " << name_ << std::endl;
+	std::cout << "가치 : " << kPrice << "G" << std::endl;
+	std::cout << "설명 : " << "한 번의 전투 동안 공격력 " << attack_increase_ << " 만큼 증가시킨다." << std::endl;
+}

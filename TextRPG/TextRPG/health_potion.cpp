@@ -15,3 +15,9 @@ void HealthPotion::Use(Character* character) {
 }
 
 int HealthPotion::price( ) const { return kPrice; }
+
+void HealthPotion::PrintItemInfo( ) const{
+	std::cout << "이름 : " << name_ << std::endl;
+	std::cout << "가치 : " << kPrice << "G" << std::endl;
+	std::cout << "설명 : " << "체력을 " << health_restore_ << " 만큼 회복 시켜준다." << std::endl;
+}

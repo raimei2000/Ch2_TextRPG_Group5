@@ -2,6 +2,7 @@
 #include "monster.h"
 #include "item.h"
 #include "logger.h"
+#include "page_utils.h"
 
 #include <iostream>
 #include <utility>
@@ -18,12 +19,25 @@ Character::Character(const std::string& name, Logger* logger)
   max_hp_(200),
   power_(30),
   temporary_power_bonus_(0),
-  defence_(30),
+  defence_(8),
   exp_(0),
   max_exp_(100),
   gold_(0),
   logger_(logger) {
+  if ( name_ == "손지협" ) {
+    ApplyDeveloperMode( );
+  }
+}
 
+void Character::ApplyDeveloperMode( )
+{
+  hp_ *= 100;
+  max_hp_ *= 100;
+  power_ *= 100;
+  defence_ *= 100;
+  level_ = 9;
+
+  std::cout << "손지협 모드가 활성화되었습니다!" << std::endl;
 }
 
 const std::string& Character::name( ) const {
@@ -147,8 +161,13 @@ void Character::TakeDamage(int damage) {
 
   }
 
+  int reduced_damage = damage - defence( );
+  if ( reduced_damage < 1 )
+  {
+    reduced_damage = 1;   // 최소 1은 보장
+  }
   //현재 체력을 초과하지 않는 실제 피해량
-  const int actual_damage = std::min(damage, hp_);
+  const int actual_damage = std::min(reduced_damage, hp_);
 
   //피해를 받기 전 체력 저장
   const int old_hp_ = hp_;
@@ -249,6 +268,13 @@ void Character::UseItem(int index) {
     std::cout << "========================" << std::endl;
   }
 
+  void Character::PrintItemInfo(int index) const{
+    if ( index < inventory_.size( ) )
+    {
+      std::cout << "\n[상세정보]\n";
+      inventory_[ index ]->PrintItemInfo( );
+    }
+  }
 
   //범위검사 추가
   std::string Character::ItemName(int index) const {
@@ -274,7 +300,14 @@ void Character::UseItem(int index) {
       return;
     }
 
+    //Logger에 아이템 사용기록 연동
+    if ( logger_ != nullptr )
+    {
+      logger_->RecordItemUse(inventory_[ index ]->name( ));
+    };
+
     inventory_.erase(
       inventory_.begin( ) + index
     );
+
   }

@@ -1,7 +1,10 @@
 #include "menu.h"
 #include "input_utils.h"
 #include "shop.h"
+#include "epilogue.h"
+#include "game_utility.h"
 
+#include <cstdlib>
 #include <Windows.h>
 
 void Menu(Character* player) {
@@ -31,18 +34,52 @@ void Menu(Character* player) {
 		case 1: {
 			//battle 호출
 			GameManager* game_manager = GameManager::GetInstance( );
-			game_manager->Battle(player);
-			if ( player->hp() <= 0 ) isEndMenu = true;
+			const bool boss_cleared = game_manager->Battle(player);
+
+			if ( player->hp( ) <= 0 ) {
+				isEndMenu = true;
+			}
+			else if ( boss_cleared ) {
+				ShowEpilogue(player->name( ));
+				Logger* logger = Logger::GetInstance( );
+				logger->Log( );
+				isEndMenu = true;
+			}
 			break;
 		}
 		case 2: {
 			//인벤토리 호출
-			player->DisplayInventory( );
+			int choice = 0;
+			bool isExitInventory = true;
+			while ( true )
+			{
+        system("cls");
+				player->DisplayInventory( );
+				// 인벤토리가 비었다면
+				if ( player->inventory_size( ) == 0 ) {
+					isExitInventory = false;
+          game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
+					break;
+				}
+				// 인벤토리에 아이템이 있다면
+				std::cout << "1 ~ " << player->inventory_size( ) << "를 입력하여 상세 정보\n"
+					<< "0 : 나가기\n";
+				choice = InputValidator(0, player->inventory_size( ));
+				if ( choice == 0 ) {
+					isExitInventory = false;
+					system("cls");
+					break;
+				}
+				player-> PrintItemInfo(choice - 1);
+				game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
+			}
 			break;
 		}
 		case 3: {
 			//스탯 호출
+			system("cls");
 			player->Status( );
+			game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
 			break;
 		}
 		case 4: {
@@ -52,12 +89,15 @@ void Menu(Character* player) {
 		}
 		case 5: {
 			//로그 호출
+			system("cls");
 			Logger* logger = Logger::GetInstance( );
 			logger->Log( );
+			game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
 			break;
 		}
 		case 0: {
 			//게임 종료
+			std::cout << "잠이 쏟아진다.. 한숨 자야겠다..." << std::endl;
 			isEndMenu = true;
 			break;
 		}
