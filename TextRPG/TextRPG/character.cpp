@@ -35,6 +35,7 @@ void Character::ApplyDeveloperMode( )
   max_hp_ *= 100;
   power_ *= 100;
   defence_ *= 100;
+  level_ = 9;
 
   std::cout << "손지협 모드가 활성화되었습니다!" << std::endl;
 }
