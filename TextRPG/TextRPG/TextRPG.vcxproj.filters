@@ -96,6 +96,9 @@
     <ClCompile Include="item.cpp">
       <Filter>Source Files\item</Filter>
     </ClCompile>
+    <ClCompile Include="epilogue.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="attack_boost.h">
@@ -138,6 +141,9 @@
       <Filter>Header Files\monster</Filter>
     </ClInclude>
     <ClInclude Include="game_utility.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="epilogue.h">
       <Filter>Header Files\system</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,7 @@
 #include "logger.h"
 #include "menu.h"
 #include "prologue.h"
+#include "epilogue.h"
 
 int main() {
   // 인코딩 관련
