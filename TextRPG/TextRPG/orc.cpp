@@ -10,9 +10,9 @@ Orc::Orc(int player_level)
   : Monster(
     "오크",
     RandomNumberGenerator::RandomInteger(
-      player_level * 40, player_level * 55),
+      player_level * 40, player_level * 60),
     RandomNumberGenerator::RandomInteger(
-      player_level * 10, player_level * 18)) {
+      player_level * 10, player_level * 20)) {
 }
 
 //공격 문구
