@@ -181,7 +181,7 @@ void GameManager::Battle(Character* player) {
     monster->DeathMessage( );
     std::cout << "플레이어 승리!" << std::endl;
     int earned_exp = 50; // 추후 각 몬스터가 갖는 경험치로 대체.
-    int earned_gold = RandomNumberGenerator::RandomInteger(10, 20);
+    int earned_gold = RandomNumberGenerator::RandomInteger(18, 30);
     player->GainExp(earned_exp);
     player->GainGold(earned_gold);
 

@@ -12,7 +12,7 @@ Troll::Troll(int player_level)
     RandomNumberGenerator::RandomInteger(
       player_level * 50, player_level * 70),
     RandomNumberGenerator::RandomInteger(
-      player_level * 20, player_level * 30)) {
+      player_level * 20, player_level * 21)) {
 }
 
 //공격 문구
