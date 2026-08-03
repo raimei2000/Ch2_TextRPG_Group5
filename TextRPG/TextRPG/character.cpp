@@ -249,6 +249,13 @@ void Character::UseItem(int index) {
     std::cout << "========================" << std::endl;
   }
 
+  void Character::PrintItemInfo(int index) const{
+    if ( index < inventory_.size( ) )
+    {
+      std::cout << "\n[상세정보]\n";
+      inventory_[ index ]->PrintItemInfo( );
+    }
+  }
 
   //범위검사 추가
   std::string Character::ItemName(int index) const {

@@ -47,9 +47,28 @@ void Menu(Character* player) {
 		}
 		case 2: {
 			//인벤토리 호출
-			system("cls");
-			player->DisplayInventory( );
-			game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
+			int choice = 0;
+			bool isExitInventory = true;
+			while ( true )
+			{
+        system("cls");
+				player->DisplayInventory( );
+				if ( player->inventory_size( ) == 0 ) {
+					isExitInventory = false;
+          game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
+					break;
+				}
+				std::cout << "1 ~ " << player->inventory_size( ) << "를 입력하여 상세 정보\n"
+					<< "0 : 나가기\n";
+				choice = InputValidator(0, player->inventory_size( ));
+				if ( choice == 0 ) {
+					isExitInventory = false;
+					break;
+				}
+        system("cls");
+				std::cout << "\n[상세정보]\n";
+				player-> PrintItemInfo(choice - 1);
+			}
 			break;
 		}
 		case 3: {

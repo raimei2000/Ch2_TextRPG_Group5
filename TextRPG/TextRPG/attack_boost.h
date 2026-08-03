@@ -15,4 +15,5 @@ public:
 	AttackBoost();
 	void Use(Character* character);
 	int price( ) const override;
+	void PrintItemInfo( ) const override;
 };
