@@ -8,7 +8,8 @@ public:
   // 플레이어 레벨 기반 랜덤한 종류의 몬스터 생성
   Monster* RandomSpawnMonster(int player_level);
   // 전투 진입
-  bool Battle(Character* player);
+  void Battle(Character* player);
+  bool boss_cleared( ) { return boss_cleared_; }
   
   // For singleton.
   // delete copy, assignment operator.
@@ -20,6 +21,7 @@ public:
 
 private:
   static GameManager* instance_; // static pointer to unique GameManager instance
+  static bool boss_cleared_;
 
   GameManager() = default;
 };

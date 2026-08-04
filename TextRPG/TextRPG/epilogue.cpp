@@ -133,9 +133,5 @@ void ShowEpilogue(const std::string& player_name) {
   std::cout << "            THE HAPPY END" << std::endl;
   std::cout << "========================================" << std::endl;
 
-  
-
-  std::cout << "Enter 키를 눌러 게임을 종료합니다..";
-  std::string input;
-  std::getline(std::cin, input);
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max( ), '\n');  // 남은 입력 비우기
 }

@@ -49,9 +49,9 @@ Monster* GameManager::RandomSpawnMonster(int player_level) {
 }
 
 // 전투 진입
-bool GameManager::Battle(Character* player)
+void GameManager::Battle(Character* player)
 {
-  bool boss_cleared = false;
+  //bool boss_cleared = false;
 
   system("cls");
 
@@ -202,7 +202,7 @@ bool GameManager::Battle(Character* player)
     player->GainGold(earned_gold);
 
     if ( is_boss_battle ) {
-      boss_cleared = true;
+      boss_cleared_ = true;
     }
 
     // 경험치, 골드 획득 로그
@@ -254,8 +254,6 @@ bool GameManager::Battle(Character* player)
   }
 
   delete monster;
-  return boss_cleared;
-
 }
 
 GameManager* GameManager::GetInstance() {
@@ -266,3 +264,5 @@ GameManager* GameManager::GetInstance() {
 }
 
 GameManager* GameManager::instance_ = nullptr;
+
+bool GameManager::boss_cleared_ = false;

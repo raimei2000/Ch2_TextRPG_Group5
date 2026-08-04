@@ -34,17 +34,10 @@ void Menu(Character* player) {
 		case 1: {
 			//battle 호출
 			GameManager* game_manager = GameManager::GetInstance( );
-			const bool boss_cleared = game_manager->Battle(player);
+			game_manager->Battle(player);
 
-			if ( player->hp( ) <= 0 ) {
-				isEndMenu = true;
-			}
-			else if ( boss_cleared ) {
-				ShowEpilogue(player->name( ));
-				Logger* logger = Logger::GetInstance( );
-				logger->Log( );
-				isEndMenu = true;
-			}
+			if ( player->hp( ) <= 0 || game_manager->boss_cleared( ) ) isEndMenu = true;
+
 			break;
 		}
 		case 2: {

@@ -10,6 +10,7 @@
 #include "menu.h"
 #include "prologue.h"
 #include "epilogue.h"
+#include "game_utility.h"
 
 int main() {
   // 인코딩 관련
@@ -45,6 +46,14 @@ int main() {
   if ( player->hp( ) <= 0 ) {
     std::cout << "Game Over.." << std::endl;
   }
+
+  // 보스 클리어
+  if ( game_manager->boss_cleared( ) ) {
+    ShowEpilogue(player->name( ));
+    game_utility::EnterToClear("[Enter를 눌러 모험 되돌아보기]");
+    logger->Log( );
+  }
+  game_utility::EnterToClear("[Enter를 눌러 게임 종료]");
 
   delete player;
   return 0;
