@@ -3,6 +3,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <vector>
+#include <thread>
+#include <atomic>
+#include <Windows.h>
 
 bool EnterToNextPage(const std::string& skip_target)
 {
@@ -26,3 +30,45 @@ bool EnterToNextPage(const std::string& skip_target)
     std::cout << "Enter 또는 0을 입력해주세요." << std::endl;
   }
 }
+
+void EndingScroll(const std::vector<std::string>& lines) {
+	CONSOLE_CURSOR_INFO cursor_info;
+	cursor_info.dwSize = 100;
+	cursor_info.bVisible = FALSE;
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorInfo(hConsole, &cursor_info);
+	for ( const auto& line : lines ) {
+		std::cout << line << std::endl;
+		if ( line.empty( ) ) {
+			std::this_thread::sleep_for(std::chrono::milliseconds(300));
+		}
+		else {
+			std::this_thread::sleep_for(std::chrono::milliseconds(800));
+		}
+	}
+}
+
+void ShowAllAtOnce(const std::vector<std::string>& lines) {
+	CONSOLE_CURSOR_INFO cursor_info;
+	cursor_info.dwSize = 100;
+	cursor_info.bVisible = FALSE;
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorInfo(hConsole, &cursor_info);
+	for ( const auto& line : lines ) {
+		std::cout << line << std::endl;
+	}
+}
+
+void DelayShowAllAtOnce(const std::vector<std::string>& lines) {
+	CONSOLE_CURSOR_INFO cursor_info;
+	cursor_info.dwSize = 100;
+	cursor_info.bVisible = FALSE;
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorInfo(hConsole, &cursor_info);
+	for ( const auto& line : lines ) {
+		std::cout << line << std::endl;
+	}
+	std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+	system("cls");
+}
+
