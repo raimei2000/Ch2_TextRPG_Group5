@@ -41,6 +41,11 @@ void Menu(Character* player) {
 			}
 			else if ( boss_cleared ) {
 				ShowEpilogue(player->name( ));
+				std::cout << std::endl;
+				std::cout << "[Enter를 눌러 게임 통계 확인]";
+				std::string input;
+				std::getline(std::cin, input);
+				std::system("cls");
 				Logger* logger = Logger::GetInstance( );
 				logger->Log( );
 				isEndMenu = true;

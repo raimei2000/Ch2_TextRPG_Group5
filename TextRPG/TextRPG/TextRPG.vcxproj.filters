@@ -99,6 +99,9 @@
     <ClCompile Include="epilogue.cpp">
       <Filter>Source Files\system</Filter>
     </ClCompile>
+    <ClCompile Include="page_utils.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="attack_boost.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="epilogue.h">
       <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="page_utils.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
