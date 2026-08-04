@@ -25,10 +25,13 @@ void Buy(Character* player)
 	bool isExitShop = true;
 	while ( isExitShop )
 	{
-		std::cout << "상점 목록\n";
-		std::cout << "1. 체력 포션 (" << HealthPotion::kPrice * 3 << "G)\n";
-		std::cout << "2. 공격력 부스트 (" << AttackBoost::kPrice * 3 << "G)\n";
-		std::cout << "0. 나가기\n";
+		std::cout << "┌────────────────────────────────────────┐" << std::endl;
+		std::cout << "│             탕비실 자판기              │" << std::endl;
+		std::cout << "├────────────────────────────────────────┤" << std::endl;
+		std::cout << "│       " << "1. 체력 포션 (" << HealthPotion::kPrice * 3 << "G)" << "               │" << std::endl;
+		std::cout << "│       " << "2. 공격력 부스트(" << AttackBoost::kPrice * 3 << "G)" << "           │" << std::endl;
+		std::cout << "│       0. 자판기 나가기                 │" << std::endl;
+		std::cout << "└────────────────────────────────────────┘" << std::endl;
 		std::cout << "보유 골드 : " << player->gold( ) << "G" << std::endl;
 		choice_ = InputValidator(0, 2);
 		switch ( choice_ )
@@ -79,11 +82,12 @@ void Sell(Character* player)
 	bool isExitShop = true;
 	while ( isExitShop )
 	{
-		std::cout << "======아이템 판매======" << std::endl;
-
+		std::cout << "┌────────────────────────────────────────┐" << std::endl;
+		std::cout << "│             보급품 회수소              │" << std::endl;
+		std::cout << "└────────────────────────────────────────┘" << std::endl;
 		// 인벤토리가 비었다면
 		if ( player->inventory_size( ) == 0 ) {
-			std::cout << "판매할 아이템이 없습니다." << std::endl;
+			std::cout << "반납할 물품이 없습니다." << std::endl;
 			std::cout << "=======================" << std::endl;
 			game_utility::EnterToClear("[Enter를 눌러 뒤로가기]");
 			return;
@@ -91,17 +95,17 @@ void Sell(Character* player)
 		// 판매할 아이템이 있다면 아이템 이름, 판매가격 출력
 		for ( int i = 0; i < player->inventory_size( ); ++i ) {
 			const int sell_price = player->ItemPrice(i);
-			std::cout << i + 1 << ". " << player->ItemName(i) << " (판매가격: " << sell_price << " G)" << std::endl;
+			std::cout << i + 1 << ". " << player->ItemName(i) << " (환급가격: " << sell_price << " G)" << std::endl;
 		}
-			std::cout << "0. 판매 종료" << std::endl;
+			std::cout << "0. 회수 처리 종료" << std::endl;
 			std::cout << "보유 골드 : " << player->gold( ) << "G" << std::endl;
-			std::cout << "판매할 아이템을 선택해주세요:" << std::endl;
+			std::cout << "반납할 아이템을 선택해주세요:" << std::endl;
 
 			const int choice = InputValidator(0, player->inventory_size( ));
 
 			if ( choice == 0 ) {
 				isExitShop = false;
-				std::cout << "판매를 종료합니다." << std::endl;
+				std::cout << "회수를 종료합니다." << std::endl;
 				continue;
 			}
 			//화면 번호 실제 인덱스로 변환
@@ -127,11 +131,13 @@ void Shop(Character* player)
 {
 	while ( true ) {
 		system("cls");
-		std::cout << "====== 상점 ======" << std::endl;
-		std::cout << "1. 구매" << std::endl;
-		std::cout << "2. 판매" << std::endl;
-		std::cout << "0. 상점 나가기" << std::endl;
-		std::cout << "===================" << std::endl;
+		std::cout << "┌────────────────────────────────────────┐" << std::endl;
+		std::cout << "│       제13 던전 안전구역 탕비실        │" << std::endl;
+		std::cout << "├────────────────────────────────────────┤" << std::endl;
+		std::cout << "│            1. 자판기                   │" << std::endl;
+		std::cout << "│            2. 보급품 회수소(판매)      │" << std::endl;
+		std::cout << "│            0. 탕비실 나가기            │" << std::endl;
+		std::cout << "└────────────────────────────────────────┘" << std::endl;
 
 		const int choice = InputValidator(0, 2);
 
