@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <conio.h>
 
 #include "character.h"
 #include "monster.h"
@@ -45,7 +46,11 @@ int main() {
   if ( player->hp( ) <= 0 ) {
     std::cout << "Game Over.." << std::endl;
   }
+  std::cout << std::endl;
+  std::cout << "Enter 키를 눌러 게임을 종료합니다.";
 
+  while ( _getch( ) != '\r' ) {
+  }
   delete player;
   return 0;
 }
