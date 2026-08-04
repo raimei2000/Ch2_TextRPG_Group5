@@ -3,7 +3,7 @@
 > C++로 만든 콘솔 기반 텍스트 RPG 게임
 > "가입즉시 낡은 검 100% 증정! 믿음직한 동료! 안전한 모험!" ...정말 그럴까요?
 
-한 줄 요약 : **사기성 모집 공고에 낚여 던전에 갇힌 초보 모험가가, 최하층 보스를 쓰러뜨리고 '퇴근'하기 위해 홀로 던전을 공략하는 이야기.**
+**사기성 모집 공고에 낚여 던전에 갇힌 초보 모험가가, 최하층 보스를 쓰러뜨리고 '퇴근'하기 위해 홀로 던전을 공략하는 이야기.**
 
 ---
 
@@ -147,8 +147,8 @@ proj/
 │   └── attack_boost.h  / attack_boost.cpp   # 임시 공격력 증가
 │
 ├── 🕹️ 게임 시스템
-│   ├── game_manager.h / game_manager.cpp    # GameManager(싱글턴): 전투 루프 · 몬스터 스폰
-│   ├── logger.h / logger.cpp                # Logger(싱글턴): 게임 통계 기록/출력
+│   ├── game_manager.h / game_manager.cpp    # GameManager(싱글톤): 전투 루프 · 몬스터 스폰
+│   ├── logger.h / logger.cpp                # Logger(싱글톤): 게임 통계 기록/출력
 │   ├── menu.h / menu.cpp                     # 안전지대 메인 메뉴 루프
 │   └── shop.h / shop.cpp                     # 무인 상점 (구매/판매)
 │
@@ -248,7 +248,7 @@ classDiagram
   각 자식은 `Attack`, `SpawnMessage`, `Use` 등 가상 함수를 자기만의 개성대로 재정의합니다.
 - **소유(Composition)** : `Character`는 `std::vector<std::unique_ptr<Item>>` 로 인벤토리를 **소유**하여 아이템 수명을 안전하게 관리합니다.
 - **협력(Dependency)** : `GameManager`가 전투를 진행하며 `Monster`를 생성하고 `Character`와 상호작용합니다.
-- **싱글턴** : `GameManager`(전투 총괄)와 `Logger`(통계 기록)는 프로그램 전역에서 단일 인스턴스로 공유됩니다.
+- **싱글톤** : `GameManager`(전투 총괄)와 `Logger`(통계 기록)는 프로그램 전역에서 단일 인스턴스로 공유됩니다.
 
 ---
 
@@ -292,15 +292,6 @@ flowchart TD
 2. 위 `.h` / `.cpp` 파일들을 모두 프로젝트에 추가합니다.
 3. `Ctrl + F5` 로 빌드 후 실행합니다.
 
-### MinGW (g++) 커맨드라인
-
-```bash
-g++ -std=c++14 *.cpp -o dungeon13.exe
-./dungeon13.exe
-```
-
-> 💡 실행 후 콘솔에 한글이 깨진다면, 터미널이 UTF-8을 사용하는지 확인하세요. (코드 내에서 `SetConsoleOutputCP(CP_UTF8)`로 설정하지만, 일부 터미널은 폰트/코드페이지 설정이 추가로 필요할 수 있습니다.)
-
 ---
 
 ## 🧠 설계 포인트
@@ -313,7 +304,7 @@ g++ -std=c++14 *.cpp -o dungeon13.exe
   // 몬스터 추가 시 람다 한 줄만 추가하면 됩니다.
   [](int lv) -> Monster* { return new Dragon(lv); },
   ```
-- **싱글턴 패턴** — `GameManager`, `Logger`를 전역 단일 인스턴스로 관리 (복사/대입 연산자 삭제).
+- **싱글톤 패턴** — `GameManager`, `Logger`를 전역 단일 인스턴스로 관리 (복사/대입 연산자 삭제).
 - **RAII / 스마트 포인터** — 인벤토리 아이템을 `std::unique_ptr`로 소유해 메모리를 안전하게 관리합니다.
 - **관심사 분리** — 입력 검증, 화면 연출, 난수 생성 등 공통 기능을 유틸리티 모듈로 분리했습니다.
 
