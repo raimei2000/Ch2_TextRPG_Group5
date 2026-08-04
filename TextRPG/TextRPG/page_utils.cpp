@@ -72,3 +72,10 @@ void DelayShowAllAtOnce(const std::vector<std::string>& lines) {
 	system("cls");
 }
 
+void ShowCursor() {
+	CONSOLE_CURSOR_INFO cursor_info;
+	cursor_info.dwSize = 100;
+	cursor_info.bVisible = TRUE;
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorInfo(hConsole, &cursor_info);
+}

@@ -10,3 +10,5 @@ void EndingScroll(const std::vector<std::string>& lines);
 void ShowAllAtOnce(const std::vector<std::string>& lines);
 
 void DelayShowAllAtOnce(const std::vector<std::string>& lines);
+
+void ShowCursor();
