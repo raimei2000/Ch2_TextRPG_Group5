@@ -15,7 +15,7 @@ void BossOgre::Attack(Character* character) {
   int damage_ = attack_;
 
   //체력 50% 이하 분노 문구
-  if ( health( ) <= 500 / 2 && !is_angry_) {
+  if ( health( ) <= 1500 / 2 && !is_angry_) {
     std::cout << "============================\n";
     std::cout << " ( 위험 ) 보스 체력이 \n 50% 이하로 분노합니다.!\n";
     is_angry_ = true;
